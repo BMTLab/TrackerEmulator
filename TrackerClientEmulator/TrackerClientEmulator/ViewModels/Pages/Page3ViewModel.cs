@@ -5,7 +5,7 @@
 
 using Xamarin.Forms;
 
-namespace TrackerClientEmulator.ViewModels
+namespace TrackerClientEmulator.ViewModels.Pages
 {
     public class Page3ViewModel : BasePageViewModel
     {

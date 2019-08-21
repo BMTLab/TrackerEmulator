@@ -5,14 +5,15 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TrackerClientEmulator.Entites;
 using TrackerClientEmulator.ViewModels;
-using TrackerClientEmulator.Views;
 
 namespace TrackerClientEmulator.Helpers.Extension
 {
     public static class ObservableCollectionExtension
     {
-        public static void AddPages(this ObservableCollection<NavigationItem> navigationCollection, IEnumerable<BasePageViewModel> pages)
+        public static void AddPages(this ObservableCollection<NavigationItem> navigationCollection,
+                                    IEnumerable<BasePageViewModel> pages)
         {
             foreach (var element in pages)
             {
@@ -20,7 +21,8 @@ namespace TrackerClientEmulator.Helpers.Extension
             }
         }
 
-        public static void AddPages(this ObservableCollection<BasePageViewModel> pagesCollection, IEnumerable<BasePageViewModel> pages)
+        public static void AddPages(this ObservableCollection<BasePageViewModel> pagesCollection,
+                                    IEnumerable<BasePageViewModel> pages)
         {
             foreach (var element in pages)
             {

@@ -1,8 +1,5 @@
 ﻿using System.Windows.Input;
-
 using Xamarin.Forms;
-using NavigationPage = Xamarin.Forms.NavigationPage;
-
 using TrackerClientEmulator.Models;
 
 
@@ -22,8 +19,7 @@ namespace TrackerClientEmulator.ViewModels
 
             PropertyChanged += (s, e) =>
             {
-                if (s.Equals(this) && e.PropertyName == nameof(Title))
-                    PageView.Title = Title;
+                if (s.Equals(this) && e.PropertyName == nameof(Title)) PageView.Title = Title;
             };
         }
         #endregion
@@ -31,10 +27,7 @@ namespace TrackerClientEmulator.ViewModels
         #region Properties
         public string Title
         {
-            get
-            {
-                return _title;
-            }
+            get => _title;
             set
             {
                 _title = value;
@@ -48,22 +41,19 @@ namespace TrackerClientEmulator.ViewModels
         {
             get
             {
-                return new Command(value =>
+                return new Command(async value =>
                 {
-                    if (!(Application.Current.MainPage is MyMasterDetailPage mdp))
-                        return;
+                    if (!(Application.Current.MainPage is MyMasterDetailPage mdp)) return;
 
-                    var navPage = mdp.Detail as NavigationPage;
+                    if (!(mdp.Detail is NavigationPage navPage)) return;
+
                     mdp.IsPresented = false;
 
-                    navPage?.PopToRootAsync(false);
-                    navPage?.PushAsync(PageView);
+                    await navPage.PopToRootAsync(false);
+                    await navPage.PushAsync(PageView);
                 });
             }
         }
         #endregion
-
-
-
     }
 }

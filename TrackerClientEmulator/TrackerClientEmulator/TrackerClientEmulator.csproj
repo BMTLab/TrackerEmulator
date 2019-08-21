@@ -3,6 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
         <ApplicationIcon></ApplicationIcon>
+        <ApplicationManifest>Properties\Configurations\TrackerClientEmulator.manifest</ApplicationManifest>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -11,6 +12,8 @@
         <FileAlignment>1024</FileAlignment>
         <WarningsAsErrors />
         <NoWarn>NU1701;NU1702;NU1605</NoWarn>
+        <OutputPath>Build\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -20,7 +23,22 @@
         <ErrorReport>prompt</ErrorReport>
         <DebugType>embedded</DebugType>
         <DebugSymbols>true</DebugSymbols>
+        <OutputPath>Build\Release</OutputPath>
     </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Properties\PublishProfiles\**" />
+      <EmbeddedResource Remove="Properties\PublishProfiles\**" />
+      <None Remove="Properties\PublishProfiles\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Properties\Configurations\.editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EditorConfigFiles Include="Properties\Configurations\.editorconfig" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="NLog" Version="4.6.6" />
@@ -35,37 +53,33 @@
         <EmbeddedResource Update="Views\NavigationPage.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
-        <EmbeddedResource Update="Views\NavigationItem.xaml">
-            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Views\Page1.xaml">
+        <EmbeddedResource Update="Views\Pages\Page1.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Properties\PublishProfiles\" />
-    </ItemGroup>
-
-    <ItemGroup>
+        <Compile Update="Entites\NavigationItem.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
         <Compile Update="Views\NavigationPage.xaml.cs">
-          <DependentUpon>MasterPage.xaml</DependentUpon>
+            <DependentUpon>MasterPage.xaml</DependentUpon>
         </Compile>
-        <Compile Update="Views\Page3.xaml.cs">
-          <DependentUpon>Page3.xaml</DependentUpon>
+        <Compile Update="Views\Pages\Page3.xaml.cs">
+            <DependentUpon>Page3.xaml</DependentUpon>
         </Compile>
-        <Compile Update="Views\Page2.xaml.cs">
+        <Compile Update="Views\Pages\Page2.xaml.cs">
             <DependentUpon>Page2.xaml</DependentUpon>
         </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Views\NavigationItem.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </None>
-      <None Update="Views\Page1.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </None>
+        <None Update="Views\NavigationItem.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </None>
+        <None Update="Views\Page1.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </None>
     </ItemGroup>
 
 </Project>

@@ -4,6 +4,7 @@
 #endregion
 
 using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace TrackerClientEmulator.Models
@@ -22,7 +23,7 @@ namespace TrackerClientEmulator.Models
 
                 if (_lastTime.Millisecond != 0 && timeDiff.Milliseconds <= 300 && timeDiff.Milliseconds >= 50)
                 {
-                    System.Diagnostics.Process.GetCurrentProcess().CloseMainWindow();
+                    Process.GetCurrentProcess().CloseMainWindow();
                 }
                 else
                 {

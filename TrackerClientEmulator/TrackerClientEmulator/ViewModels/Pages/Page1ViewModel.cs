@@ -5,17 +5,17 @@
 
 using Xamarin.Forms;
 
-namespace TrackerClientEmulator.ViewModels
+namespace TrackerClientEmulator.ViewModels.Pages
 {
-    public class Page2ViewModel : BasePageViewModel
+    public class Page1ViewModel : BasePageViewModel
     {
         #region Constants
-        public const string TitleDefault = "Connection Setting 2!";
+        public const string TitleDefault = "Connection Setting 1!";
         #endregion
 
 
         #region Constructors
-        public Page2ViewModel(Page page) : base(page)
+        public Page1ViewModel(Page page) : base(page)
         {
             Title = TitleDefault;
         }

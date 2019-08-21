@@ -5,36 +5,28 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
-using Xamarin.Forms;
-
+using TrackerClientEmulator.Entites;
 using TrackerClientEmulator.Helpers.Extension;
-using TrackerClientEmulator.Views;
-
+using Xamarin.Forms;
 
 namespace TrackerClientEmulator.ViewModels
 {
     public class NavigationViewModel : BaseViewModel
     {
         #region Fields
-        internal static ObservableCollection<NavigationItem> _navigationItems;
-        //private NavigationItem _selectedItem;
+        private static ObservableCollection<NavigationItem> _navigationItems;
         #endregion
 
-        
+
         #region Constructors
-        static NavigationViewModel()
-        {
-
-        }
-
         public NavigationViewModel(Page navPage)
         {
             CurrentNavigationPage = navPage;
             CurrentNavigationPage.BindingContext = this;
+            CurrentNavigationPage.Title = "Tracker Emulator";
 
             NavigationItems = new ObservableCollection<NavigationItem>();
-            //NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));
+            NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));
 
             foreach (var page in App.Pages)
             {
@@ -46,21 +38,17 @@ namespace TrackerClientEmulator.ViewModels
                 NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
             };
 
-            //CurrentNavigationPage.FindByName<NavigationItem>("NavigationItem").Title = "sdfyhyd";
-            //NavigationItems[1].BackgroundColor = Color.Blue;
-            CurrentNavigationPage.FindByName<ListView>("NavigationListView").Footer = "Mielta";
-            //CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
-            //{
-            //    foreach (var page in NavigationItems)
-            //    {
-            //        page.BackgroundColor = Color.Blue;
-            //    }
+            CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
+            {
+                foreach (var item in NavigationItems)
+                {
+                    item.BackgroundColor = (Color)Application.Current.Resources["LightBackgroundColor"];
+                }
 
-            //    NavigationItems[1].Title = "sdg";
-            //    //OnPropertyChanged(nameof(NavigationItems));
-            //};
-
-            OnPropertyChanged(nameof(NavigationItems));
+                var itemSelected = (NavigationItem)e.SelectedItem;
+                itemSelected.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                NavigationItems[e.SelectedItemIndex].Command.Execute(itemSelected.CommandParameter);
+            };
         }
         #endregion
 
@@ -75,37 +63,15 @@ namespace TrackerClientEmulator.ViewModels
             set
             {
                 _navigationItems = value;
-
+                OnPropertyChanged(nameof(NavigationItems));
             }
         }
 
         public Page CurrentNavigationPage { get; protected set; }
-
-        //public object SelectedItem
-        //{
-        //    get
-        //    {
-        //        return _selectedItem;
-        //    }
-        //    set
-        //    {
-        //        if (value == null)
-        //            return;
-
-        //        _selectedItem = value as NavigationItem;
-
-        //        if (_selectedItem == null)
-        //            return;
-
-        //        _selectedItem.BackgroundColor = Color.Violet;
-        //        OnPropertyChanged(nameof(SelectedItem));
-        //    }
-        //}
         #endregion
 
 
         #region Methods
-
         #endregion
     }
 }
