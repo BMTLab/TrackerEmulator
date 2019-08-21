@@ -41,7 +41,10 @@
                     x:Name="NavigationListView"
                     x:FieldModifier="public"
                     Footer="мielta © 2019"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsRefreshing}"
                     ItemsSource="{Binding NavigationItems}"
+                    RefreshCommand="{Binding RefreshCommand}"
                     SelectedItem="{Binding SelectedNavigationItem}"
                     SelectionMode="Single"
                     SeparatorVisibility="None">
@@ -54,6 +57,7 @@
                                     BackgroundColor="{Binding BackgroundColor}"
                                     BorderColor="{Binding BorderColor}"
                                     CornerRadius="0"
+                                    HasShadow="False"
                                     HeightRequest="55"
                                     Opacity="0.9">
                                     <Label
