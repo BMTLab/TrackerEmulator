@@ -1,8 +1,7 @@
-﻿#if DEBUG
-#define BACKGROUND_COLOR
-#endif
+﻿#define BACKGROUND_COLOR
 
 using System.Windows.Input;
+using TrackerClientEmulator.Helpers.Extension;
 using TrackerClientEmulator.ViewModels;
 using Xamarin.Forms;
 
@@ -29,7 +28,9 @@ namespace TrackerClientEmulator.Entites
         private string _title;
 
         #if BACKGROUND_COLOR
-        private Color _backgroundColor = (Color)Application.Current.Resources["LightBackgroundColor"];
+        private Color _backgroundColor = new Color().LightBackgroundColor();
+
+        private Color _borderColor = new Color().LightBackgroundColor();
         #endif
 
         private bool _isActive;
@@ -42,13 +43,20 @@ namespace TrackerClientEmulator.Entites
         #if BACKGROUND_COLOR
         public Color BackgroundColor
         {
-            get
-            {
-                return _backgroundColor;
-            }
+            get => _backgroundColor;
             set
             {
                 _backgroundColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Color BorderColor
+        {
+            get => _borderColor;
+            set
+            {
+                _borderColor = value;
                 OnPropertyChanged();
             }
         }
@@ -56,7 +64,7 @@ namespace TrackerClientEmulator.Entites
 
         public string CommandParameter
         {
-            get { return _commandParameter; }
+            get => _commandParameter;
             set
             {
                 _commandParameter = value;
@@ -66,7 +74,7 @@ namespace TrackerClientEmulator.Entites
 
         public string Icon
         {
-            get { return _icon; }
+            get => _icon;
             set
             {
                 _icon = value;
@@ -76,7 +84,7 @@ namespace TrackerClientEmulator.Entites
 
         public string Title
         {
-            get { return _title; }
+            get => _title;
             set
             {
                 _title = value;
@@ -86,7 +94,7 @@ namespace TrackerClientEmulator.Entites
 
         public ICommand Command
         {
-            get { return _command; }
+            get => _command;
             set
             {
                 _command = value;
@@ -96,7 +104,7 @@ namespace TrackerClientEmulator.Entites
 
         public BasePageViewModel ContentPageViewModel
         {
-            get { return _contentPageViewModel; }
+            get => _contentPageViewModel;
             set
             {
                 _contentPageViewModel = value;
@@ -106,7 +114,7 @@ namespace TrackerClientEmulator.Entites
 
         public bool IsActive
         {
-            get { return _isActive; }
+            get => _isActive;
             set
             {
                 _isActive = value;

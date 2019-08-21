@@ -38,18 +38,6 @@ namespace TrackerClientEmulator.ViewModels
             {
                 NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
             };
-
-            //CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
-            //{
-            //    foreach (var item in NavigationItems)
-            //    {
-            //        item.BackgroundColor = (Color)Application.Current.Resources["LightBackgroundColor"];
-            //    }
-
-            //    var itemSelected = (NavigationItem)e.SelectedItem;
-            //    itemSelected.BackgroundColor = (Color)Application.Current.Resources["Primary"];
-            //    NavigationItems[e.SelectedItemIndex].Command.Execute(itemSelected.CommandParameter);
-            //};
         }
         #endregion
 
@@ -83,6 +71,7 @@ namespace TrackerClientEmulator.ViewModels
                 }
 
                 _selectedNavigationItem.BackgroundColor = new Color().Primary();
+                _selectedNavigationItem.BorderColor = new Color().Primary();
                 _selectedNavigationItem.Command.Execute(_selectedNavigationItem.CommandParameter);
 
                 OnPropertyChanged(nameof(SelectedNavigationItem));
