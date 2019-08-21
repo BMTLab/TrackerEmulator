@@ -121,6 +121,8 @@ namespace TrackerClientEmulator.Entites
                 OnPropertyChanged();
             }
         }
+
+        
         #endregion
 
 

@@ -5,6 +5,8 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows.Input;
 using TrackerClientEmulator.Entites;
 using TrackerClientEmulator.Helpers.Extension;
 using Xamarin.Forms;
@@ -14,12 +16,17 @@ namespace TrackerClientEmulator.ViewModels
     public class NavigationViewModel : BaseViewModel
     {
         #region Fields
+
         private static ObservableCollection<NavigationItem> _navigationItems;
+        private Page _currentNavigationPage;
         private NavigationItem _selectedNavigationItem;
+        private bool _isRefreshing = false;
+
         #endregion
 
 
         #region Constructors
+
         public NavigationViewModel(Page navPage)
         {
             CurrentNavigationPage = navPage;
@@ -36,13 +43,17 @@ namespace TrackerClientEmulator.ViewModels
 
             App.Pages.CollectionChanged += (_, e) =>
             {
-                NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
+                NavigationItems.AddPages((IEnumerable<BasePageViewModel>) e.NewItems);
             };
+
+            SelectedNavigationItem = NavigationItems.First();
         }
+
         #endregion
 
 
         #region Properties
+
         public ObservableCollection<NavigationItem> NavigationItems
         {
             get => _navigationItems;
@@ -53,7 +64,15 @@ namespace TrackerClientEmulator.ViewModels
             }
         }
 
-        public Page CurrentNavigationPage { get; protected set; }
+        public Page CurrentNavigationPage
+        {
+            get => _currentNavigationPage;
+            set
+            {
+                _currentNavigationPage = value;
+                OnPropertyChanged(nameof(CurrentNavigationPage));
+            }
+        }
 
         public NavigationItem SelectedNavigationItem
         {
@@ -77,10 +96,40 @@ namespace TrackerClientEmulator.ViewModels
                 OnPropertyChanged(nameof(SelectedNavigationItem));
             }
         }
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsRefreshing = true;
+
+                    foreach (var item in NavigationItems)
+                    {
+                        item.BorderColor = new Color().LightBackgroundColor();
+                    }
+
+                    IsRefreshing = false;
+                });
+            }
+        }
+
         #endregion
 
 
         #region Methods
+
         #endregion
     }
 }

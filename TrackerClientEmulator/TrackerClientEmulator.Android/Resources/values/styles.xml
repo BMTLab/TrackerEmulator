@@ -17,6 +17,9 @@
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <item name="colorAccent">#D50E17</item>
+    <array name="SwipeRefreshColors">
+      <item>@color/red</item>
+    </array>
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="android:colorActivatedHighlight">@android:color/transparent</item>
