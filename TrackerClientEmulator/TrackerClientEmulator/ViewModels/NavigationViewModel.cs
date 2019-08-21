@@ -79,10 +79,10 @@ namespace TrackerClientEmulator.ViewModels
 
                 foreach (var item in NavigationItems)
                 {
-                    item.BackgroundColor = (Color)Application.Current.Resources["LightBackgroundColor"];
+                    item.BackgroundColor = new Color().LightBackgroundColor();
                 }
 
-                _selectedNavigationItem.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                _selectedNavigationItem.BackgroundColor = new Color().Primary();
                 _selectedNavigationItem.Command.Execute(_selectedNavigationItem.CommandParameter);
 
                 OnPropertyChanged(nameof(SelectedNavigationItem));
