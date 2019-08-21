@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <ContentPage
     x:Class="TrackerClientEmulator.Views.NavigationPage"
@@ -42,6 +42,7 @@
                     x:FieldModifier="public"
                     Footer="мielta © 2019"
                     ItemsSource="{Binding NavigationItems}"
+                    SelectedItem="{Binding SelectedNavigationItem}"
                     SelectionMode="Single"
                     SeparatorVisibility="None">
                     <ListView.ItemTemplate>
