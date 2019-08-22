@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage
+    x:Class="TrackerEmulator.Views.NavigationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="{StaticResource Primary}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--<Image
+                    HeightRequest="16"
+                    Source="track.png"
+                    WidthRequest="16" />-->
+                <StackLayout
+                    Grid.Row="1"
+                    Padding="0,0,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        FontSize="Large"
+                        Text="Menu"
+                        TextColor="{StaticResource LightTextColor}" />
+                </StackLayout>
+            </Grid>
+            <StackLayout
+                Grid.Row="1"
+                Margin="5,0,5,1"
+                Spacing="4">
+                <ListView
+                    x:Name="NavigationListView"
+                    x:FieldModifier="public"
+                    Footer="мielta © 2019"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    ItemsSource="{Binding NavigationItems}"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    SelectedItem="{Binding SelectedNavigationItem}"
+                    SelectionMode="Single"
+                    SeparatorVisibility="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame
+                                    Margin="0,0,0,4"
+                                    Padding="2"
+                                    BackgroundColor="{Binding BackgroundColor}"
+                                    BorderColor="{Binding BorderColor}"
+                                    CornerRadius="0"
+                                    HasShadow="False"
+                                    HeightRequest="55"
+                                    Opacity="0.9">
+                                    <Label
+                                        FontSize="Medium"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding Title}"
+                                        TextColor="{StaticResource LightTextColor}"
+                                        VerticalTextAlignment="Center" />
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
