@@ -1,6 +1,9 @@
-﻿using Android.App;
+﻿using System.ComponentModel;
+using Android.App;
 using Android.Content.PM;
+using Android.Locations;
 using Android.OS;
+using Java.Lang;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

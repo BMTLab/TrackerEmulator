@@ -9,16 +9,15 @@ namespace TrackerEmulator.Entites
 {
     public class NavigationItem : BaseViewModel
     {
-        #region Constructors
-        public NavigationItem(BasePageViewModel pageViewModel)
-        {
-            Title = pageViewModel.Title;
-            Command = pageViewModel.PageNavigationCommand;
-            ContentPageViewModel = pageViewModel;
-        }
-        #endregion
-
         #region Fields
+
+        public static Color ItemSelectedColor = Color.Blue;
+
+        public static Color ItemNonSelectedColor = Color.Brown;
+
+        public static Color TextColorDefault = Color.Black;
+
+
         private ICommand _command;
 
         private string _commandParameter;
@@ -28,14 +27,26 @@ namespace TrackerEmulator.Entites
         private string _title;
 
         #if BACKGROUND_COLOR
-        private Color _backgroundColor = new Color().LightBackgroundColor();
+        private Color _backgroundColor = ItemNonSelectedColor;
 
-        private Color _borderColor = new Color().LightBackgroundColor();
+        private Color _borderColor = ItemNonSelectedColor;
+
+        private Color _textColor = TextColorDefault;
         #endif
 
         private bool _isActive;
 
         private BasePageViewModel _contentPageViewModel;
+        #endregion
+
+
+        #region Constructors
+        public NavigationItem(BasePageViewModel pageViewModel)
+        {
+            Title = pageViewModel.Title;
+            Command = pageViewModel.PageNavigationCommand;
+            ContentPageViewModel = pageViewModel;
+        }
         #endregion
 
 
@@ -57,6 +68,16 @@ namespace TrackerEmulator.Entites
             set
             {
                 _borderColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Color TextColor
+        {
+            get => _textColor;
+            set
+            {
+                _textColor = value;
                 OnPropertyChanged();
             }
         }
@@ -112,17 +133,25 @@ namespace TrackerEmulator.Entites
             }
         }
 
-        public bool IsActive
+        public virtual bool IsActive
         {
             get => _isActive;
             set
             {
                 _isActive = value;
+                if (_isActive)
+                {
+                    BorderColor = BackgroundColor =  ItemSelectedColor;
+                }
+                else
+                {
+                    BorderColor = BackgroundColor = ItemNonSelectedColor;
+                }
+
                 OnPropertyChanged();
             }
         }
 
-        
         #endregion
 
 
