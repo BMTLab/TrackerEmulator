@@ -12,7 +12,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="30" />
+                <RowDefinition Height="15" />
             </Grid.RowDefinitions>
             <Grid x:Name="MenuHeader" BackgroundColor="{StaticResource Primary}">
                 <Grid.RowDefinitions>
@@ -30,6 +30,7 @@
                         TextColor="{StaticResource LightTextColor}" />
                 </StackLayout>
             </Grid>
+            <!--  TODO: RelativeLayout with BackgroundImage  -->
             <StackLayout
                 Grid.Row="1"
                 Margin="5,0,5,1"
@@ -74,13 +75,14 @@
                 Grid.Row="2"
                 BackgroundColor="{Binding Path=BackgroundColor}"
                 BindingContext="{x:Reference Name=MenuHeader}"
-                Opacity="0.5"
+                Opacity="0.9"
                 VerticalOptions="End">
                 <Label
                     FontSize="Small"
                     HorizontalTextAlignment="Center"
                     Text="мielta © 2019"
-                    TextColor="{StaticResource LightTextColor}" />
+                    TextColor="{StaticResource LightTextColor}"
+                    VerticalTextAlignment="Start" />
             </Frame>
         </Grid>
     </ContentPage.Content>
