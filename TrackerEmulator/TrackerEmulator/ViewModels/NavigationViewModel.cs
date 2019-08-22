@@ -6,6 +6,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
@@ -26,6 +27,13 @@ namespace TrackerEmulator.ViewModels
 
 
         #region Constructors
+
+        static NavigationViewModel()
+        {
+            NavigationItem.ItemSelectedColor = new Color().Primary();
+            NavigationItem.ItemNonSelectedColor = new Color().LightBackgroundColor();
+            NavigationItem.TextColorDefault = new Color().LightTextColor();
+        }
 
         public NavigationViewModel(Page navPage)
         {
@@ -84,13 +92,8 @@ namespace TrackerEmulator.ViewModels
 
                 _selectedNavigationItem = value;
 
-                foreach (var item in NavigationItems)
-                {
-                    item.BackgroundColor = new Color().LightBackgroundColor();
-                }
+                RefreshMenu();
 
-                _selectedNavigationItem.BackgroundColor = new Color().Primary();
-                _selectedNavigationItem.BorderColor = new Color().Primary();
                 _selectedNavigationItem.Command.Execute(_selectedNavigationItem.CommandParameter);
 
                 OnPropertyChanged(nameof(SelectedNavigationItem));
@@ -111,14 +114,11 @@ namespace TrackerEmulator.ViewModels
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
                     IsRefreshing = true;
 
-                    foreach (var item in NavigationItems)
-                    {
-                        item.BorderColor = new Color().LightBackgroundColor();
-                    }
+                    await RefreshMenu();
 
                     IsRefreshing = false;
                 });
@@ -130,6 +130,17 @@ namespace TrackerEmulator.ViewModels
 
         #region Methods
 
+        public Task RefreshMenu()
+        {
+            foreach (var item in NavigationItems)
+            {
+                item.IsActive = false;
+            }
+
+            SelectedNavigationItem.IsActive = true;
+
+            return Task.CompletedTask;
+        }
         #endregion
     }
 }

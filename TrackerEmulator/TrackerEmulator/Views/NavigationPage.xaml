@@ -12,16 +12,13 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="30" />
             </Grid.RowDefinitions>
-            <Grid BackgroundColor="{StaticResource Primary}">
+            <Grid x:Name="MenuHeader" BackgroundColor="{StaticResource Primary}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.7*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <!--<Image
-                    HeightRequest="16"
-                    Source="track.png"
-                    WidthRequest="16" />-->
                 <StackLayout
                     Grid.Row="1"
                     Padding="0,0,0,0"
@@ -40,11 +37,11 @@
                 <ListView
                     x:Name="NavigationListView"
                     x:FieldModifier="public"
-                    Footer="мielta © 2019"
                     IsPullToRefreshEnabled="True"
                     IsRefreshing="{Binding IsRefreshing}"
                     ItemsSource="{Binding NavigationItems}"
                     RefreshCommand="{Binding RefreshCommand}"
+                    RowHeight="55"
                     SelectedItem="{Binding SelectedNavigationItem}"
                     SelectionMode="Single"
                     SeparatorVisibility="None">
@@ -52,19 +49,20 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Frame
-                                    Margin="0,0,0,4"
+                                    x:Name="NavigationItem"
+                                    Margin="0,1,0,4"
                                     Padding="2"
                                     BackgroundColor="{Binding BackgroundColor}"
                                     BorderColor="{Binding BorderColor}"
                                     CornerRadius="0"
                                     HasShadow="False"
-                                    HeightRequest="55"
+                                    HeightRequest="60"
                                     Opacity="0.9">
                                     <Label
                                         FontSize="Medium"
                                         HorizontalTextAlignment="Center"
                                         Text="{Binding Title}"
-                                        TextColor="{StaticResource LightTextColor}"
+                                        TextColor="{Binding TextColor}"
                                         VerticalTextAlignment="Center" />
                                 </Frame>
                             </ViewCell>
@@ -72,6 +70,18 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
+            <Frame
+                Grid.Row="2"
+                BackgroundColor="{Binding Path=BackgroundColor}"
+                BindingContext="{x:Reference Name=MenuHeader}"
+                Opacity="0.5"
+                VerticalOptions="End">
+                <Label
+                    FontSize="Small"
+                    HorizontalTextAlignment="Center"
+                    Text="мielta © 2019"
+                    TextColor="{StaticResource LightTextColor}" />
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
