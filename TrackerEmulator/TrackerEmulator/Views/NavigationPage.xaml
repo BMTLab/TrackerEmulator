@@ -12,7 +12,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="70" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="15" />
+                <RowDefinition Height="0.01*" />
             </Grid.RowDefinitions>
             <Grid x:Name="MenuHeader" BackgroundColor="{StaticResource Primary}">
                 <Grid.RowDefinitions>
@@ -30,11 +30,15 @@
                         TextColor="{StaticResource LightTextColor}" />
                 </StackLayout>
             </Grid>
-            <!--  TODO: RelativeLayout with BackgroundImage  -->
+            <Image
+                Grid.Row="1"
+                Margin="0,-5,0,-5"
+                Aspect="AspectFill"
+                Source="pattern.jpg" />
             <StackLayout
                 Grid.Row="1"
                 Margin="5,0,5,1"
-                Spacing="4">
+                BackgroundColor="Transparent">
                 <ListView
                     x:Name="NavigationListView"
                     x:FieldModifier="public"
@@ -75,7 +79,6 @@
                 Grid.Row="2"
                 BackgroundColor="{Binding Path=BackgroundColor}"
                 BindingContext="{x:Reference Name=MenuHeader}"
-                Opacity="0.9"
                 VerticalOptions="End">
                 <Label
                     FontSize="Small"
