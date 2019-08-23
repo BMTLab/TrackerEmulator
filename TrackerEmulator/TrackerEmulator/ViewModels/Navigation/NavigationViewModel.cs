@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
+using TrackerEmulator.ViewModels.Pages;
 using Xamarin.Forms;
 
-namespace TrackerEmulator.ViewModels
+namespace TrackerEmulator.ViewModels.Navigation
 {
     public class NavigationViewModel : BaseViewModel
     {
@@ -44,7 +45,6 @@ namespace TrackerEmulator.ViewModels
         {
             CurrentNavigationPage = navPage;
             CurrentNavigationPage.BindingContext = this;
-            //CurrentNavigationPage.Title = "Tracker Emulator";
 
             NavigationItems = new ObservableCollection<NavigationItem>();
             NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));

@@ -1,9 +1,8 @@
 ﻿using System.Windows.Input;
-using Xamarin.Forms;
 using TrackerEmulator.Models;
+using Xamarin.Forms;
 
-
-namespace TrackerEmulator.ViewModels
+namespace TrackerEmulator.ViewModels.Pages
 {
     public abstract class BasePageViewModel : BaseViewModel
     {
@@ -19,7 +18,8 @@ namespace TrackerEmulator.ViewModels
 
             PropertyChanged += (s, e) =>
             {
-                if (s.Equals(this) && e.PropertyName == nameof(Title)) PageView.Title = Title;
+                if (s.Equals(this) && e.PropertyName == nameof(Title))
+                    PageView.Title = Title;
             };
         }
         #endregion

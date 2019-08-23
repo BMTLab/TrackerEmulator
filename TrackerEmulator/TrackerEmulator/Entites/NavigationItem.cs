@@ -1,8 +1,8 @@
 ﻿#define BACKGROUND_COLOR
 
 using System.Windows.Input;
-using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.ViewModels;
+using TrackerEmulator.ViewModels.Pages;
 using Xamarin.Forms;
 
 namespace TrackerEmulator.Entites
@@ -128,6 +128,9 @@ namespace TrackerEmulator.Entites
             get => _contentPageViewModel;
             set
             {
+                if (value == null)
+                    return;
+
                 _contentPageViewModel = value;
                 OnPropertyChanged();
             }

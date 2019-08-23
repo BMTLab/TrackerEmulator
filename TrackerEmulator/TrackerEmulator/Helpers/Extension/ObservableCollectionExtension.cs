@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TrackerEmulator.Entites;
-using TrackerEmulator.ViewModels;
+using TrackerEmulator.ViewModels.Pages;
 
 namespace TrackerEmulator.Helpers.Extension
 {

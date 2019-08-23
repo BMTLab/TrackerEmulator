@@ -4,12 +4,12 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using TrackerEmulator.Models;
-using TrackerEmulator.ViewModels;
+using TrackerEmulator.ViewModels.Navigation;
 using TrackerEmulator.ViewModels.Pages;
 using TrackerEmulator.Views.Pages;
 
 using BaseThisNavigationPage = Xamarin.Forms.NavigationPage;
-using ThisNavigationPage = TrackerEmulator.Views.NavigationPage;
+using ThisNavigationPage = TrackerEmulator.Views.Navigation.NavigationPage;
 
 #if NLOG
 using NLog;

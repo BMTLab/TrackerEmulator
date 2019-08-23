@@ -52,7 +52,7 @@
         <EmbeddedResource Update="App.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
-        <EmbeddedResource Update="Views\NavigationPage.xaml">
+        <EmbeddedResource Update="Views\Navigation\NavigationPage.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
         <EmbeddedResource Update="Views\Pages\Page1.xaml">
@@ -64,7 +64,7 @@
         <Compile Update="Entites\NavigationItem.cs">
             <DependentUpon>%(Filename)</DependentUpon>
         </Compile>
-        <Compile Update="Views\NavigationPage.xaml.cs">
+        <Compile Update="Views\Navigation\NavigationPage.xaml.cs">
             <DependentUpon>MasterPage.xaml</DependentUpon>
         </Compile>
         <Compile Update="Views\Pages\Page3.xaml.cs">
