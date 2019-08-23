@@ -45,7 +45,8 @@
     <ItemGroup>
         <PackageReference Include="NLog" Version="4.6.6" />
         <PackageReference Include="NLog.Config" Version="4.6.6" />
-        <PackageReference Include="Xamarin.Forms" Version="4.2.0.673161-pre3" />
+        <PackageReference Include="Plugin.LocalNotification" Version="4.0.5" />
+        <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
     </ItemGroup>
 
     <ItemGroup>
@@ -54,6 +55,9 @@
         </EmbeddedResource>
         <EmbeddedResource Update="Views\Navigation\NavigationPage.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Views\Notification\NotificationPage.xaml">
+          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
         <EmbeddedResource Update="Views\Pages\Page1.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -86,6 +90,7 @@
 
     <ItemGroup>
       <Folder Include="Helpers\Utilities\" />
+      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>

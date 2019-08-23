@@ -26,6 +26,204 @@ namespace TrackerEmulator.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Plugin.LocalNotification.Resource.Attribute.alpha = global::TrackerEmulator.Droid.Resource.Attribute.alpha;
+			global::Plugin.LocalNotification.Resource.Attribute.coordinatorLayoutStyle = global::TrackerEmulator.Droid.Resource.Attribute.coordinatorLayoutStyle;
+			global::Plugin.LocalNotification.Resource.Attribute.font = global::TrackerEmulator.Droid.Resource.Attribute.font;
+			global::Plugin.LocalNotification.Resource.Attribute.fontProviderAuthority = global::TrackerEmulator.Droid.Resource.Attribute.fontProviderAuthority;
+			global::Plugin.LocalNotification.Resource.Attribute.fontProviderCerts = global::TrackerEmulator.Droid.Resource.Attribute.fontProviderCerts;
+			global::Plugin.LocalNotification.Resource.Attribute.fontProviderFetchStrategy = global::TrackerEmulator.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::Plugin.LocalNotification.Resource.Attribute.fontProviderFetchTimeout = global::TrackerEmulator.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::Plugin.LocalNotification.Resource.Attribute.fontProviderPackage = global::TrackerEmulator.Droid.Resource.Attribute.fontProviderPackage;
+			global::Plugin.LocalNotification.Resource.Attribute.fontProviderQuery = global::TrackerEmulator.Droid.Resource.Attribute.fontProviderQuery;
+			global::Plugin.LocalNotification.Resource.Attribute.fontStyle = global::TrackerEmulator.Droid.Resource.Attribute.fontStyle;
+			global::Plugin.LocalNotification.Resource.Attribute.fontVariationSettings = global::TrackerEmulator.Droid.Resource.Attribute.fontVariationSettings;
+			global::Plugin.LocalNotification.Resource.Attribute.fontWeight = global::TrackerEmulator.Droid.Resource.Attribute.fontWeight;
+			global::Plugin.LocalNotification.Resource.Attribute.keylines = global::TrackerEmulator.Droid.Resource.Attribute.keylines;
+			global::Plugin.LocalNotification.Resource.Attribute.layout_anchor = global::TrackerEmulator.Droid.Resource.Attribute.layout_anchor;
+			global::Plugin.LocalNotification.Resource.Attribute.layout_anchorGravity = global::TrackerEmulator.Droid.Resource.Attribute.layout_anchorGravity;
+			global::Plugin.LocalNotification.Resource.Attribute.layout_behavior = global::TrackerEmulator.Droid.Resource.Attribute.layout_behavior;
+			global::Plugin.LocalNotification.Resource.Attribute.layout_dodgeInsetEdges = global::TrackerEmulator.Droid.Resource.Attribute.layout_dodgeInsetEdges;
+			global::Plugin.LocalNotification.Resource.Attribute.layout_insetEdge = global::TrackerEmulator.Droid.Resource.Attribute.layout_insetEdge;
+			global::Plugin.LocalNotification.Resource.Attribute.layout_keyline = global::TrackerEmulator.Droid.Resource.Attribute.layout_keyline;
+			global::Plugin.LocalNotification.Resource.Attribute.statusBarBackground = global::TrackerEmulator.Droid.Resource.Attribute.statusBarBackground;
+			global::Plugin.LocalNotification.Resource.Attribute.ttcIndex = global::TrackerEmulator.Droid.Resource.Attribute.ttcIndex;
+			global::Plugin.LocalNotification.Resource.Boolean.enable_system_alarm_service_default = global::TrackerEmulator.Droid.Resource.Boolean.enable_system_alarm_service_default;
+			global::Plugin.LocalNotification.Resource.Boolean.enable_system_job_service_default = global::TrackerEmulator.Droid.Resource.Boolean.enable_system_job_service_default;
+			global::Plugin.LocalNotification.Resource.Boolean.workmanager_test_configuration = global::TrackerEmulator.Droid.Resource.Boolean.workmanager_test_configuration;
+			global::Plugin.LocalNotification.Resource.Color.notification_action_color_filter = global::TrackerEmulator.Droid.Resource.Color.notification_action_color_filter;
+			global::Plugin.LocalNotification.Resource.Color.notification_icon_bg_color = global::TrackerEmulator.Droid.Resource.Color.notification_icon_bg_color;
+			global::Plugin.LocalNotification.Resource.Color.notification_material_background_media_default_color = global::TrackerEmulator.Droid.Resource.Color.notification_material_background_media_default_color;
+			global::Plugin.LocalNotification.Resource.Color.primary_text_default_material_dark = global::TrackerEmulator.Droid.Resource.Color.primary_text_default_material_dark;
+			global::Plugin.LocalNotification.Resource.Color.ripple_material_light = global::TrackerEmulator.Droid.Resource.Color.ripple_material_light;
+			global::Plugin.LocalNotification.Resource.Color.secondary_text_default_material_dark = global::TrackerEmulator.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::Plugin.LocalNotification.Resource.Color.secondary_text_default_material_light = global::TrackerEmulator.Droid.Resource.Color.secondary_text_default_material_light;
+			global::Plugin.LocalNotification.Resource.Dimension.compat_button_inset_horizontal_material = global::TrackerEmulator.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::Plugin.LocalNotification.Resource.Dimension.compat_button_inset_vertical_material = global::TrackerEmulator.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::Plugin.LocalNotification.Resource.Dimension.compat_button_padding_horizontal_material = global::TrackerEmulator.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::Plugin.LocalNotification.Resource.Dimension.compat_button_padding_vertical_material = global::TrackerEmulator.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::Plugin.LocalNotification.Resource.Dimension.compat_control_corner_material = global::TrackerEmulator.Droid.Resource.Dimension.compat_control_corner_material;
+			global::Plugin.LocalNotification.Resource.Dimension.compat_notification_large_icon_max_height = global::TrackerEmulator.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::Plugin.LocalNotification.Resource.Dimension.compat_notification_large_icon_max_width = global::TrackerEmulator.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_action_icon_size = global::TrackerEmulator.Droid.Resource.Dimension.notification_action_icon_size;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_action_text_size = global::TrackerEmulator.Droid.Resource.Dimension.notification_action_text_size;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_big_circle_margin = global::TrackerEmulator.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_content_margin_start = global::TrackerEmulator.Droid.Resource.Dimension.notification_content_margin_start;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_large_icon_height = global::TrackerEmulator.Droid.Resource.Dimension.notification_large_icon_height;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_large_icon_width = global::TrackerEmulator.Droid.Resource.Dimension.notification_large_icon_width;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_main_column_padding_top = global::TrackerEmulator.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_media_narrow_margin = global::TrackerEmulator.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_right_icon_size = global::TrackerEmulator.Droid.Resource.Dimension.notification_right_icon_size;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_right_side_padding_top = global::TrackerEmulator.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_small_icon_background_padding = global::TrackerEmulator.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_small_icon_size_as_large = global::TrackerEmulator.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_subtext_size = global::TrackerEmulator.Droid.Resource.Dimension.notification_subtext_size;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_top_pad = global::TrackerEmulator.Droid.Resource.Dimension.notification_top_pad;
+			global::Plugin.LocalNotification.Resource.Dimension.notification_top_pad_large_text = global::TrackerEmulator.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::Plugin.LocalNotification.Resource.Dimension.subtitle_corner_radius = global::TrackerEmulator.Droid.Resource.Dimension.subtitle_corner_radius;
+			global::Plugin.LocalNotification.Resource.Dimension.subtitle_outline_width = global::TrackerEmulator.Droid.Resource.Dimension.subtitle_outline_width;
+			global::Plugin.LocalNotification.Resource.Dimension.subtitle_shadow_offset = global::TrackerEmulator.Droid.Resource.Dimension.subtitle_shadow_offset;
+			global::Plugin.LocalNotification.Resource.Dimension.subtitle_shadow_radius = global::TrackerEmulator.Droid.Resource.Dimension.subtitle_shadow_radius;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_action_background = global::TrackerEmulator.Droid.Resource.Drawable.notification_action_background;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_bg = global::TrackerEmulator.Droid.Resource.Drawable.notification_bg;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_bg_low = global::TrackerEmulator.Droid.Resource.Drawable.notification_bg_low;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_bg_low_normal = global::TrackerEmulator.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_bg_low_pressed = global::TrackerEmulator.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_bg_normal = global::TrackerEmulator.Droid.Resource.Drawable.notification_bg_normal;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_bg_normal_pressed = global::TrackerEmulator.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_icon_background = global::TrackerEmulator.Droid.Resource.Drawable.notification_icon_background;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_template_icon_bg = global::TrackerEmulator.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_template_icon_low_bg = global::TrackerEmulator.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::Plugin.LocalNotification.Resource.Drawable.notification_tile_bg = global::TrackerEmulator.Droid.Resource.Drawable.notification_tile_bg;
+			global::Plugin.LocalNotification.Resource.Drawable.notify_panel_notification_icon_bg = global::TrackerEmulator.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Plugin.LocalNotification.Resource.Id.action0 = global::TrackerEmulator.Droid.Resource.Id.action0;
+			global::Plugin.LocalNotification.Resource.Id.action_container = global::TrackerEmulator.Droid.Resource.Id.action_container;
+			global::Plugin.LocalNotification.Resource.Id.action_divider = global::TrackerEmulator.Droid.Resource.Id.action_divider;
+			global::Plugin.LocalNotification.Resource.Id.action_image = global::TrackerEmulator.Droid.Resource.Id.action_image;
+			global::Plugin.LocalNotification.Resource.Id.action_text = global::TrackerEmulator.Droid.Resource.Id.action_text;
+			global::Plugin.LocalNotification.Resource.Id.actions = global::TrackerEmulator.Droid.Resource.Id.actions;
+			global::Plugin.LocalNotification.Resource.Id.all = global::TrackerEmulator.Droid.Resource.Id.all;
+			global::Plugin.LocalNotification.Resource.Id.async = global::TrackerEmulator.Droid.Resource.Id.async;
+			global::Plugin.LocalNotification.Resource.Id.blocking = global::TrackerEmulator.Droid.Resource.Id.blocking;
+			global::Plugin.LocalNotification.Resource.Id.bottom = global::TrackerEmulator.Droid.Resource.Id.bottom;
+			global::Plugin.LocalNotification.Resource.Id.cancel_action = global::TrackerEmulator.Droid.Resource.Id.cancel_action;
+			global::Plugin.LocalNotification.Resource.Id.center = global::TrackerEmulator.Droid.Resource.Id.center;
+			global::Plugin.LocalNotification.Resource.Id.center_horizontal = global::TrackerEmulator.Droid.Resource.Id.center_horizontal;
+			global::Plugin.LocalNotification.Resource.Id.center_vertical = global::TrackerEmulator.Droid.Resource.Id.center_vertical;
+			global::Plugin.LocalNotification.Resource.Id.chronometer = global::TrackerEmulator.Droid.Resource.Id.chronometer;
+			global::Plugin.LocalNotification.Resource.Id.clip_horizontal = global::TrackerEmulator.Droid.Resource.Id.clip_horizontal;
+			global::Plugin.LocalNotification.Resource.Id.clip_vertical = global::TrackerEmulator.Droid.Resource.Id.clip_vertical;
+			global::Plugin.LocalNotification.Resource.Id.end = global::TrackerEmulator.Droid.Resource.Id.end;
+			global::Plugin.LocalNotification.Resource.Id.end_padder = global::TrackerEmulator.Droid.Resource.Id.end_padder;
+			global::Plugin.LocalNotification.Resource.Id.fill = global::TrackerEmulator.Droid.Resource.Id.fill;
+			global::Plugin.LocalNotification.Resource.Id.fill_horizontal = global::TrackerEmulator.Droid.Resource.Id.fill_horizontal;
+			global::Plugin.LocalNotification.Resource.Id.fill_vertical = global::TrackerEmulator.Droid.Resource.Id.fill_vertical;
+			global::Plugin.LocalNotification.Resource.Id.forever = global::TrackerEmulator.Droid.Resource.Id.forever;
+			global::Plugin.LocalNotification.Resource.Id.icon = global::TrackerEmulator.Droid.Resource.Id.icon;
+			global::Plugin.LocalNotification.Resource.Id.icon_group = global::TrackerEmulator.Droid.Resource.Id.icon_group;
+			global::Plugin.LocalNotification.Resource.Id.info = global::TrackerEmulator.Droid.Resource.Id.info;
+			global::Plugin.LocalNotification.Resource.Id.italic = global::TrackerEmulator.Droid.Resource.Id.italic;
+			global::Plugin.LocalNotification.Resource.Id.left = global::TrackerEmulator.Droid.Resource.Id.left;
+			global::Plugin.LocalNotification.Resource.Id.line1 = global::TrackerEmulator.Droid.Resource.Id.line1;
+			global::Plugin.LocalNotification.Resource.Id.line3 = global::TrackerEmulator.Droid.Resource.Id.line3;
+			global::Plugin.LocalNotification.Resource.Id.media_actions = global::TrackerEmulator.Droid.Resource.Id.media_actions;
+			global::Plugin.LocalNotification.Resource.Id.none = global::TrackerEmulator.Droid.Resource.Id.none;
+			global::Plugin.LocalNotification.Resource.Id.normal = global::TrackerEmulator.Droid.Resource.Id.normal;
+			global::Plugin.LocalNotification.Resource.Id.notification_background = global::TrackerEmulator.Droid.Resource.Id.notification_background;
+			global::Plugin.LocalNotification.Resource.Id.notification_main_column = global::TrackerEmulator.Droid.Resource.Id.notification_main_column;
+			global::Plugin.LocalNotification.Resource.Id.notification_main_column_container = global::TrackerEmulator.Droid.Resource.Id.notification_main_column_container;
+			global::Plugin.LocalNotification.Resource.Id.right = global::TrackerEmulator.Droid.Resource.Id.right;
+			global::Plugin.LocalNotification.Resource.Id.right_icon = global::TrackerEmulator.Droid.Resource.Id.right_icon;
+			global::Plugin.LocalNotification.Resource.Id.right_side = global::TrackerEmulator.Droid.Resource.Id.right_side;
+			global::Plugin.LocalNotification.Resource.Id.start = global::TrackerEmulator.Droid.Resource.Id.start;
+			global::Plugin.LocalNotification.Resource.Id.status_bar_latest_event_content = global::TrackerEmulator.Droid.Resource.Id.status_bar_latest_event_content;
+			global::Plugin.LocalNotification.Resource.Id.tag_transition_group = global::TrackerEmulator.Droid.Resource.Id.tag_transition_group;
+			global::Plugin.LocalNotification.Resource.Id.tag_unhandled_key_event_manager = global::TrackerEmulator.Droid.Resource.Id.tag_unhandled_key_event_manager;
+			global::Plugin.LocalNotification.Resource.Id.tag_unhandled_key_listeners = global::TrackerEmulator.Droid.Resource.Id.tag_unhandled_key_listeners;
+			global::Plugin.LocalNotification.Resource.Id.text = global::TrackerEmulator.Droid.Resource.Id.text;
+			global::Plugin.LocalNotification.Resource.Id.text2 = global::TrackerEmulator.Droid.Resource.Id.text2;
+			global::Plugin.LocalNotification.Resource.Id.time = global::TrackerEmulator.Droid.Resource.Id.time;
+			global::Plugin.LocalNotification.Resource.Id.title = global::TrackerEmulator.Droid.Resource.Id.title;
+			global::Plugin.LocalNotification.Resource.Id.top = global::TrackerEmulator.Droid.Resource.Id.top;
+			global::Plugin.LocalNotification.Resource.Integer.cancel_button_image_alpha = global::TrackerEmulator.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::Plugin.LocalNotification.Resource.Integer.status_bar_notification_info_maxnum = global::TrackerEmulator.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Plugin.LocalNotification.Resource.Layout.notification_action = global::TrackerEmulator.Droid.Resource.Layout.notification_action;
+			global::Plugin.LocalNotification.Resource.Layout.notification_action_tombstone = global::TrackerEmulator.Droid.Resource.Layout.notification_action_tombstone;
+			global::Plugin.LocalNotification.Resource.Layout.notification_media_action = global::TrackerEmulator.Droid.Resource.Layout.notification_media_action;
+			global::Plugin.LocalNotification.Resource.Layout.notification_media_cancel_action = global::TrackerEmulator.Droid.Resource.Layout.notification_media_cancel_action;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_big_media = global::TrackerEmulator.Droid.Resource.Layout.notification_template_big_media;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_big_media_custom = global::TrackerEmulator.Droid.Resource.Layout.notification_template_big_media_custom;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_big_media_narrow = global::TrackerEmulator.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_big_media_narrow_custom = global::TrackerEmulator.Droid.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_custom_big = global::TrackerEmulator.Droid.Resource.Layout.notification_template_custom_big;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_icon_group = global::TrackerEmulator.Droid.Resource.Layout.notification_template_icon_group;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_lines_media = global::TrackerEmulator.Droid.Resource.Layout.notification_template_lines_media;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_media = global::TrackerEmulator.Droid.Resource.Layout.notification_template_media;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_media_custom = global::TrackerEmulator.Droid.Resource.Layout.notification_template_media_custom;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_part_chronometer = global::TrackerEmulator.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::Plugin.LocalNotification.Resource.Layout.notification_template_part_time = global::TrackerEmulator.Droid.Resource.Layout.notification_template_part_time;
+			global::Plugin.LocalNotification.Resource.String.status_bar_notification_info_overflow = global::TrackerEmulator.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Info = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Media = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Time = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Title = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::Plugin.LocalNotification.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::TrackerEmulator.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
+			global::Plugin.LocalNotification.Resource.Style.Widget_Compat_NotificationActionContainer = global::TrackerEmulator.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::Plugin.LocalNotification.Resource.Style.Widget_Compat_NotificationActionText = global::TrackerEmulator.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::Plugin.LocalNotification.Resource.Style.Widget_Support_CoordinatorLayout = global::TrackerEmulator.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::Plugin.LocalNotification.Resource.Styleable.ColorStateListItem = global::TrackerEmulator.Droid.Resource.Styleable.ColorStateListItem;
+			global::Plugin.LocalNotification.Resource.Styleable.ColorStateListItem_alpha = global::TrackerEmulator.Droid.Resource.Styleable.ColorStateListItem_alpha;
+			global::Plugin.LocalNotification.Resource.Styleable.ColorStateListItem_android_alpha = global::TrackerEmulator.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::Plugin.LocalNotification.Resource.Styleable.ColorStateListItem_android_color = global::TrackerEmulator.Droid.Resource.Styleable.ColorStateListItem_android_color;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_keylines = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::Plugin.LocalNotification.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::TrackerEmulator.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamily = global::TrackerEmulator.Droid.Resource.Styleable.FontFamily;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamily_fontProviderAuthority = global::TrackerEmulator.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamily_fontProviderCerts = global::TrackerEmulator.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::TrackerEmulator.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::TrackerEmulator.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamily_fontProviderPackage = global::TrackerEmulator.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamily_fontProviderQuery = global::TrackerEmulator.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_android_font = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_android_fontStyle = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_android_fontWeight = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_font = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_fontStyle = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_fontWeight = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::Plugin.LocalNotification.Resource.Styleable.FontFamilyFont_ttcIndex = global::TrackerEmulator.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_centerColor = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_centerColor;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_centerX = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_centerX;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_centerY = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_centerY;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_endColor = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_endColor;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_endX = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_endX;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_endY = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_endY;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_gradientRadius = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_startColor = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_startColor;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_startX = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_startX;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_startY = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_startY;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_tileMode = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_tileMode;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColor_android_type = global::TrackerEmulator.Droid.Resource.Styleable.GradientColor_android_type;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColorItem = global::TrackerEmulator.Droid.Resource.Styleable.GradientColorItem;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColorItem_android_color = global::TrackerEmulator.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::Plugin.LocalNotification.Resource.Styleable.GradientColorItem_android_offset = global::TrackerEmulator.Droid.Resource.Styleable.GradientColorItem_android_offset;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::TrackerEmulator.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::TrackerEmulator.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::TrackerEmulator.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -1092,9 +1290,9 @@ namespace TrackerEmulator.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.listMode = global::TrackerEmulator.Droid.Resource.Id.listMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.list_item = global::TrackerEmulator.Droid.Resource.Id.list_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.main_appbar = global::TrackerEmulator.Droid.Resource.Id.main_appbar;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.main_scrollview = global::TrackerEmulator.Droid.Resource.Id.main_scrollview;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.main_tablayout = global::TrackerEmulator.Droid.Resource.Id.main_tablayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.main_toolbar = global::TrackerEmulator.Droid.Resource.Id.main_toolbar;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.main_viewpager = global::TrackerEmulator.Droid.Resource.Id.main_viewpager;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.masked = global::TrackerEmulator.Droid.Resource.Id.masked;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.media_actions = global::TrackerEmulator.Droid.Resource.Id.media_actions;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.message = global::TrackerEmulator.Droid.Resource.Id.message;
@@ -1143,7 +1341,6 @@ namespace TrackerEmulator.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.select_dialog_listview = global::TrackerEmulator.Droid.Resource.Id.select_dialog_listview;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.selected = global::TrackerEmulator.Droid.Resource.Id.selected;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_appbar = global::TrackerEmulator.Droid.Resource.Id.shellcontent_appbar;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_scrollview = global::TrackerEmulator.Droid.Resource.Id.shellcontent_scrollview;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_toolbar = global::TrackerEmulator.Droid.Resource.Id.shellcontent_toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shortcut = global::TrackerEmulator.Droid.Resource.Id.shortcut;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.showCustom = global::TrackerEmulator.Droid.Resource.Id.showCustom;
@@ -4164,7 +4361,16 @@ namespace TrackerEmulator.Droid
 			public const int abc_config_actionMenuItemAllCaps = 2130968578;
 			
 			// aapt resource value: 0x7F040003
-			public const int mtrl_btn_textappearance_all_caps = 2130968579;
+			public const int enable_system_alarm_service_default = 2130968579;
+			
+			// aapt resource value: 0x7F040004
+			public const int enable_system_job_service_default = 2130968580;
+			
+			// aapt resource value: 0x7F040005
+			public const int mtrl_btn_textappearance_all_caps = 2130968581;
+			
+			// aapt resource value: 0x7F040006
+			public const int workmanager_test_configuration = 2130968582;
 			
 			static Boolean()
 			{
@@ -5543,6 +5749,9 @@ namespace TrackerEmulator.Droid
 			// aapt resource value: 0x7F070065
 			public const int icon = 2131165285;
 			
+			// aapt resource value: 0x7F070066
+			public const int icon_24x24 = 2131165286;
+			
 			// aapt resource value: 0x7F070062
 			public const int ic_mtrl_chip_checked_black = 2131165282;
 			
@@ -5552,59 +5761,62 @@ namespace TrackerEmulator.Droid
 			// aapt resource value: 0x7F070064
 			public const int ic_mtrl_chip_close_circle = 2131165284;
 			
-			// aapt resource value: 0x7F070066
-			public const int mtrl_snackbar_background = 2131165286;
-			
 			// aapt resource value: 0x7F070067
-			public const int mtrl_tabs_default_indicator = 2131165287;
+			public const int mtrl_snackbar_background = 2131165287;
 			
 			// aapt resource value: 0x7F070068
-			public const int navigation_empty_icon = 2131165288;
+			public const int mtrl_tabs_default_indicator = 2131165288;
 			
 			// aapt resource value: 0x7F070069
-			public const int notification_action_background = 2131165289;
+			public const int my_icon = 2131165289;
 			
 			// aapt resource value: 0x7F07006A
-			public const int notification_bg = 2131165290;
+			public const int navigation_empty_icon = 2131165290;
 			
 			// aapt resource value: 0x7F07006B
-			public const int notification_bg_low = 2131165291;
+			public const int notification_action_background = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int notification_bg_low_normal = 2131165292;
+			public const int notification_bg = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
-			public const int notification_bg_low_pressed = 2131165293;
+			public const int notification_bg_low = 2131165293;
 			
 			// aapt resource value: 0x7F07006E
-			public const int notification_bg_normal = 2131165294;
+			public const int notification_bg_low_normal = 2131165294;
 			
 			// aapt resource value: 0x7F07006F
-			public const int notification_bg_normal_pressed = 2131165295;
+			public const int notification_bg_low_pressed = 2131165295;
 			
 			// aapt resource value: 0x7F070070
-			public const int notification_icon_background = 2131165296;
+			public const int notification_bg_normal = 2131165296;
 			
 			// aapt resource value: 0x7F070071
-			public const int notification_template_icon_bg = 2131165297;
+			public const int notification_bg_normal_pressed = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int notification_template_icon_low_bg = 2131165298;
+			public const int notification_icon_background = 2131165298;
 			
 			// aapt resource value: 0x7F070073
-			public const int notification_tile_bg = 2131165299;
+			public const int notification_template_icon_bg = 2131165299;
 			
 			// aapt resource value: 0x7F070074
-			public const int notify_panel_notification_icon_bg = 2131165300;
+			public const int notification_template_icon_low_bg = 2131165300;
 			
 			// aapt resource value: 0x7F070075
-			public const int pattern = 2131165301;
+			public const int notification_tile_bg = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int tooltip_frame_dark = 2131165302;
+			public const int notify_panel_notification_icon_bg = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int tooltip_frame_light = 2131165303;
+			public const int pattern = 2131165303;
+			
+			// aapt resource value: 0x7F070078
+			public const int tooltip_frame_dark = 2131165304;
+			
+			// aapt resource value: 0x7F070079
+			public const int tooltip_frame_light = 2131165305;
 			
 			static Drawable()
 			{
@@ -5914,13 +6126,13 @@ namespace TrackerEmulator.Droid
 			public const int main_appbar = 2131230820;
 			
 			// aapt resource value: 0x7F080065
-			public const int main_scrollview = 2131230821;
+			public const int main_tablayout = 2131230821;
 			
 			// aapt resource value: 0x7F080066
-			public const int main_tablayout = 2131230822;
+			public const int main_toolbar = 2131230822;
 			
 			// aapt resource value: 0x7F080067
-			public const int main_toolbar = 2131230823;
+			public const int main_viewpager = 2131230823;
 			
 			// aapt resource value: 0x7F080068
 			public const int masked = 2131230824;
@@ -6070,178 +6282,175 @@ namespace TrackerEmulator.Droid
 			public const int shellcontent_appbar = 2131230871;
 			
 			// aapt resource value: 0x7F080098
-			public const int shellcontent_scrollview = 2131230872;
-			
-			// aapt resource value: 0x7F080099
-			public const int shellcontent_toolbar = 2131230873;
+			public const int shellcontent_toolbar = 2131230872;
 			
 			// aapt resource value: 0x7F080004
 			public const int SHIFT = 2131230724;
 			
+			// aapt resource value: 0x7F080099
+			public const int shortcut = 2131230873;
+			
 			// aapt resource value: 0x7F08009A
-			public const int shortcut = 2131230874;
+			public const int showCustom = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int showCustom = 2131230875;
+			public const int showHome = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int showHome = 2131230876;
+			public const int showTitle = 2131230876;
 			
 			// aapt resource value: 0x7F08009D
-			public const int showTitle = 2131230877;
+			public const int sliding_tabs = 2131230877;
 			
 			// aapt resource value: 0x7F08009E
-			public const int sliding_tabs = 2131230878;
+			public const int smallLabel = 2131230878;
 			
 			// aapt resource value: 0x7F08009F
-			public const int smallLabel = 2131230879;
+			public const int snackbar_action = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int snackbar_action = 2131230880;
+			public const int snackbar_text = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int snackbar_text = 2131230881;
+			public const int snap = 2131230881;
 			
 			// aapt resource value: 0x7F0800A2
-			public const int snap = 2131230882;
+			public const int snapMargins = 2131230882;
 			
 			// aapt resource value: 0x7F0800A3
-			public const int snapMargins = 2131230883;
+			public const int spacer = 2131230883;
 			
 			// aapt resource value: 0x7F0800A4
-			public const int spacer = 2131230884;
+			public const int split_action_bar = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int split_action_bar = 2131230885;
+			public const int src_atop = 2131230885;
 			
 			// aapt resource value: 0x7F0800A6
-			public const int src_atop = 2131230886;
+			public const int src_in = 2131230886;
 			
 			// aapt resource value: 0x7F0800A7
-			public const int src_in = 2131230887;
+			public const int src_over = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int src_over = 2131230888;
+			public const int start = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int start = 2131230889;
+			public const int status_bar_latest_event_content = 2131230889;
 			
 			// aapt resource value: 0x7F0800AA
-			public const int status_bar_latest_event_content = 2131230890;
+			public const int stretch = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int stretch = 2131230891;
+			public const int submenuarrow = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int submenuarrow = 2131230892;
-			
-			// aapt resource value: 0x7F0800AD
-			public const int submit_area = 2131230893;
+			public const int submit_area = 2131230892;
 			
 			// aapt resource value: 0x7F080005
 			public const int SYM = 2131230725;
 			
+			// aapt resource value: 0x7F0800AD
+			public const int tabMode = 2131230893;
+			
 			// aapt resource value: 0x7F0800AE
-			public const int tabMode = 2131230894;
+			public const int tag_transition_group = 2131230894;
 			
 			// aapt resource value: 0x7F0800AF
-			public const int tag_transition_group = 2131230895;
+			public const int tag_unhandled_key_event_manager = 2131230895;
 			
 			// aapt resource value: 0x7F0800B0
-			public const int tag_unhandled_key_event_manager = 2131230896;
+			public const int tag_unhandled_key_listeners = 2131230896;
 			
 			// aapt resource value: 0x7F0800B1
-			public const int tag_unhandled_key_listeners = 2131230897;
+			public const int text = 2131230897;
 			
 			// aapt resource value: 0x7F0800B2
-			public const int text = 2131230898;
-			
-			// aapt resource value: 0x7F0800B3
-			public const int text2 = 2131230899;
-			
-			// aapt resource value: 0x7F0800B8
-			public const int textinput_counter = 2131230904;
-			
-			// aapt resource value: 0x7F0800B9
-			public const int textinput_error = 2131230905;
-			
-			// aapt resource value: 0x7F0800BA
-			public const int textinput_helper_text = 2131230906;
-			
-			// aapt resource value: 0x7F0800B4
-			public const int textSpacerNoButtons = 2131230900;
-			
-			// aapt resource value: 0x7F0800B5
-			public const int textSpacerNoTitle = 2131230901;
-			
-			// aapt resource value: 0x7F0800B6
-			public const int textStart = 2131230902;
+			public const int text2 = 2131230898;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int text_input_password_toggle = 2131230903;
+			public const int textinput_counter = 2131230903;
+			
+			// aapt resource value: 0x7F0800B8
+			public const int textinput_error = 2131230904;
+			
+			// aapt resource value: 0x7F0800B9
+			public const int textinput_helper_text = 2131230905;
+			
+			// aapt resource value: 0x7F0800B3
+			public const int textSpacerNoButtons = 2131230899;
+			
+			// aapt resource value: 0x7F0800B4
+			public const int textSpacerNoTitle = 2131230900;
+			
+			// aapt resource value: 0x7F0800B5
+			public const int textStart = 2131230901;
+			
+			// aapt resource value: 0x7F0800B6
+			public const int text_input_password_toggle = 2131230902;
+			
+			// aapt resource value: 0x7F0800BA
+			public const int time = 2131230906;
 			
 			// aapt resource value: 0x7F0800BB
-			public const int time = 2131230907;
+			public const int title = 2131230907;
 			
 			// aapt resource value: 0x7F0800BC
-			public const int title = 2131230908;
+			public const int titleDividerNoCustom = 2131230908;
 			
 			// aapt resource value: 0x7F0800BD
-			public const int titleDividerNoCustom = 2131230909;
+			public const int title_template = 2131230909;
 			
 			// aapt resource value: 0x7F0800BE
-			public const int title_template = 2131230910;
+			public const int toolbar = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int toolbar = 2131230911;
+			public const int top = 2131230911;
 			
 			// aapt resource value: 0x7F0800C0
-			public const int top = 2131230912;
+			public const int topPanel = 2131230912;
 			
 			// aapt resource value: 0x7F0800C1
-			public const int topPanel = 2131230913;
+			public const int touch_outside = 2131230913;
 			
 			// aapt resource value: 0x7F0800C2
-			public const int touch_outside = 2131230914;
+			public const int transition_current_scene = 2131230914;
 			
 			// aapt resource value: 0x7F0800C3
-			public const int transition_current_scene = 2131230915;
+			public const int transition_layout_save = 2131230915;
 			
 			// aapt resource value: 0x7F0800C4
-			public const int transition_layout_save = 2131230916;
+			public const int transition_position = 2131230916;
 			
 			// aapt resource value: 0x7F0800C5
-			public const int transition_position = 2131230917;
+			public const int transition_scene_layoutid_cache = 2131230917;
 			
 			// aapt resource value: 0x7F0800C6
-			public const int transition_scene_layoutid_cache = 2131230918;
+			public const int transition_transform = 2131230918;
 			
 			// aapt resource value: 0x7F0800C7
-			public const int transition_transform = 2131230919;
+			public const int uniform = 2131230919;
 			
 			// aapt resource value: 0x7F0800C8
-			public const int uniform = 2131230920;
+			public const int unlabeled = 2131230920;
 			
 			// aapt resource value: 0x7F0800C9
-			public const int unlabeled = 2131230921;
+			public const int up = 2131230921;
 			
 			// aapt resource value: 0x7F0800CA
-			public const int up = 2131230922;
+			public const int useLogo = 2131230922;
 			
 			// aapt resource value: 0x7F0800CB
-			public const int useLogo = 2131230923;
+			public const int view_offset_helper = 2131230923;
 			
 			// aapt resource value: 0x7F0800CC
-			public const int view_offset_helper = 2131230924;
+			public const int visible = 2131230924;
 			
 			// aapt resource value: 0x7F0800CD
-			public const int visible = 2131230925;
+			public const int withText = 2131230925;
 			
 			// aapt resource value: 0x7F0800CE
-			public const int withText = 2131230926;
-			
-			// aapt resource value: 0x7F0800CF
-			public const int wrap_content = 2131230927;
+			public const int wrap_content = 2131230926;
 			
 			static Id()
 			{

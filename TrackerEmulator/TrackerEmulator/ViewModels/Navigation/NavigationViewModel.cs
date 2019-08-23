@@ -3,15 +3,18 @@
 //    Created by Nikita Neverov at 18.08.2019 13:47
 #endregion
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Plugin.LocalNotification;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.ViewModels.Pages;
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.ViewModels.Navigation
 {
@@ -59,7 +62,27 @@ namespace TrackerEmulator.ViewModels.Navigation
                 NavigationItems.AddPages((IEnumerable<BasePageViewModel>) e.NewItems);
             };
 
+            CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
+            {
+                var request = new NotificationRequest
+                {
+                    NotificationId = 1,
+                    Title = "Tracker Emulator",
+                    Description = ((NavigationItem) e.SelectedItem).Title,
+                    BadgeNumber = 1,
+                    Android = new AndroidOptions
+                    {
+                        //Color = Convert.ToInt32(new Color(3, 2, 4, 1).ToString()),
+                        IconName = "my_icon",
+                        Priority = NotificationPriority.High
+                    }
+                };
+
+                NotificationCenter.Current.Show(request);
+            };
+
             SelectedNavigationItem = NavigationItems.First();
+
         }
 
         #endregion
