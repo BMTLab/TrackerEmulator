@@ -5601,13 +5601,10 @@ namespace TrackerEmulator.Droid
 			public const int pattern = 2131165301;
 			
 			// aapt resource value: 0x7F070076
-			public const int tdl = 2131165302;
+			public const int tooltip_frame_dark = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int tooltip_frame_dark = 2131165303;
-			
-			// aapt resource value: 0x7F070078
-			public const int tooltip_frame_light = 2131165304;
+			public const int tooltip_frame_light = 2131165303;
 			
 			static Drawable()
 			{

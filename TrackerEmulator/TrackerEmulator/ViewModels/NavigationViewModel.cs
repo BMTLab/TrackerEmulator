@@ -16,12 +16,17 @@ namespace TrackerEmulator.ViewModels
 {
     public class NavigationViewModel : BaseViewModel
     {
+        #region Constants
+        public const string MenuTitleDefault = "Menu";
+        #endregion
+
         #region Fields
 
         private static ObservableCollection<NavigationItem> _navigationItems;
         private Page _currentNavigationPage;
         private NavigationItem _selectedNavigationItem;
         private bool _isRefreshing = false;
+        private string _menuTitle = MenuTitleDefault;
 
         #endregion
 
@@ -39,7 +44,7 @@ namespace TrackerEmulator.ViewModels
         {
             CurrentNavigationPage = navPage;
             CurrentNavigationPage.BindingContext = this;
-            CurrentNavigationPage.Title = "Tracker Emulator";
+            //CurrentNavigationPage.Title = "Tracker Emulator";
 
             NavigationItems = new ObservableCollection<NavigationItem>();
             NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));
@@ -61,6 +66,17 @@ namespace TrackerEmulator.ViewModels
 
 
         #region Properties
+
+        public string MenuTitle
+        {
+            get => _menuTitle;
+            set
+            {
+                _menuTitle = value;
+                OnPropertyChanged(nameof(MenuTitle));
+            }
+        }
+
 
         public ObservableCollection<NavigationItem> NavigationItems
         {
