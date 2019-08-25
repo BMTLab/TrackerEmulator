@@ -15,7 +15,7 @@ namespace TrackerEmulator.Droid
         Label = "Тracker Emulator",
         Icon = "@drawable/icon",
         Theme = "@style/MyTheme",
-        MainLauncher = true,
+        MainLauncher = false,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {

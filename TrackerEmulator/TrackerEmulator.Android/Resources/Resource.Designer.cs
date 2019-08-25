@@ -5813,10 +5813,13 @@ namespace TrackerEmulator.Droid
 			public const int pattern = 2131165303;
 			
 			// aapt resource value: 0x7F070078
-			public const int tooltip_frame_dark = 2131165304;
+			public const int splashscreen = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int tooltip_frame_light = 2131165305;
+			public const int tooltip_frame_dark = 2131165305;
+			
+			// aapt resource value: 0x7F07007A
+			public const int tooltip_frame_light = 2131165306;
 			
 			static Drawable()
 			{
@@ -7644,6 +7647,9 @@ namespace TrackerEmulator.Droid
 			
 			// aapt resource value: 0x7F0D00E6
 			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131558630;
+			
+			// aapt resource value: 0x7F0D01F8
+			public const int splashscreen = 2131558904;
 			
 			// aapt resource value: 0x7F0D00E7
 			public const int TextAppearance_AppCompat = 2131558631;
