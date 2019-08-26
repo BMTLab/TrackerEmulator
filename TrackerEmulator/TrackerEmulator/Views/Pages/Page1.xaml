@@ -5,13 +5,49 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                Margin="0,100,0,0"
-                HorizontalTextAlignment="Center"
-                Text="{Binding Title}"
-                TextColor="Black"
-                VerticalTextAlignment="Center" />
+        <StackLayout Margin="8,16,8,8" Spacing="4">
+
+            <Frame BorderColor="{Binding PrimaryDark}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        FontSize="Large"
+                        Text="IP:" />
+                    <Entry
+                        Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding IpAdressDevice}" />
+                    <Label
+                        Grid.Column="2"
+                        FontSize="Large"
+                        Text=":" />
+                    <Entry
+                        Grid.Column="3"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding PortAdressDevice}" />
+                </Grid>
+            </Frame>
+
+            <Frame BorderColor="{Binding PrimaryDark}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Label FontSize="Large" Text="Buffer size:" />
+                    <Entry
+                        Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding BufferSizeDevice}" />
+                </Grid>
+            </Frame>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

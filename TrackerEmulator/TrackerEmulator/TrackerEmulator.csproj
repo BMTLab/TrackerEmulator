@@ -35,14 +35,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Properties\Configurations\.editorconfig" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EditorConfigFiles Include="Properties\Configurations\.editorconfig" />
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="NLog" Version="4.6.6" />
         <PackageReference Include="NLog.Config" Version="4.6.6" />
         <PackageReference Include="Plugin.LocalNotification" Version="4.0.5" />

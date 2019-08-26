@@ -30,6 +30,8 @@ namespace TrackerEmulator
 
         #region Properties
         public static ObservableCollection<BasePageViewModel> Pages { get; set; }
+
+        public static TrackerTcpClient TrackerClient { get; internal set; }
         #endregion
 
 
@@ -41,8 +43,9 @@ namespace TrackerEmulator
             Log.Info("Version: {0}", Environment.Version.ToString());
             Log.Info("OS: {0} \r\n", Environment.OSVersion.ToString());
             #endif
-        }
 
+            TrackerClient = new TrackerTcpClient();
+        }
 
         public App()
         {
