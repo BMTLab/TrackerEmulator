@@ -22,7 +22,7 @@ namespace TrackerEmulator.Helpers.Extension
 
         public static Color DarkBackgroundColor(this Color @this)
         {
-            return (Color)Application.Current.Resources[nameof(LightBackgroundColor)];
+            return (Color)Application.Current.Resources[nameof(DarkBackgroundColor)];
         }
 
         public static Color LightTextColor(this Color @this)

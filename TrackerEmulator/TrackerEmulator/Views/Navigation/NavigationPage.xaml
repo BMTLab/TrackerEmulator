@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <ContentPage
     x:Class="TrackerEmulator.Views.Navigation.NavigationPage"
@@ -11,30 +11,28 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70" />
+                <RowDefinition Height="90" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="0.01*" />
+                <RowDefinition Height="0.02*" />
             </Grid.RowDefinitions>
-            <Grid x:Name="MenuHeader" BackgroundColor="{StaticResource Primary}">
+            <Grid x:Name="MenuHeader" BackgroundColor="{StaticResource DarkBackgroundColor}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.7*" />
+                    <RowDefinition Height="16" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="2" />
                 </Grid.RowDefinitions>
-                <StackLayout
+                <Image
                     Grid.Row="1"
-                    Padding="0,0,0,0"
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand">
-                    <Label
-                        FontSize="Large"
-                        Text="{Binding MenuTitle}"
-                        TextColor="{StaticResource LightTextColor}" />
-                </StackLayout>
+                    Margin="0,-10,0,0"
+                    Aspect="AspectFill"
+                    Source="header.png" />
+                <ContentView Grid.Row="2" BackgroundColor="{StaticResource Primary}" />
             </Grid>
             <Image
                 Grid.Row="1"
-                Margin="0,-5,0,-5"
+                Margin="0,-4,1,-7"
                 Aspect="AspectFill"
+                Opacity="0.5"
                 Source="pattern.jpg" />
             <StackLayout
                 Grid.Row="1"
@@ -63,7 +61,7 @@
                                     CornerRadius="0"
                                     HasShadow="False"
                                     HeightRequest="60"
-                                    Opacity="0.9">
+                                    Opacity="0.99">
                                     <Label
                                         FontSize="Medium"
                                         HorizontalTextAlignment="Center"
@@ -78,11 +76,11 @@
             </StackLayout>
             <Frame
                 Grid.Row="2"
-                BackgroundColor="{Binding Path=BackgroundColor}"
-                BindingContext="{x:Reference Name=MenuHeader}"
+                BackgroundColor="{StaticResource DarkBackgroundColor}"
+                CornerRadius="0"
                 VerticalOptions="End">
                 <Label
-                    FontSize="Small"
+                    FontSize="Subtitle"
                     HorizontalTextAlignment="Center"
                     Text="мielta © 2019"
                     TextColor="{StaticResource LightTextColor}"

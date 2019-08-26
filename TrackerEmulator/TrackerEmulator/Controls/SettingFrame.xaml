@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 
 <Frame
     x:Class="TrackerEmulator.Controls.SettingFrame"
@@ -8,6 +8,6 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BorderColor="{Binding PrimaryDark}"
-    CornerRadius="4"
+    CornerRadius="0"
     HasShadow="False"
     mc:Ignorable="d" />

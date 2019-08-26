@@ -23,21 +23,6 @@ namespace TrackerEmulator.ViewModels.Navigation
         #endregion
 
 
-        #region Methods
-        public Task RefreshMenu()
-        {
-            foreach (var item in NavigationItems)
-            {
-                item.IsActive = false;
-            }
-
-            SelectedNavigationItem.IsActive = true;
-
-            return Task.CompletedTask;
-        }
-        #endregion
-
-
         #region Fields
         private static ObservableCollection<NavigationItem> _navigationItems;
         private Page _currentNavigationPage;
@@ -51,7 +36,7 @@ namespace TrackerEmulator.ViewModels.Navigation
         static NavigationViewModel()
         {
             NavigationItem.ItemSelectedColor = new Color().Primary();
-            NavigationItem.ItemNonSelectedColor = new Color().LightBackgroundColor();
+            NavigationItem.ItemNonSelectedColor = new Color().DarkBackgroundColor();
             NavigationItem.TextColorDefault = new Color().LightTextColor();
         }
 
@@ -68,11 +53,9 @@ namespace TrackerEmulator.ViewModels.Navigation
                 NavigationItems.Add(new NavigationItem(page));
             }
 
-            App.Pages.CollectionChanged += (_, e) =>
-            {
-                NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
-            };
+            App.Pages.CollectionChanged += (_, e) => NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
 
+            // Notifications trying
             CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
             {
                 var request = new NotificationRequest
@@ -90,6 +73,7 @@ namespace TrackerEmulator.ViewModels.Navigation
 
                 NotificationCenter.Current.Show(request);
             };
+            //
 
             SelectedNavigationItem = NavigationItems.First();
         }
@@ -103,7 +87,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             set
             {
                 _menuTitle = value;
-                OnPropertyChanged(nameof(MenuTitle));
+                OnPropertyChanged();
             }
         }
 
@@ -114,7 +98,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             set
             {
                 _navigationItems = value;
-                OnPropertyChanged(nameof(NavigationItems));
+                OnPropertyChanged();
             }
         }
 
@@ -124,7 +108,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             set
             {
                 _currentNavigationPage = value;
-                OnPropertyChanged(nameof(CurrentNavigationPage));
+                OnPropertyChanged();
             }
         }
 
@@ -141,7 +125,7 @@ namespace TrackerEmulator.ViewModels.Navigation
 
                 _selectedNavigationItem.Command.Execute(_selectedNavigationItem.CommandParameter);
 
-                OnPropertyChanged(nameof(SelectedNavigationItem));
+                OnPropertyChanged();
             }
         }
 
@@ -151,7 +135,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             set
             {
                 _isRefreshing = value;
-                OnPropertyChanged(nameof(IsRefreshing));
+                OnPropertyChanged();
             }
         }
 
@@ -168,6 +152,21 @@ namespace TrackerEmulator.ViewModels.Navigation
                     IsRefreshing = false;
                 });
             }
+        }
+        #endregion
+
+
+        #region Methods
+        public Task RefreshMenu()
+        {
+            foreach (var item in NavigationItems)
+            {
+                item.IsActive = false;
+            }
+
+            SelectedNavigationItem.IsActive = true;
+
+            return Task.CompletedTask;
         }
         #endregion
     }

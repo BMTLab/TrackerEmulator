@@ -13,7 +13,7 @@ namespace TrackerEmulator.Controls
                 nameof(PopupMenu),
                 typeof(ContentView),
                 typeof(SettingFrame),
-                propertyChanging: (bindable, oldValue, newValue) =>
+                propertyChanging: (bindable, _, newValue) =>
                 {
                     var ctrl = (SettingFrame)bindable;
                     ctrl.PopupMenu = (ContentView)newValue;

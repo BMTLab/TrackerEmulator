@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <Application
     x:Class="TrackerEmulator.App"
@@ -14,14 +14,18 @@
             <Color x:Key="LightBackgroundColor">#9c9c9c</Color>
             <Color x:Key="DarkBackgroundColor">#2d2d32</Color>
 
-            <Color x:Key="MediumGrayTextColor">#9c9c9c</Color>
             <Color x:Key="LightTextColor">#FFFFFF</Color>
+            <Color x:Key="MediumGrayTextColor">#9c9c9c</Color>
             <Color x:Key="RedTextColor">#D50E17</Color>
             <Color x:Key="DarkTextColor">#2d2d32</Color>
 
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="BarTextColor" Value="{StaticResource LightTextColor}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             </Style>
         </ResourceDictionary>
 

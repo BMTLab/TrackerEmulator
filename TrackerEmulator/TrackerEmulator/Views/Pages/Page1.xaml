@@ -6,12 +6,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
     xmlns:helpers="clr-namespace:TrackerEmulator.Helpers;assembly=TrackerEmulator"
-    BackgroundColor="Gainsboro">
+    BackgroundColor="{StaticResource PrimaryDark}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <!--<Setter Property="HeightRequest" Value="20" />-->
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="Margin" Value="0,-10,0,-10" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout
-            x:Name="DeviceSettingsStack"
-            Margin="8,12,8,8"
-            Spacing="8">
+        <StackLayout Margin="8,12,8,8" Spacing="8">
 
             <controls:SettingFrame PopupMenu="{Binding PopupMenuIp}">
                 <Grid>
@@ -21,18 +30,12 @@
                         <ColumnDefinition Width="5" />
                         <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        FontSize="Large"
-                        Text="IP:" />
+                    <Label Grid.Column="0" Text="IP:" />
                     <Entry
                         Grid.Column="1"
                         HorizontalTextAlignment="Center"
                         Text="{Binding IpAdressDevice}" />
-                    <Label
-                        Grid.Column="2"
-                        FontSize="Large"
-                        Text=":" />
+                    <Label Grid.Column="2" Text=":" />
                     <Entry
                         Grid.Column="3"
                         HorizontalTextAlignment="Center"
@@ -40,16 +43,13 @@
                 </Grid>
             </controls:SettingFrame>
 
-            <controls:SettingFrame
-                BorderColor="{Binding PrimaryDark}"
-                CornerRadius="4"
-                HasShadow="False">
+            <controls:SettingFrame>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
-                    <Label FontSize="Large" Text="Buffer size:" />
+                    <Label Text="Buffer size:" />
                     <Entry
                         Grid.Column="1"
                         HorizontalTextAlignment="Center"
