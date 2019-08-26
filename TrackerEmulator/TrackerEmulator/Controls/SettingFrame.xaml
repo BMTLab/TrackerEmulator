@@ -6,4 +6,7 @@
     xmlns:controls="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BorderColor="{Binding PrimaryDark}"
+    CornerRadius="4"
+    HasShadow="False"
     mc:Ignorable="d" />

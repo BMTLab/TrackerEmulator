@@ -4,7 +4,6 @@
 #endregion
 
 using TrackerEmulator.Controls;
-using TrackerEmulator.Models;
 using Xamarin.Forms;
 
 namespace TrackerEmulator.ViewModels.Pages
@@ -20,7 +19,7 @@ namespace TrackerEmulator.ViewModels.Pages
         private string _ipAdressDevice;
         private string _portAdressDevice;
         private string _bufferSizeDevice;
-        private ContentView _popupMenu;
+        private ContentView _popupMenuIp;
         #endregion
 
 
@@ -31,7 +30,7 @@ namespace TrackerEmulator.ViewModels.Pages
             IpAdressDevice = App.TrackerClient.IpAdressDevice.ToString();
             PortAdressDevice = App.TrackerClient.PortAdressDevice.ToString();
             BufferSizeDevice = App.TrackerClient.BufferSizeDevice.ToString();
-            PopupMenu = new PopupMenuIp();
+            PopupMenuIp = new PopupMenuIp();
         }
         #endregion
 
@@ -77,15 +76,12 @@ namespace TrackerEmulator.ViewModels.Pages
             }
         }
 
-        public ContentView PopupMenu
+        public ContentView PopupMenuIp
         {
-            get => _popupMenu;
+            get => _popupMenuIp;
             set
             {
-                if (value == null)
-                    return;
-
-                _popupMenu = value;
+                _popupMenuIp = value;
                 OnPropertyChanged();
             }
         }

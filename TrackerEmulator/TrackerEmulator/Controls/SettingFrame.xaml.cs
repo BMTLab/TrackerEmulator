@@ -7,16 +7,26 @@ namespace TrackerEmulator.Controls
     public partial class SettingFrame : Frame
     {
         public static readonly BindableProperty PopupMenuProperty =
-            BindableProperty.Create(nameof(PopupMenu),
-                                    typeof(ContentView),
-                                    typeof(ContentView));
+            BindableProperty.Create(
+                nameof(PopupMenu),
+                typeof(ContentView),
+                typeof(SettingFrame),
+                propertyChanging: (bindable, oldValue, newValue) =>
+                {
+                    var ctrl = (SettingFrame)bindable;
+                    ctrl.PopupMenu = (ContentView) newValue;
+                }
+                );
 
-        internal SettingFrame()
+        private ContentView _popupMenu;
+
+        public SettingFrame()
         {
             InitializeComponent();
+        }
 
-            PopupMenu = new PopupMenuIp();
-
+        private void AddPopupHandler()
+        {
             var (primary, popup) = (Content, PopupMenu);
 
             var isPrimary = true;
@@ -36,6 +46,7 @@ namespace TrackerEmulator.Controls
                 }
 
                 isPrimary = !isPrimary;
+                HasShadow = !isPrimary;
             };
 
             GestureRecognizers.Add(tapGestureRecognizer);
@@ -43,8 +54,13 @@ namespace TrackerEmulator.Controls
 
         public ContentView PopupMenu
         {
-            get => (ContentView)GetValue(PopupMenuProperty);
-            set => SetValue(PopupMenuProperty, value);
+            get => _popupMenu;
+            set
+            {
+                _popupMenu = value;
+                AddPopupHandler();
+                OnPropertyChanged();
+            }
         }
     }
 }
