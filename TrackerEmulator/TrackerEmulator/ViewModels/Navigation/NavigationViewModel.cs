@@ -3,7 +3,6 @@
 //    Created by Nikita Neverov at 18.08.2019 13:47
 #endregion
 
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -23,6 +22,7 @@ namespace TrackerEmulator.ViewModels.Navigation
         #region Constants
         public const string MenuTitleDefault = "Menu";
         #endregion
+
 
         #region Fields
 
