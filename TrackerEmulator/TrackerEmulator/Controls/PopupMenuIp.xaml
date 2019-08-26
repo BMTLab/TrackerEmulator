@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="TrackerEmulator.Controls.PopupMenuIp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="PopupIpView"
+    Padding="10,0"
+    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+    AbsoluteLayout.LayoutFlags="All"
+    HeightRequest="64"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Text="SET LOCALHOST" />
+            <Button Grid.Column="1" Text="SET DEVICE IP" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

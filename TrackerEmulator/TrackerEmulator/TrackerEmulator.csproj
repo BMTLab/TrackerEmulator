@@ -45,6 +45,12 @@
         <EmbeddedResource Update="App.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
+        <EmbeddedResource Update="Controls\PopupMenuIp.xaml">
+          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Controls\SettingFrame.xaml">
+          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+        </EmbeddedResource>
         <EmbeddedResource Update="Views\Navigation\NavigationPage.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
