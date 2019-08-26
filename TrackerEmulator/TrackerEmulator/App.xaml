@@ -27,6 +27,10 @@
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             </Style>
+
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkBackgroundColor}" />
+            </Style>
         </ResourceDictionary>
 
         <!--<ControlTemplate x:Key="PageTemplate">

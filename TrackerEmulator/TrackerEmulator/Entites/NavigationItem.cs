@@ -107,7 +107,7 @@ namespace TrackerEmulator.Entites
             get => _title;
             set
             {
-                _title = value;
+                _title = value.ToUpper();
                 OnPropertyChanged();
             }
         }

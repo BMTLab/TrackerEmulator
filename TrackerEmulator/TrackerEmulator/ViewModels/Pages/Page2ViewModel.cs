@@ -10,7 +10,7 @@ namespace TrackerEmulator.ViewModels.Pages
     public class Page2ViewModel : BasePageViewModel
     {
         #region Constants
-        public const string TitleDefault = "Connection Setting 2!";
+        public const string TitleDefault = "Host Settings";
         #endregion
 
 

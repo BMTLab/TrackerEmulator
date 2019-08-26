@@ -56,23 +56,23 @@ namespace TrackerEmulator.ViewModels.Navigation
             App.Pages.CollectionChanged += (_, e) => NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
 
             // Notifications trying
-            CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
-            {
-                var request = new NotificationRequest
-                {
-                    NotificationId = 1,
-                    Title = "Tracker Emulator",
-                    Description = ((NavigationItem)e.SelectedItem).Title,
-                    BadgeNumber = 1,
-                    Android = new AndroidOptions
-                    {
-                        //Color = Convert.ToInt32(new Color(3, 2, 4, 1).ToString()),
-                        IconName = "my_icon", Priority = NotificationPriority.High
-                    }
-                };
+            //CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
+            //{
+            //    var request = new NotificationRequest
+            //    {
+            //        NotificationId = 1,
+            //        Title = "Tracker Emulator",
+            //        Description = ((NavigationItem)e.SelectedItem).Title,
+            //        BadgeNumber = 1,
+            //        Android = new AndroidOptions
+            //        {
+            //            //Color = Convert.ToInt32(new Color(3, 2, 4, 1).ToString()),
+            //            IconName = "my_icon", Priority = NotificationPriority.High
+            //        }
+            //    };
 
-                NotificationCenter.Current.Show(request);
-            };
+            //    NotificationCenter.Current.Show(request);
+            //};
             //
 
             SelectedNavigationItem = NavigationItems.First();

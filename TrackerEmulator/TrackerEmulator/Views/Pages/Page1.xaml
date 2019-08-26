@@ -6,11 +6,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
     xmlns:helpers="clr-namespace:TrackerEmulator.Helpers;assembly=TrackerEmulator"
-    BackgroundColor="{StaticResource PrimaryDark}">
+    BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Entry">
-                <!--<Setter Property="HeightRequest" Value="20" />-->
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="Margin" Value="0,-10,0,-10" />
             </Style>

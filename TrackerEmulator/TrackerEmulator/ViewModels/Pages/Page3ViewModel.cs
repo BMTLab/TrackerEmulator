@@ -10,7 +10,7 @@ namespace TrackerEmulator.ViewModels.Pages
     public class Page3ViewModel : BasePageViewModel
     {
         #region Constants
-        public const string TitleDefault = "Connection Setting 3!";
+        public const string TitleDefault = "App Settings";
         #endregion
 
 
