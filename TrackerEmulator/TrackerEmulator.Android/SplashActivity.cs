@@ -1,30 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
+﻿using Android.App;
 using Android.Support.V7.App;
-using Android.Views;
-using Android.Widget;
 
 namespace TrackerEmulator.Droid
 {
     [Activity(
-        Label = "Тracker Emulator", 
-        Icon = "@drawable/icon", 
-        Theme = "@style/splashscreen", 
-        MainLauncher = true, 
+        Label = "Тracker Emulator",
+        Icon = "@drawable/icon",
+        Theme = "@style/splashscreen",
+        MainLauncher = true,
         NoHistory = true)]
     public class SplashActivity : AppCompatActivity
     {
+        #region Methods
         protected override void OnResume()
         {
             base.OnResume();
             StartActivity(typeof(MainActivity));
         }
+        #endregion
     }
 }

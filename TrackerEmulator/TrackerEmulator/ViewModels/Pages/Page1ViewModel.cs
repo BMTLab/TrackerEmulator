@@ -14,14 +14,6 @@ namespace TrackerEmulator.ViewModels.Pages
         public const string TitleDefault = "Device Settings";
         #endregion
 
-        #region Fields
-
-        private string _ipAdressDevice;
-        private string _portAdressDevice;
-        private string _bufferSizeDevice;
-        private ContentView _popupMenuIp;
-        #endregion
-
 
         #region Constructors
         public Page1ViewModel(Page page) : base(page)
@@ -35,15 +27,21 @@ namespace TrackerEmulator.ViewModels.Pages
         #endregion
 
 
-        #region Properties
+        #region Fields
+        private string _ipAdressDevice;
+        private string _portAdressDevice;
+        private string _bufferSizeDevice;
+        private ContentView _popupMenuIp;
+        #endregion
 
+
+        #region Properties
         public string IpAdressDevice
         {
             get => _ipAdressDevice;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _ipAdressDevice = value;
                 OnPropertyChanged();
@@ -55,8 +53,7 @@ namespace TrackerEmulator.ViewModels.Pages
             get => _portAdressDevice;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _portAdressDevice = value;
                 OnPropertyChanged();
@@ -68,8 +65,7 @@ namespace TrackerEmulator.ViewModels.Pages
             get => _bufferSizeDevice;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _bufferSizeDevice = value;
                 OnPropertyChanged();

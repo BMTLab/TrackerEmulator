@@ -18,8 +18,7 @@ namespace TrackerEmulator.ViewModels.Pages
 
             PropertyChanged += (s, e) =>
             {
-                if (s.Equals(this) && e.PropertyName == nameof(Title))
-                    PageView.Title = Title;
+                if (s.Equals(this) && e.PropertyName == nameof(Title)) PageView.Title = Title;
             };
         }
         #endregion

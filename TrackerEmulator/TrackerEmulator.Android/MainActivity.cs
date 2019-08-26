@@ -1,11 +1,9 @@
-﻿using System.ComponentModel;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
-using Android.Locations;
 using Android.OS;
-using Java.Lang;
 using Plugin.LocalNotification;
+using Plugin.LocalNotification.Platform.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -19,6 +17,7 @@ namespace TrackerEmulator.Droid
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
+        #region Methods
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -29,7 +28,7 @@ namespace TrackerEmulator.Droid
             Forms.Init(this, bundle);
 
             NotificationCenter.CreateNotificationChannel(
-                new Plugin.LocalNotification.Platform.Droid.NotificationChannelRequest());
+                new NotificationChannelRequest());
 
             LoadApplication(new App());
         }
@@ -39,5 +38,6 @@ namespace TrackerEmulator.Droid
             NotificationCenter.NotifyNotificationTapped(intent);
             base.OnNewIntent(intent);
         }
+        #endregion
     }
 }

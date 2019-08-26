@@ -12,6 +12,7 @@ namespace TrackerEmulator.Helpers.Extension
 {
     public static class ObservableCollectionExtension
     {
+        #region Methods
         public static void AddPages(this ObservableCollection<NavigationItem> navigationCollection,
                                     IEnumerable<BasePageViewModel> pages)
         {
@@ -29,5 +30,6 @@ namespace TrackerEmulator.Helpers.Extension
                 pagesCollection.Add(element);
             }
         }
+        #endregion
     }
 }

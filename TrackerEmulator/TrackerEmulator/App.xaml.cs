@@ -1,13 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 using TrackerEmulator.Models;
 using TrackerEmulator.ViewModels.Navigation;
 using TrackerEmulator.ViewModels.Pages;
 using TrackerEmulator.Views.Pages;
-
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using BaseThisNavigationPage = Xamarin.Forms.NavigationPage;
 using ThisNavigationPage = TrackerEmulator.Views.Navigation.NavigationPage;
 
@@ -17,6 +15,7 @@ using NLog;
 
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace TrackerEmulator
 {
     public partial class App : Application

@@ -14,7 +14,6 @@ using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.ViewModels.Pages;
 using Xamarin.Forms;
 
-
 namespace TrackerEmulator.ViewModels.Navigation
 {
     public class NavigationViewModel : BaseViewModel
@@ -24,19 +23,31 @@ namespace TrackerEmulator.ViewModels.Navigation
         #endregion
 
 
-        #region Fields
+        #region Methods
+        public Task RefreshMenu()
+        {
+            foreach (var item in NavigationItems)
+            {
+                item.IsActive = false;
+            }
 
+            SelectedNavigationItem.IsActive = true;
+
+            return Task.CompletedTask;
+        }
+        #endregion
+
+
+        #region Fields
         private static ObservableCollection<NavigationItem> _navigationItems;
         private Page _currentNavigationPage;
         private NavigationItem _selectedNavigationItem;
-        private bool _isRefreshing = false;
+        private bool _isRefreshing;
         private string _menuTitle = MenuTitleDefault;
-
         #endregion
 
 
         #region Constructors
-
         static NavigationViewModel()
         {
             NavigationItem.ItemSelectedColor = new Color().Primary();
@@ -59,7 +70,7 @@ namespace TrackerEmulator.ViewModels.Navigation
 
             App.Pages.CollectionChanged += (_, e) =>
             {
-                NavigationItems.AddPages((IEnumerable<BasePageViewModel>) e.NewItems);
+                NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
             };
 
             CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
@@ -68,13 +79,12 @@ namespace TrackerEmulator.ViewModels.Navigation
                 {
                     NotificationId = 1,
                     Title = "Tracker Emulator",
-                    Description = ((NavigationItem) e.SelectedItem).Title,
+                    Description = ((NavigationItem)e.SelectedItem).Title,
                     BadgeNumber = 1,
                     Android = new AndroidOptions
                     {
                         //Color = Convert.ToInt32(new Color(3, 2, 4, 1).ToString()),
-                        IconName = "my_icon",
-                        Priority = NotificationPriority.High
+                        IconName = "my_icon", Priority = NotificationPriority.High
                     }
                 };
 
@@ -82,14 +92,11 @@ namespace TrackerEmulator.ViewModels.Navigation
             };
 
             SelectedNavigationItem = NavigationItems.First();
-
         }
-
         #endregion
 
 
         #region Properties
-
         public string MenuTitle
         {
             get => _menuTitle;
@@ -126,8 +133,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             get => _selectedNavigationItem;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _selectedNavigationItem = value;
 
@@ -162,23 +168,6 @@ namespace TrackerEmulator.ViewModels.Navigation
                     IsRefreshing = false;
                 });
             }
-        }
-
-        #endregion
-
-
-        #region Methods
-
-        public Task RefreshMenu()
-        {
-            foreach (var item in NavigationItems)
-            {
-                item.IsActive = false;
-            }
-
-            SelectedNavigationItem.IsActive = true;
-
-            return Task.CompletedTask;
         }
         #endregion
     }

@@ -9,8 +9,17 @@ namespace TrackerEmulator.Entites
 {
     public class NavigationItem : BaseViewModel
     {
-        #region Fields
+        #region Constructors
+        public NavigationItem(BasePageViewModel pageViewModel)
+        {
+            Title = pageViewModel.Title;
+            Command = pageViewModel.PageNavigationCommand;
+            ContentPageViewModel = pageViewModel;
+        }
+        #endregion
 
+
+        #region Fields
         public static Color ItemSelectedColor = Color.Blue;
 
         public static Color ItemNonSelectedColor = Color.Brown;
@@ -37,16 +46,6 @@ namespace TrackerEmulator.Entites
         private bool _isActive;
 
         private BasePageViewModel _contentPageViewModel;
-        #endregion
-
-
-        #region Constructors
-        public NavigationItem(BasePageViewModel pageViewModel)
-        {
-            Title = pageViewModel.Title;
-            Command = pageViewModel.PageNavigationCommand;
-            ContentPageViewModel = pageViewModel;
-        }
         #endregion
 
 
@@ -128,8 +127,7 @@ namespace TrackerEmulator.Entites
             get => _contentPageViewModel;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _contentPageViewModel = value;
                 OnPropertyChanged();
@@ -144,7 +142,7 @@ namespace TrackerEmulator.Entites
                 _isActive = value;
                 if (_isActive)
                 {
-                    BorderColor = BackgroundColor =  ItemSelectedColor;
+                    BorderColor = BackgroundColor = ItemSelectedColor;
                 }
                 else
                 {
@@ -154,7 +152,6 @@ namespace TrackerEmulator.Entites
                 OnPropertyChanged();
             }
         }
-
         #endregion
 
 

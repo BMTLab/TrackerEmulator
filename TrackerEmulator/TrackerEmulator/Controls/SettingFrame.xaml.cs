@@ -6,6 +6,8 @@ namespace TrackerEmulator.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingFrame : Frame
     {
+        #region Fields
+        #region Fields.BindableProperties
         public static readonly BindableProperty PopupMenuProperty =
             BindableProperty.Create(
                 nameof(PopupMenu),
@@ -14,17 +16,38 @@ namespace TrackerEmulator.Controls
                 propertyChanging: (bindable, oldValue, newValue) =>
                 {
                     var ctrl = (SettingFrame)bindable;
-                    ctrl.PopupMenu = (ContentView) newValue;
+                    ctrl.PopupMenu = (ContentView)newValue;
                 }
-                );
+            );
+        #endregion
 
         private ContentView _popupMenu;
+        #endregion
 
+
+        #region Constructors
         public SettingFrame()
         {
             InitializeComponent();
         }
+        #endregion
 
+
+        #region Properties
+        public ContentView PopupMenu
+        {
+            get => _popupMenu;
+            set
+            {
+                _popupMenu = value;
+                AddPopupHandler();
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
+
+        #region Methods
         private void AddPopupHandler()
         {
             var (primary, popup) = (Content, PopupMenu);
@@ -51,16 +74,6 @@ namespace TrackerEmulator.Controls
 
             GestureRecognizers.Add(tapGestureRecognizer);
         }
-
-        public ContentView PopupMenu
-        {
-            get => _popupMenu;
-            set
-            {
-                _popupMenu = value;
-                AddPopupHandler();
-                OnPropertyChanged();
-            }
-        }
+        #endregion
     }
 }

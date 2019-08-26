@@ -1,5 +1,4 @@
-﻿using TrackerEmulator.Helpers.Extension;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace TrackerEmulator.Helpers
 {
@@ -11,4 +10,3 @@ namespace TrackerEmulator.Helpers
         }
     }
 }
-

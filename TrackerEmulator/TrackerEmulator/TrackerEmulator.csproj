@@ -29,9 +29,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Remove="Properties\PublishProfiles\**" />
-      <EmbeddedResource Remove="Properties\PublishProfiles\**" />
-      <None Remove="Properties\PublishProfiles\**" />
+        <Compile Remove="Properties\PublishProfiles\**" />
+        <EmbeddedResource Remove="Properties\PublishProfiles\**" />
+        <None Remove="Properties\PublishProfiles\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -46,16 +46,16 @@
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
         <EmbeddedResource Update="Controls\PopupMenuIp.xaml">
-          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
         <EmbeddedResource Update="Controls\SettingFrame.xaml">
-          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
         <EmbeddedResource Update="Views\Navigation\NavigationPage.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
         <EmbeddedResource Update="Views\Notification\NotificationPage.xaml">
-          <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+            <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
         </EmbeddedResource>
         <EmbeddedResource Update="Views\Pages\Page1.xaml">
             <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -87,8 +87,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Helpers\Utilities\" />
-      <Folder Include="Services\" />
+        <Folder Include="Helpers\Utilities\" />
+        <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>

@@ -4,9 +4,10 @@ namespace TrackerEmulator.Helpers.Extension
 {
     public static class ColorExtension
     {
+        #region Methods
         public static Color Primary(this Color @this)
         {
-            return (Color) Application.Current.Resources[nameof(Primary)];
+            return (Color)Application.Current.Resources[nameof(Primary)];
         }
 
         public static Color PrimaryDark(this Color @this)
@@ -38,5 +39,6 @@ namespace TrackerEmulator.Helpers.Extension
         {
             return (Color)Application.Current.Resources[nameof(DarkTextColor)];
         }
+        #endregion
     }
 }
