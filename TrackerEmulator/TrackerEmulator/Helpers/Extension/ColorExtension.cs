@@ -15,6 +15,10 @@ namespace TrackerEmulator.Helpers.Extension
             return (Color)Application.Current.Resources[nameof(PrimaryDark)];
         }
 
+        public static Color WhiteBackgroundColor(this Color @this)
+        {
+            return (Color)Application.Current.Resources[nameof(WhiteBackgroundColor)];
+        }
         public static Color LightBackgroundColor(this Color @this)
         {
             return (Color)Application.Current.Resources[nameof(LightBackgroundColor)];

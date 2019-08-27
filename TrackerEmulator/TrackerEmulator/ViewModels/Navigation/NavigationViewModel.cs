@@ -19,7 +19,7 @@ namespace TrackerEmulator.ViewModels.Navigation
     public class NavigationViewModel : BaseViewModel
     {
         #region Constants
-        public const string MenuTitleDefault = "Menu";
+        public const string MenuTitleDefault = "Tracker Emulator";
         #endregion
 
 
@@ -36,8 +36,10 @@ namespace TrackerEmulator.ViewModels.Navigation
         static NavigationViewModel()
         {
             NavigationItem.ItemSelectedColor = new Color().Primary();
-            NavigationItem.ItemNonSelectedColor = new Color().DarkBackgroundColor();
-            NavigationItem.TextColorDefault = new Color().LightTextColor();
+            NavigationItem.ItemNonSelectedColor = new Color().WhiteBackgroundColor();
+
+            NavigationItem.ItemNonSelectedTextColor = new Color().DarkTextColor();
+            NavigationItem.ItemSelectedTextColor = new Color().LightTextColor();
         }
 
         public NavigationViewModel(Page navPage)

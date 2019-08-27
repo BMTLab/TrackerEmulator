@@ -102,6 +102,8 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\OverriddenButtonRenderer.cs" />
+    <Compile Include="Renderers\OverriddenEntryRenderer.cs" />
     <Compile Include="Renderers\OverriddenPickerRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="SplashActivity.cs" />
@@ -147,6 +149,9 @@
       <Project>{4b0fb98d-7cfd-4e72-9dcd-5b61e1cc4a79}</Project>
       <Name>TrackerEmulator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\patternl.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

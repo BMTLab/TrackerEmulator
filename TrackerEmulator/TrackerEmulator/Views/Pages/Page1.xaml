@@ -5,15 +5,34 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
+    xmlns:helpers="clr-namespace:TrackerEmulator.Helpers;assembly=TrackerEmulator"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkTextColor}" />
+                <Setter Property="HeightRequest" Value="32" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Style.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <helpers:HighlightButtonAction />
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
             <Style TargetType="Entry">
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="Margin" Value="0,-10,0,-10" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="Margin" Value="0,-10,0,-10" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             </Style>
             <Style TargetType="Label">
                 <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -43,7 +62,7 @@
                     </Grid>
                 </c:SettingFrame.ContentMenu>
                 <c:SettingFrame.PopupMenu>
-                    <Grid HeightRequest="64">
+                    <Grid HeightRequest="40">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
@@ -66,7 +85,10 @@
                         </Grid.ColumnDefinitions>
                         <Label Text="Buffer size:" />
 
-                        <Picker Grid.Column="1">
+                        <Picker
+                            Grid.Column="1"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="50">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:UInt16}">
                                     <x:UInt16>4</x:UInt16>
@@ -85,7 +107,7 @@
                     </Grid>
                 </c:SettingFrame.ContentMenu>
                 <c:SettingFrame.PopupMenu>
-                    <Button HeightRequest="64" Text="SET DEFAULT (64)" />
+                    <Button HeightRequest="40" Text="SET DEFAULT (64)" />
                 </c:SettingFrame.PopupMenu>
             </c:SettingFrame>
             <!--  End of setting frame  -->
@@ -107,7 +129,7 @@
                     </Grid>
                 </c:SettingFrame.ContentMenu>
                 <c:SettingFrame.PopupMenu>
-                    <Button HeightRequest="64" Text="SET DEVICE IMEI" />
+                    <Button HeightRequest="40" Text="SET DEVICE IMEI" />
                 </c:SettingFrame.PopupMenu>
             </c:SettingFrame>
             <!--  End of setting frame  -->

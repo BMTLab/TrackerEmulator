@@ -9,23 +9,16 @@ namespace TrackerEmulator.Entites
 {
     public class NavigationItem : BaseViewModel
     {
-        #region Constructors
-        public NavigationItem(BasePageViewModel pageViewModel)
-        {
-            Title = pageViewModel.Title;
-            Command = pageViewModel.PageNavigationCommand;
-            ContentPageViewModel = pageViewModel;
-        }
-        #endregion
-
-
         #region Fields
         public static Color ItemSelectedColor = Color.Blue;
 
         public static Color ItemNonSelectedColor = Color.Brown;
 
-        public static Color TextColorDefault = Color.Black;
+        public static Color ItemSelectedTextColor = Color.White;
 
+        public static Color ItemNonSelectedTextColor = Color.Black;
+
+        public static Color TextColorDefault = Color.Black;
 
         private ICommand _command;
 
@@ -46,6 +39,16 @@ namespace TrackerEmulator.Entites
         private bool _isActive;
 
         private BasePageViewModel _contentPageViewModel;
+        #endregion
+
+
+        #region Constructors
+        public NavigationItem(BasePageViewModel pageViewModel)
+        {
+            Title = pageViewModel.Title;
+            Command = pageViewModel.PageNavigationCommand;
+            ContentPageViewModel = pageViewModel;
+        }
         #endregion
 
 
@@ -107,7 +110,7 @@ namespace TrackerEmulator.Entites
             get => _title;
             set
             {
-                _title = value.ToUpper();
+                _title = value;
                 OnPropertyChanged();
             }
         }
@@ -143,10 +146,12 @@ namespace TrackerEmulator.Entites
                 if (_isActive)
                 {
                     BorderColor = BackgroundColor = ItemSelectedColor;
+                    TextColor = ItemSelectedTextColor;
                 }
                 else
                 {
                     BorderColor = BackgroundColor = ItemNonSelectedColor;
+                    TextColor = ItemNonSelectedTextColor;
                 }
 
                 OnPropertyChanged();

@@ -1,10 +1,8 @@
 ﻿using Android.Content;
-using Android.Graphics;
 using Android.Views;
 using TrackerEmulator.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-using Color = Android.Graphics.Color;
 using PickerRenderer = Xamarin.Forms.Platform.Android.PickerRenderer;
 
 [assembly: ExportRenderer(typeof(Picker), typeof(OverriddenPickerRenderer))]
@@ -23,7 +21,6 @@ namespace TrackerEmulator.Droid.Renderers
                 return;
 
             Control.Gravity = GravityFlags.CenterHorizontal;
-            Control.TextSize = 16;
         }
     }
 }

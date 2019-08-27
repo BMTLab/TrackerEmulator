@@ -7,6 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding MenuTitle}"
+    BackgroundColor="{StaticResource DarkBackgroundColor}"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid>
@@ -15,29 +16,41 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="0.02*" />
             </Grid.RowDefinitions>
-            <Grid x:Name="MenuHeader" BackgroundColor="{StaticResource DarkBackgroundColor}">
+            <Grid x:Name="MenuHeader" BackgroundColor="{StaticResource Primary}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="16" />
+                    <RowDefinition Height="4" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="2" />
+                    <RowDefinition Height="3" />
                 </Grid.RowDefinitions>
-                <Image
+                <!--<Image
                     Grid.Row="1"
                     Margin="0,-10,0,0"
                     Aspect="AspectFill"
-                    Source="header.png" />
-                <ContentView Grid.Row="2" BackgroundColor="{StaticResource Primary}" />
+                    Source="header.png" />-->
+                <ContentView
+                    Grid.Row="0"
+                    BackgroundColor="{StaticResource DarkBackgroundColor}"
+                    Opacity="0.6" />
+                <Label
+                    Grid.Row="1"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding MenuTitle}"
+                    TextColor="{StaticResource LightTextColor}"
+                    VerticalTextAlignment="Center" />
+                <ContentView
+                    Grid.Row="2"
+                    BackgroundColor="{StaticResource DarkBackgroundColor}"
+                    Opacity="0.5" />
             </Grid>
-            <!--<Image
+            <Image
                 Grid.Row="1"
                 Margin="0,-4,1,-7"
                 Aspect="AspectFill"
-                Opacity="0.5"
-                Source="pattern.jpg" />-->
-            <StackLayout
-                Grid.Row="1"
-                Margin="5,0,5,1"
-                BackgroundColor="Transparent">
+                Opacity="1"
+                Source="pattern.png" />
+            <StackLayout Grid.Row="1" Margin="7,0,7,0">
                 <ListView
                     x:Name="NavigationListView"
                     x:FieldModifier="public"
@@ -45,7 +58,7 @@
                     IsRefreshing="{Binding IsRefreshing}"
                     ItemsSource="{Binding NavigationItems}"
                     RefreshCommand="{Binding RefreshCommand}"
-                    RowHeight="55"
+                    RowHeight="64"
                     SelectedItem="{Binding SelectedNavigationItem}"
                     SelectionMode="Single"
                     SeparatorVisibility="None">
@@ -54,17 +67,17 @@
                             <ViewCell>
                                 <Frame
                                     x:Name="NavigationItem"
-                                    Margin="0,1,0,4"
+                                    Margin="0,0,0,7"
                                     Padding="2"
                                     BackgroundColor="{Binding BackgroundColor}"
                                     BorderColor="{Binding BorderColor}"
-                                    CornerRadius="0"
-                                    HasShadow="False"
-                                    HeightRequest="60"
-                                    Opacity="0.99">
+                                    CornerRadius="16"
+                                    HasShadow="False">
                                     <Label
+                                        Margin="64,0,0,0"
+                                        FontAttributes="Bold"
                                         FontSize="Medium"
-                                        HorizontalTextAlignment="Center"
+                                        HorizontalTextAlignment="Start"
                                         Text="{Binding Title}"
                                         TextColor="{Binding TextColor}"
                                         VerticalTextAlignment="Center" />
@@ -80,7 +93,7 @@
                 CornerRadius="0"
                 VerticalOptions="End">
                 <Label
-                    FontSize="Subtitle"
+                    FontSize="Medium"
                     HorizontalTextAlignment="Center"
                     Text="мielta © 2019"
                     TextColor="{StaticResource LightTextColor}"

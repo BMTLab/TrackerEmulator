@@ -11,6 +11,7 @@
 
             <Color x:Key="Accent">#D50E17</Color>
 
+            <Color x:Key="WhiteBackgroundColor">#ffffff</Color>
             <Color x:Key="LightBackgroundColor">#9c9c9c</Color>
             <Color x:Key="DarkBackgroundColor">#2d2d32</Color>
 
@@ -28,7 +29,7 @@
                 <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             </Style>
 
-            <Style TargetType="ContentPage">
+            <Style TargetType="View">
                 <Setter Property="BackgroundColor" Value="{StaticResource DarkBackgroundColor}" />
             </Style>
         </ResourceDictionary>
