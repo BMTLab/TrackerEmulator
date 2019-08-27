@@ -22,7 +22,6 @@ namespace TrackerEmulator.ViewModels.Pages
             IpAdressDevice = App.TrackerClient.IpAdressDevice.ToString();
             PortAdressDevice = App.TrackerClient.PortAdressDevice.ToString();
             BufferSizeDevice = App.TrackerClient.BufferSizeDevice.ToString();
-            PopupMenuIp = new PopupMenuIp();
         }
         #endregion
 

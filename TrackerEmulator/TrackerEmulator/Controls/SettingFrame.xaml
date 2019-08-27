@@ -4,10 +4,22 @@
     x:Class="TrackerEmulator.Controls.SettingFrame"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    BorderColor="{Binding PrimaryDark}"
+    x:Name="TFrame"
     CornerRadius="0"
     HasShadow="False"
-    mc:Ignorable="d" />
+    mc:Ignorable="d">
+    <Grid x:Name="SettingGrid" RowSpacing="8">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="PrimaryRow" Height="Auto" />
+            <RowDefinition x:Name="PopupRow" Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ContentView x:Name="PrimaryContent" Content="{Binding ContentMenu, Source={x:Reference TFrame}}" />
+        <ContentView
+            x:Name="PopupContent"
+            Grid.Row="1"
+            Content="{Binding PopupMenu, Source={x:Reference TFrame}}" />
+    </Grid>
+</Frame>

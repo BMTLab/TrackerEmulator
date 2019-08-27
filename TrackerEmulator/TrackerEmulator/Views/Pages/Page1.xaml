@@ -4,8 +4,7 @@
     x:Class="TrackerEmulator.Views.Pages.Page1"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
-    xmlns:helpers="clr-namespace:TrackerEmulator.Helpers;assembly=TrackerEmulator"
+    xmlns:c="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -21,40 +20,97 @@
     <ContentPage.Content>
         <StackLayout Margin="8,12,8,8" Spacing="8">
 
-            <controls:SettingFrame PopupMenu="{Binding PopupMenuIp}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="32" />
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="5" />
-                        <ColumnDefinition Width="2*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0" Text="IP:" />
-                    <Entry
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Center"
-                        Text="{Binding IpAdressDevice}" />
-                    <Label Grid.Column="2" Text=":" />
-                    <Entry
-                        Grid.Column="3"
-                        HorizontalTextAlignment="Center"
-                        Text="{Binding PortAdressDevice}" />
-                </Grid>
-            </controls:SettingFrame>
+            <!--  First setting for IP and Port device  -->
+            <c:SettingFrame>
+                <c:SettingFrame.ContentMenu>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="32" />
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="5" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="IP:" />
+                        <Entry
+                            Grid.Column="1"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding IpAdressDevice}" />
+                        <Label Grid.Column="2" Text=":" />
+                        <Entry
+                            Grid.Column="3"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding PortAdressDevice}" />
+                    </Grid>
+                </c:SettingFrame.ContentMenu>
+                <c:SettingFrame.PopupMenu>
+                    <Grid HeightRequest="64">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Text="SET LOCALHOST" />
+                        <Button Grid.Column="1" Text="SET DEVICE IP" />
+                    </Grid>
+                </c:SettingFrame.PopupMenu>
+            </c:SettingFrame>
+            <!--  End of setting frame  -->
 
-            <controls:SettingFrame>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*" />
-                        <ColumnDefinition Width="4*" />
-                    </Grid.ColumnDefinitions>
-                    <Label Text="Buffer size:" />
-                    <Entry
-                        Grid.Column="1"
-                        HorizontalTextAlignment="Center"
-                        Text="{Binding BufferSizeDevice}" />
-                </Grid>
-            </controls:SettingFrame>
+
+            <!--  Second setting for buffer size device  -->
+            <c:SettingFrame>
+                <c:SettingFrame.ContentMenu>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Buffer size:" />
+
+                        <Picker Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:UInt16}">
+                                    <x:UInt16>4</x:UInt16>
+                                    <x:UInt16>8</x:UInt16>
+                                    <x:UInt16>16</x:UInt16>
+                                    <x:UInt16>32</x:UInt16>
+                                    <x:UInt16>64</x:UInt16>
+                                    <x:UInt16>128</x:UInt16>
+                                    <x:UInt16>256</x:UInt16>
+                                    <x:UInt16>512</x:UInt16>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!--  Text="{Binding BufferSizeDevice}" />  -->
+                    </Grid>
+                </c:SettingFrame.ContentMenu>
+                <c:SettingFrame.PopupMenu>
+                    <Button HeightRequest="64" Text="SET DEFAULT (64)" />
+                </c:SettingFrame.PopupMenu>
+            </c:SettingFrame>
+            <!--  End of setting frame  -->
+
+
+            <!--  Third setting for IMEI  -->
+            <c:SettingFrame>
+                <c:SettingFrame.ContentMenu>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5*" />
+                            <ColumnDefinition Width="4*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="IMEI:" />
+                        <Entry
+                            Grid.Column="1"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding}" />
+                    </Grid>
+                </c:SettingFrame.ContentMenu>
+                <c:SettingFrame.PopupMenu>
+                    <Button HeightRequest="64" Text="SET DEVICE IMEI" />
+                </c:SettingFrame.PopupMenu>
+            </c:SettingFrame>
+            <!--  End of setting frame  -->
 
 
         </StackLayout>

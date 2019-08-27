@@ -11,17 +11,30 @@ namespace TrackerEmulator.Controls
         public static readonly BindableProperty PopupMenuProperty =
             BindableProperty.Create(
                 nameof(PopupMenu),
-                typeof(ContentView),
+                typeof(VisualElement),
                 typeof(SettingFrame),
                 propertyChanging: (bindable, _, newValue) =>
                 {
                     var ctrl = (SettingFrame)bindable;
-                    ctrl.PopupMenu = (ContentView)newValue;
+                    ctrl.PopupMenu = (VisualElement)newValue;
+                }
+            );
+
+        public static readonly BindableProperty ContentMenuProperty =
+            BindableProperty.Create(
+                nameof(ContentMenu),
+                typeof(VisualElement),
+                typeof(SettingFrame),
+                propertyChanging: (bindable, _, newValue) =>
+                {
+                    var ctrl = (SettingFrame)bindable;
+                    ctrl.ContentMenu = (VisualElement)newValue;
                 }
             );
         #endregion
 
-        private ContentView _popupMenu;
+        private VisualElement _popupMenu;
+        private VisualElement _contentMenu;
         #endregion
 
 
@@ -34,13 +47,25 @@ namespace TrackerEmulator.Controls
 
 
         #region Properties
-        public ContentView PopupMenu
+        public VisualElement PopupMenu
         {
             get => _popupMenu;
             set
             {
+                if (value == null) return;
                 _popupMenu = value;
                 AddPopupHandler();
+                OnPropertyChanged();
+            }
+        }
+
+        public VisualElement ContentMenu
+        {
+            get => _contentMenu;
+            set
+            {
+                if (value == null) return;
+                _contentMenu = value;
                 OnPropertyChanged();
             }
         }
@@ -50,22 +75,24 @@ namespace TrackerEmulator.Controls
         #region Methods
         private void AddPopupHandler()
         {
-            var (primary, popup) = (Content, PopupMenu);
-
             var isPrimary = true;
+            var (popup, grid) = (PopupMenu, SettingGrid);
+
+            grid.RowDefinitions[1].Height = 0;
+            popup.ScaleY = 0;
 
             var tapGestureRecognizer = new TapGestureRecognizer();
-
             tapGestureRecognizer.Tapped += (_, e) =>
             {
                 if (isPrimary)
                 {
-                    primary = Content;
-                    Content = popup;
+                    grid.RowDefinitions[1].Height = popup.HeightRequest;
+                    popup.ScaleY = 1;
                 }
                 else
                 {
-                    Content = primary;
+                    grid.RowDefinitions[1].Height = 0;
+                    popup.ScaleY = 0;
                 }
 
                 isPrimary = !isPrimary;
