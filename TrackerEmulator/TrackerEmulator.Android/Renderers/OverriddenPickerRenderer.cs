@@ -1,5 +1,10 @@
-﻿using Android.Content;
+﻿using System;
+using System.Linq;
+using Android.App;
+using Android.Content;
+using Android.Graphics.Drawables;
 using Android.Views;
+using Android.Widget;
 using TrackerEmulator.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -11,16 +16,27 @@ namespace TrackerEmulator.Droid.Renderers
 {
     public class OverriddenPickerRenderer : PickerRenderer
     {
-        public OverriddenPickerRenderer(Context context) : base(context) {}
+        public OverriddenPickerRenderer(Context context) : base(context) { }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
         {
             base.OnElementChanged(e);
 
-            if (Control == null)
-                return;
+            if (Control == null) return;
 
             Control.Gravity = GravityFlags.CenterHorizontal;
+            e.NewElement.SizeChanged += (s, a) =>
+            {
+                if (a == null)
+                    return;
+
+                var obj = s as OverriddenPickerRenderer;
+
+                var width  = obj?.Width;
+                var height = obj?.Height;
+            };
         }
     }
 }
+
+

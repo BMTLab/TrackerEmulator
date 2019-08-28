@@ -3,12 +3,15 @@
 //    Created by Nikita Neverov at 19.08.2019 12:19
 #endregion
 
+
+using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.Models;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using static TrackerEmulator.App;
 
 namespace TrackerEmulator.ViewModels.Pages
@@ -22,12 +25,13 @@ namespace TrackerEmulator.ViewModels.Pages
 
         #region Fields
         private static IList<ushort> _bufferSizes;
-        private static IList<ImeiItem> _imeiListDevice;
+        private static ObservableCollection<ImeiItem> _imeiListDevice;
 
+        private ushort _bufferSizeDevice = TrackerClient.BufferSizeDevice;
+        private ImeiItem _selectedImeiDevice;
+        private string _customImeiDevice;
         private string _ipAdressDevice;
         private string _portAdressDevice;
-        private ushort _bufferSizeDevice;
-        private ImeiItem _imeiDevice;
         #endregion
 
 
@@ -42,15 +46,13 @@ namespace TrackerEmulator.ViewModels.Pages
             {
                 _bufferSizes.Add((ushort)(1 << i));
             }
-
-            // Initialize source for IMEI list selection menu
-            _imeiListDevice = new List<ImeiItem>(2);
-
+            //
 
             ImeiItem.ItemSelectedColor = new Color().Primary();
-            ImeiItem.ItemNonSelectedColor = new Color().WhiteBackgroundColor();
+            ImeiItem.ItemNonSelectedColor = Color.Transparent;
             ImeiItem.ItemNonSelectedTextColor = new Color().DarkTextColor();
             ImeiItem.ItemSelectedTextColor = new Color().LightTextColor();
+            ImeiItem.TextColorDefault = new Color().DarkTextColor();
         }
 
         public Page1ViewModel(Page page) : base(page)
@@ -58,7 +60,21 @@ namespace TrackerEmulator.ViewModels.Pages
             Title = TitleDefault;
             IpAdressDevice = TrackerClient.IpAdressDevice.ToString();
             PortAdressDevice = TrackerClient.PortAdressDevice.ToString();
-            ImeiListDevice = DependencyService.Get<IDevice>().GetImeiList();
+
+            ImeiListDevice = new ObservableCollection<ImeiItem>(DependencyService.Get<IDevice>().GetImeiList());
+            SelectedImeiDevice = ImeiListDevice[0];
+
+            var entry = PageView.FindByName<Entry>("CustomImeiDeviceEntry");
+            var gridRow = PageView.FindByName<RowDefinition>("ImeisSettingGrid");
+
+            entry.Completed += (_, e) =>
+            {
+                SelectedImeiDevice = entry.Text;
+                ImeiListDevice.Add(entry.Text);
+                entry.Text = string.Empty;
+                entry.Placeholder = "Enter custom";
+                gridRow.Height = new GridLength(gridRow.Height.Value + 40);
+            };
         }
         #endregion
 
@@ -110,7 +126,7 @@ namespace TrackerEmulator.ViewModels.Pages
             }
         }
 
-        public IList<ImeiItem> ImeiListDevice
+        public ObservableCollection<ImeiItem> ImeiListDevice
         {
             get => _imeiListDevice;
             set
@@ -125,24 +141,42 @@ namespace TrackerEmulator.ViewModels.Pages
 
         public ImeiItem SelectedImeiDevice
         {
-            get => _imeiDevice;
+            get => _selectedImeiDevice;
             set
             {
                 if (value == null)
                     return;
 
-                //foreach (var imeiItems in ImeiListDevice)
-                //{
-                //    imeiItems.IsActive = false;
-                //}
+                _selectedImeiDevice = value;
 
-                //SelectedImeiDevice.IsActive = true;
+                foreach (var imeiItems in ImeiListDevice)
+                {
+                    imeiItems.IsActive = false;
+                }
 
-                _imeiDevice = value;
+                value.IsActive = true;
+
                 OnPropertyChanged();
             }
         }
 
+        public string CustomImeiDevice
+        {
+            get => _customImeiDevice;
+            set
+            {
+                if (value == null)
+                    return;
+
+                _customImeiDevice = value;
+                OnPropertyChanged();
+
+                foreach (var imeiItems in ImeiListDevice)
+                {
+                    imeiItems.IsActive = false;
+                }
+            }
+        }
         #endregion
     }
 }

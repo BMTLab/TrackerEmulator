@@ -43,130 +43,138 @@
     <!--  End of styling  -->
 
     <ContentPage.Content>
-        <StackLayout Margin="8,12,8,8" Spacing="8">
+        <ScrollView Orientation="Vertical">
+            <StackLayout
+                Margin="8,12,8,8"
+                Spacing="8"
+                VerticalOptions="StartAndExpand">
 
-            <!--  Bug: Be sure to specify the required height for the content of SettingFrame.PopupMenu  -->
-            <!--  First setting for IP and Port device  -->
-            <c:SettingFrame>
-                <c:SettingFrame.ContentMenu>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="32" />
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="5" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="IP:" />
-                        <Entry
-                            Grid.Column="1"
-                            HorizontalTextAlignment="Center"
-                            Text="{Binding IpAdressDevice}" />
-                        <Label Grid.Column="2" Text=":" />
-                        <Entry
-                            Grid.Column="3"
-                            HorizontalOptions="EndAndExpand"
-                            HorizontalTextAlignment="Center"
-                            Text="{Binding PortAdressDevice}"
-                            WidthRequest="64" />
-                    </Grid>
-                </c:SettingFrame.ContentMenu>
-                <c:SettingFrame.PopupMenu>
-                    <Grid HeightRequest="40">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Text="SET LOCALHOST" />
-                        <Button Grid.Column="1" Text="SET DEVICE IP" />
-                    </Grid>
-                </c:SettingFrame.PopupMenu>
-            </c:SettingFrame>
-            <!--  End of setting frame  -->
-
-
-            <!--  Second setting for buffer size device  -->
-            <c:SettingFrame>
-                <c:SettingFrame.ContentMenu>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="3*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="Buffer size:" />
-
-                        <Picker
-                            Grid.Column="1"
-                            HorizontalOptions="EndAndExpand"
-                            ItemsSource="{Binding BufferSizes}"
-                            SelectedIndex="7"
-                            SelectedItem="{Binding BufferSizeDevice}"
-                            WidthRequest="64" />
-                    </Grid>
-                </c:SettingFrame.ContentMenu>
-                <c:SettingFrame.PopupMenu>
-                    <Button HeightRequest="40" Text="SET DEFAULT (64)" />
-                </c:SettingFrame.PopupMenu>
-            </c:SettingFrame>
-            <!--  End of setting frame  -->
-
-
-            <!--  Third setting for IMEI  -->
-            <c:SettingFrame>
-                <c:SettingFrame.ContentMenu>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="2*" />
-                        </Grid.ColumnDefinitions>
-                        <Label Text="IMEI:" />
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="128" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <ListView
-                                CachingStrategy="RetainElement"
-                                ItemsSource="{Binding ImeiListDevice}"
-                                SelectedItem="{Binding SelectedImeiDevice}"
-                                VerticalOptions="StartAndExpand">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <Label
-                                                BackgroundColor="{Binding BackgroundColor}"
-                                                FontSize="Large"
-                                                HorizontalTextAlignment="Center"
-                                                Text="{Binding Imei}"
-                                                TextColor="{Binding TextColor}" />
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                                <ListView.Footer>
-                                    <Entry
-                                        HorizontalOptions="FillAndExpand"
-                                        HorizontalTextAlignment="Center"
-                                        Placeholder="Enter custom"
-                                        Text="{Binding ImeiDevice}" />
-                                </ListView.Footer>
-                                <!--<ListView.Triggers>
-                                    <EventTrigger Event="ItemSelected">
-                                        <helpers:HighlightListViewAction />
-                                    </EventTrigger>
-                                </ListView.Triggers>-->
-                            </ListView>
-
+                <!--  Bug: Be sure to specify the required height for the content of SettingFrame.PopupMenu  -->
+                <!--  First setting for IP and Port device  -->
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="IP:" />
+                            <Entry
+                                Grid.Column="1"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding IpAdressDevice}" />
+                            <Label Grid.Column="2" Text=":" />
+                            <Entry
+                                Grid.Column="3"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding PortAdressDevice}"
+                                WidthRequest="64" />
                         </Grid>
+                    </c:SettingFrame.ContentMenu>
+                    <c:SettingFrame.PopupMenu>
+                        <Grid HeightRequest="40">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Text="SET LOCALHOST" />
+                            <Button Grid.Column="1" Text="SET DEVICE IP" />
+                        </Grid>
+                    </c:SettingFrame.PopupMenu>
+                </c:SettingFrame>
+                <!--  End of setting frame  -->
 
 
-                    </Grid>
-                </c:SettingFrame.ContentMenu>
-                <c:SettingFrame.PopupMenu>
-                    <Button HeightRequest="40" Text="SET DEVICE IMEI" />
-                </c:SettingFrame.PopupMenu>
-            </c:SettingFrame>
-            <!--  End of setting frame  -->
+                <!--  Second setting for buffer size device  -->
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Buffer size:" />
+
+                            <Picker
+                                Grid.Column="1"
+                                HorizontalOptions="EndAndExpand"
+                                ItemsSource="{Binding BufferSizes}"
+                                SelectedItem="{Binding BufferSizeDevice}"
+                                WidthRequest="64" />
+                        </Grid>
+                    </c:SettingFrame.ContentMenu>
+                    <c:SettingFrame.PopupMenu>
+                        <Button HeightRequest="40" Text="SET DEFAULT (64)" />
+                    </c:SettingFrame.PopupMenu>
+                </c:SettingFrame>
+                <!--  End of setting frame  -->
 
 
-        </StackLayout>
+                <!--  Third setting for IMEI  -->
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="IMEI:" />
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition x:Name="ImeisSettingGrid" Height="128" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ScrollView>
+                                    <ListView
+                                        CachingStrategy="RetainElement"
+                                        ItemsSource="{Binding ImeiListDevice}"
+                                        SelectedItem="{Binding SelectedImeiDevice}"
+                                        SeparatorVisibility="None"
+                                        VerticalOptions="StartAndExpand">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Frame
+                                                        Padding="-10"
+                                                        BackgroundColor="{Binding BackgroundColor}"
+                                                        CornerRadius="16"
+                                                        HasShadow="False">
+                                                        <Label
+                                                            FontSize="Large"
+                                                            HorizontalTextAlignment="Center"
+                                                            Text="{Binding Imei}"
+                                                            TextColor="{Binding TextColor}"
+                                                            VerticalTextAlignment="Center" />
+                                                    </Frame>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                        <ListView.Footer>
+                                            <Entry
+                                                x:Name="CustomImeiDeviceEntry"
+                                                HorizontalOptions="FillAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Placeholder="Enter custom"
+                                                Text="{Binding CustomImeiDevice}"
+                                                TextColor="{StaticResource Primary}" />
+                                        </ListView.Footer>
+                                    </ListView>
+                                </ScrollView>
+                            </Grid>
+                        </Grid>
+                    </c:SettingFrame.ContentMenu>
+                    <c:SettingFrame.PopupMenu>
+                        <Button HeightRequest="40" Text="GENERATE IMEI" />
+                    </c:SettingFrame.PopupMenu>
+                </c:SettingFrame>
+                <!--  End of setting frame  -->
+
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
