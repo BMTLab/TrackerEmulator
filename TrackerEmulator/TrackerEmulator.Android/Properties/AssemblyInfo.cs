@@ -9,7 +9,7 @@ using Android.App;
 [assembly: AssemblyTitle("TrackerEmulator.Android")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Mielta")]
 [assembly: AssemblyProduct("TrackerEmulator.Android")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
@@ -32,3 +32,4 @@ using Android.App;
 // Add some common permissions, these can be removed if not needed
 [assembly: UsesPermission(Manifest.Permission.Internet)]
 [assembly: UsesPermission(Manifest.Permission.WriteExternalStorage)]
+[assembly: UsesPermission(Manifest.Permission.ReadPhoneState)]

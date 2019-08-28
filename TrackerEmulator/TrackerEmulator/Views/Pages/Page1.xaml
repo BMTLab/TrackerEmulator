@@ -7,13 +7,17 @@
     xmlns:c="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
     xmlns:helpers="clr-namespace:TrackerEmulator.Helpers;assembly=TrackerEmulator"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+    <!--  Styling for controls. TODO: Move style settings to separate files  -->
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource DarkTextColor}" />
-                <Setter Property="HeightRequest" Value="32" />
+                <Setter Property="HeightRequest" Value="40" />
                 <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Style.Triggers>
                     <EventTrigger Event="Clicked">
                         <helpers:HighlightButtonAction />
@@ -36,9 +40,12 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <!--  End of styling  -->
+
     <ContentPage.Content>
         <StackLayout Margin="8,12,8,8" Spacing="8">
 
+            <!--  Bug: Be sure to specify the required height for the content of SettingFrame.PopupMenu  -->
             <!--  First setting for IP and Port device  -->
             <c:SettingFrame>
                 <c:SettingFrame.ContentMenu>
@@ -57,8 +64,10 @@
                         <Label Grid.Column="2" Text=":" />
                         <Entry
                             Grid.Column="3"
+                            HorizontalOptions="EndAndExpand"
                             HorizontalTextAlignment="Center"
-                            Text="{Binding PortAdressDevice}" />
+                            Text="{Binding PortAdressDevice}"
+                            WidthRequest="64" />
                     </Grid>
                 </c:SettingFrame.ContentMenu>
                 <c:SettingFrame.PopupMenu>
@@ -87,23 +96,11 @@
 
                         <Picker
                             Grid.Column="1"
-                            HorizontalOptions="CenterAndExpand"
-                            WidthRequest="50">
-                            <Picker.ItemsSource>
-                                <x:Array Type="{x:Type x:UInt16}">
-                                    <x:UInt16>4</x:UInt16>
-                                    <x:UInt16>8</x:UInt16>
-                                    <x:UInt16>16</x:UInt16>
-                                    <x:UInt16>32</x:UInt16>
-                                    <x:UInt16>64</x:UInt16>
-                                    <x:UInt16>128</x:UInt16>
-                                    <x:UInt16>256</x:UInt16>
-                                    <x:UInt16>512</x:UInt16>
-                                </x:Array>
-                            </Picker.ItemsSource>
-                        </Picker>
-
-                        <!--  Text="{Binding BufferSizeDevice}" />  -->
+                            HorizontalOptions="EndAndExpand"
+                            ItemsSource="{Binding BufferSizes}"
+                            SelectedIndex="7"
+                            SelectedItem="{Binding BufferSizeDevice}"
+                            WidthRequest="64" />
                     </Grid>
                 </c:SettingFrame.ContentMenu>
                 <c:SettingFrame.PopupMenu>
@@ -118,14 +115,49 @@
                 <c:SettingFrame.ContentMenu>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*" />
-                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
                         </Grid.ColumnDefinitions>
                         <Label Text="IMEI:" />
-                        <Entry
-                            Grid.Column="1"
-                            HorizontalTextAlignment="Center"
-                            Text="{Binding}" />
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="128" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <ListView
+                                CachingStrategy="RetainElement"
+                                ItemsSource="{Binding ImeiListDevice}"
+                                SelectedItem="{Binding SelectedImeiDevice}"
+                                VerticalOptions="StartAndExpand">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label
+                                                BackgroundColor="{Binding BackgroundColor}"
+                                                FontSize="Large"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding Imei}"
+                                                TextColor="{Binding TextColor}" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                <ListView.Footer>
+                                    <Entry
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Placeholder="Enter custom"
+                                        Text="{Binding ImeiDevice}" />
+                                </ListView.Footer>
+                                <!--<ListView.Triggers>
+                                    <EventTrigger Event="ItemSelected">
+                                        <helpers:HighlightListViewAction />
+                                    </EventTrigger>
+                                </ListView.Triggers>-->
+                            </ListView>
+
+                        </Grid>
+
+
                     </Grid>
                 </c:SettingFrame.ContentMenu>
                 <c:SettingFrame.PopupMenu>

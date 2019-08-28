@@ -39,10 +39,10 @@
                     Text="{Binding MenuTitle}"
                     TextColor="{StaticResource LightTextColor}"
                     VerticalTextAlignment="Center" />
-                <ContentView
+                <!--<ContentView
                     Grid.Row="2"
                     BackgroundColor="{StaticResource DarkBackgroundColor}"
-                    Opacity="0.5" />
+                    Opacity="0.5" />-->
             </Grid>
             <Image
                 Grid.Row="1"
@@ -50,7 +50,7 @@
                 Aspect="AspectFill"
                 Opacity="1"
                 Source="pattern.png" />
-            <StackLayout Grid.Row="1" Margin="7,0,7,0">
+            <StackLayout Grid.Row="1" Margin="7,2,7,0">
                 <ListView
                     x:Name="NavigationListView"
                     x:FieldModifier="public"

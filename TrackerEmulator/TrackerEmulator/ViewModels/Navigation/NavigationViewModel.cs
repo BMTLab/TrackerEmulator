@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Plugin.LocalNotification;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.ViewModels.Pages;
@@ -92,7 +91,6 @@ namespace TrackerEmulator.ViewModels.Navigation
                 OnPropertyChanged();
             }
         }
-
 
         public ObservableCollection<NavigationItem> NavigationItems
         {

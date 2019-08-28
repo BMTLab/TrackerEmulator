@@ -13,10 +13,13 @@
     <Grid x:Name="SettingGrid" RowSpacing="16">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="PrimaryRow" Height="Auto" />
-            <RowDefinition x:Name="PopupRow" Height="Auto" />
+            <RowDefinition x:Name="PopupRow" />
         </Grid.RowDefinitions>
 
-        <ContentView x:Name="PrimaryContent" Content="{Binding ContentMenu, Source={x:Reference TFrame}}" />
+        <ContentView
+            x:Name="PrimaryContent"
+            Content="{Binding ContentMenu, Source={x:Reference TFrame}}"
+            VerticalOptions="Start" />
         <ContentView
             x:Name="PopupContent"
             Grid.Row="1"

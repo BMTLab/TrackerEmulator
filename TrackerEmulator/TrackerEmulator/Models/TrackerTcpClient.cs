@@ -35,7 +35,8 @@ namespace TrackerEmulator.Models
         #region Methods.Configuration
         public TrackerTcpClient SetIp(string ipString)
         {
-            if (!IPAddress.TryParse(ipString, out var ip)) ClientErrors |= Status.IpNotCorrect;
+            if (!IPAddress.TryParse(ipString, out var ip))
+                ClientErrors |= Status.IpNotCorrect;
 
             IpAdressDevice = ip;
             return this;
@@ -55,7 +56,8 @@ namespace TrackerEmulator.Models
 
         public TrackerTcpClient SetBufferSize(ushort bufferSize)
         {
-            if (bufferSize < 4) ClientErrors |= Status.BufferSizeIsNotValid;
+            if (bufferSize < 4)
+                ClientErrors |= Status.BufferSizeIsNotValid;
 
             BufferSizeDevice = bufferSize;
             return this;

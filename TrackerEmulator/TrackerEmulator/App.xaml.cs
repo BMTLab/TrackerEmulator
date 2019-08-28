@@ -1,5 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using TrackerEmulator.Models;
 using TrackerEmulator.ViewModels.Navigation;
 using TrackerEmulator.ViewModels.Pages;
@@ -29,8 +33,7 @@ namespace TrackerEmulator
 
         #region Properties
         public static ObservableCollection<BasePageViewModel> Pages { get; set; }
-
-        public static TrackerTcpClient TrackerClient { get; internal set; }
+        public static TrackerTcpClient TrackerClient { get; }
         #endregion
 
 
@@ -49,6 +52,7 @@ namespace TrackerEmulator
         public App()
         {
             InitializeComponent();
+            RequestPermissions();
 
             Pages = new ObservableCollection<BasePageViewModel>
             {
@@ -60,6 +64,24 @@ namespace TrackerEmulator
                 Master = new NavigationViewModel(new ThisNavigationPage()).CurrentNavigationPage,
                 Detail = new BaseThisNavigationPage(Pages.First().PageView)
             };
+        }
+
+        protected static Task RequestPermissions()
+        {
+            var status = CrossPermissions.Current.CheckPermissionStatusAsync<PhonePermission>().Result;
+            if (status == PermissionStatus.Granted)
+                goto Finish;
+
+            CrossPermissions.Current.OpenAppSettings();
+
+            CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Phone);
+            CrossPermissions.Current.RequestPermissionAsync<PhonePermission>();
+
+
+            Console.Out.WriteLine("Permission ended");
+
+            Finish:
+            return Task.CompletedTask;
         }
         #endregion
     }

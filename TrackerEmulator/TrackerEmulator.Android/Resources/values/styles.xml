@@ -9,6 +9,11 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
     <style name="MyTheme" parent="MyTheme.Base">
+        <item name="android:colorPressedHighlight">#D50E17</item>
+        <item name="android:colorLongPressedHighlight">#D50E17</item>
+        <item name="android:colorFocusedHighlight">#D50E17</item>
+        <!--<item name="android:colorActivatedHighlight">#D50E17</item>
+        <item name="android:activatedBackgroundIndicator">#D50E17</item>-->
     </style>
     <!-- Base theme applied no matter what API -->
     <style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -24,9 +29,10 @@
         <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
         <item name="colorAccent">#D50E17</item>
-        <!--<array name="SwipeRefreshColors">
-      <item>@color/red</item>
-    </array>-->
+        <!--<array name="SwipeRefreshColors"> </array>-->
+
+
+   
         <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
         <item name="android:colorActivatedHighlight">@android:color/transparent</item>
