@@ -5,6 +5,13 @@ namespace TrackerEmulator.Models
 {
     public class TrackerTcpClient : TcpClient
     {
+        #region Constants
+        public const ushort BufferSizeDefault = 64;
+        public const ushort PortAddressDeviceDefault = 7;
+        public const ushort PortAddressHostDefault = 4777;
+        #endregion
+
+
         #region Fields
         protected internal Status ClientErrors = 0;
         #endregion
@@ -14,19 +21,13 @@ namespace TrackerEmulator.Models
         #endregion
 
 
-        #region Constants
-        public const ushort BufferSizeDefault = 64;
-        public const ushort PortAddressDeviceDefault = 7;
-        public const ushort PortAddressHostDefault = 4777;
-        #endregion
-
-
         #region Properties
+        /* Device properties*/
         public IPAddress IpAdressDevice { get; set; } = GetIpAddressDefault();
         public ushort PortAdressDevice { get; set; } = PortAddressDeviceDefault;
         public ushort BufferSizeDevice { get; set; } = BufferSizeDefault;
 
-
+        /* Host properties */
         public IPAddress IpAdressHost { get; set; } = GetIpAddressDefault();
         public ushort PortAdressHost { get; set; } = PortAddressHostDefault;
         #endregion

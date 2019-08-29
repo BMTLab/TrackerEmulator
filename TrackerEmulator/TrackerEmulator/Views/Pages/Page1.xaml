@@ -92,7 +92,41 @@
                 <!--  End of setting frame  -->
 
 
-                <!--  Second setting for buffer size device  -->
+                <!--  Second setting for IP and Port host  -->
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="IP:" />
+                            <Entry
+                                Grid.Column="1"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding IpAddressHost, Converter={StaticResource IpToString}}" />
+                            <Label Grid.Column="2" Text=":" />
+                            <Entry
+                                Grid.Column="3"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Keyboard="Telephone"
+                                Text="{Binding PortAddressHost, Converter={StaticResource DigToString}}"
+                                WidthRequest="64" />
+                        </Grid>
+                    </c:SettingFrame.ContentMenu>
+                    <c:SettingFrame.PopupMenu>
+                        <Grid HeightRequest="40">
+                            <Button Grid.Column="0" Text="SET LOCALHOST" />
+                        </Grid>
+                    </c:SettingFrame.PopupMenu>
+                </c:SettingFrame>
+                <!--  End of setting frame  -->
+
+
+                <!--  Third setting for buffer size device  -->
                 <c:SettingFrame>
                     <c:SettingFrame.ContentMenu>
                         <Grid>
@@ -117,7 +151,7 @@
                 <!--  End of setting frame  -->
 
 
-                <!--  Third setting for IMEI  -->
+                <!--  Fourth setting for IMEI  -->
                 <c:SettingFrame>
                     <c:SettingFrame.ContentMenu>
                         <Grid>

@@ -24,10 +24,11 @@ namespace TrackerEmulator.ViewModels.Navigation
 
         #region Fields
         private static ObservableCollection<NavigationItem> _navigationItems;
+
         private Page _currentNavigationPage;
         private NavigationItem _selectedNavigationItem;
         private bool _isRefreshing;
-        private string _menuTitle = MenuTitleDefault;
+        private string _menuTitle;
         #endregion
 
 
@@ -43,40 +44,44 @@ namespace TrackerEmulator.ViewModels.Navigation
 
         public NavigationViewModel(Page navPage)
         {
+            #region Initialize Fields
+            MenuTitle = MenuTitleDefault;
+
             CurrentNavigationPage = navPage;
             CurrentNavigationPage.BindingContext = this;
-
             NavigationItems = new ObservableCollection<NavigationItem>();
-            NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));
 
             foreach (var page in App.Pages)
             {
                 NavigationItems.Add(new NavigationItem(page));
             }
 
-            App.Pages.CollectionChanged += (_, e) => NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
-
-            // Notifications trying
-            //CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
-            //{
-            //    var request = new NotificationRequest
-            //    {
-            //        NotificationId = 1,
-            //        Title = "Tracker Emulator",
-            //        Description = ((NavigationItem)e.SelectedItem).Title,
-            //        BadgeNumber = 1,
-            //        Android = new AndroidOptions
-            //        {
-            //            //Color = Convert.ToInt32(new Color(3, 2, 4, 1).ToString()),
-            //            IconName = "my_icon", Priority = NotificationPriority.High
-            //        }
-            //    };
-
-            //    NotificationCenter.Current.Show(request);
-            //};
-            //
-
             SelectedNavigationItem = NavigationItems.First();
+            #endregion
+
+            InitializeEventHandlers();
+
+
+            /* Notifications trying
+            CurrentNavigationPage.FindByName<ListView>("NavigationListView").ItemSelected += (_, e) =>
+            {
+                var request = new NotificationRequest
+                {
+                    NotificationId = 1,
+                    Title = "Tracker Emulator",
+                    Description = ((NavigationItem)e.SelectedItem).Title,
+                    BadgeNumber = 1,
+                    Android = new AndroidOptions
+                    {
+                        //Color = Convert.ToInt32(new Color(3, 2, 4, 1).ToString()),
+                        IconName = "my_icon",
+                        Priority = NotificationPriority.High
+                    }
+                };
+
+                NotificationCenter.Current.Show(request);
+            };
+            */
         }
         #endregion
 
@@ -139,6 +144,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             }
         }
 
+        #region Commands
         public ICommand RefreshCommand
         {
             get
@@ -154,6 +160,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             }
         }
         #endregion
+        #endregion
 
 
         #region Methods
@@ -167,6 +174,13 @@ namespace TrackerEmulator.ViewModels.Navigation
             SelectedNavigationItem.IsActive = true;
 
             return Task.CompletedTask;
+        }
+
+        private Task InitializeEventHandlers()
+        {
+            App.Pages.CollectionChanged += (_, e) => NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
+            NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));
+            return Task.CompletedTask
         }
         #endregion
     }

@@ -3,15 +3,9 @@
 //    Created by Nikita Neverov at 19.08.2019 12:19
 #endregion
 
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Net;
-using System.Threading.Tasks;
-using TrackerEmulator.Entites;
-using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.Models;
 using Xamarin.Forms;
-using static TrackerEmulator.App;
 
 namespace TrackerEmulator.ViewModels.Pages
 {
