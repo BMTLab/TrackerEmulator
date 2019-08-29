@@ -5,12 +5,13 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Threading.Tasks;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.Models;
+using TrackerEmulator.Services;
 using Xamarin.Forms;
-using static TrackerEmulator.App;
 
 namespace TrackerEmulator.ViewModels.Pages
 {
@@ -25,11 +26,12 @@ namespace TrackerEmulator.ViewModels.Pages
         private static IList<ushort> _bufferSizes;
         private static ObservableCollection<ImeiItem> _imeiListDevice;
 
+        private IPAddress _ipAddressDevice;
+        private ushort _portAddressDevice;
         private ushort _bufferSizeDevice ;
         private ImeiItem _selectedImeiDevice;
         private string _customImeiDevice;
-        private string _ipAdressDevice;
-        private string _portAdressDevice;
+
         #endregion
 
 
@@ -56,9 +58,9 @@ namespace TrackerEmulator.ViewModels.Pages
         {
             Title = TitleDefault;
 
-            PortAdressDevice = TrackerClient.PortAdressDevice.ToString();
-            BufferSizeDevice = TrackerClient.BufferSizeDevice;
-            IpAdressDevice = DependencyService.Get<IDevice>().GetIpAddressDevice().ToString();
+            PortAddressDevice = TrackerTcpClient.PortAddressDeviceDefault;
+            BufferSizeDevice = TrackerTcpClient.BufferSizeDefault;
+            IpAddressDevice = DependencyService.Get<IDevice>().GetIpAddressDevice();
             ImeiListDevice = new ObservableCollection<ImeiItem>(DependencyService.Get<IDevice>().GetImeiList());
             SelectedImeiDevice = ImeiListDevice[0];
 
@@ -88,28 +90,25 @@ namespace TrackerEmulator.ViewModels.Pages
             }
 
         }
-        public string IpAdressDevice
+        public IPAddress IpAddressDevice
         {
-            get => _ipAdressDevice;
+            get => _ipAddressDevice;
             set
             {
                 if (value == null)
                     return;
 
-                _ipAdressDevice = value;
+                _ipAddressDevice = value;
                 OnPropertyChanged();
             }
         }
 
-        public string PortAdressDevice
+        public ushort PortAddressDevice
         {
-            get => _portAdressDevice;
+            get => _portAddressDevice;
             set
             {
-                if (value == null)
-                    return;
-
-                _portAdressDevice = value;
+                _portAddressDevice = value;
                 OnPropertyChanged();
             }
         }

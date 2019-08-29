@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using TrackerEmulator.Entites;
-using TrackerEmulator.Models;
 
 namespace TrackerEmulator.Droid.Services
 {

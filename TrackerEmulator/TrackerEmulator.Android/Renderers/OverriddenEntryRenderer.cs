@@ -1,8 +1,9 @@
-﻿using Android.Content;
-using Android.Views;
+﻿#if ENTRY_RENDERER
+using Android.Content;
 using TrackerEmulator.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+
 
 [assembly: ExportRenderer(typeof(Entry), typeof(OverriddenEntryRenderer))]
 
@@ -18,7 +19,7 @@ namespace TrackerEmulator.Droid.Renderers
 
             if (Control == null)
                 return;
-
         }
     }
 }
+#endif

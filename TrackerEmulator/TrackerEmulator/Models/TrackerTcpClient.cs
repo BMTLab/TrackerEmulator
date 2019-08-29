@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.NetworkInformation;
+﻿using System.Net;
 using System.Net.Sockets;
 
 namespace TrackerEmulator.Models
@@ -19,26 +16,41 @@ namespace TrackerEmulator.Models
 
         #region Constants
         public const ushort BufferSizeDefault = 64;
-        public const ushort PortAdressDefault = 7;
+        public const ushort PortAddressDeviceDefault = 7;
+        public const ushort PortAddressHostDefault = 4777;
         #endregion
 
 
         #region Properties
-        public IPAddress IpAdressDevice { get; set; } = GetIpAddressDeviceDefault();
-        public ushort PortAdressDevice { get; set; } = PortAdressDefault;
+        public IPAddress IpAdressDevice { get; set; } = GetIpAddressDefault();
+        public ushort PortAdressDevice { get; set; } = PortAddressDeviceDefault;
         public ushort BufferSizeDevice { get; set; } = BufferSizeDefault;
+
+
+        public IPAddress IpAdressHost { get; set; } = GetIpAddressDefault();
+        public ushort PortAdressHost { get; set; } = PortAddressHostDefault;
         #endregion
 
 
         #region Methods
-        public static IPAddress GetIpAddressDeviceDefault()
+        public static IPAddress GetIpAddressDefault()
             => IPAddress.Loopback;
 
         #region Methods.Configuration
-        public TrackerTcpClient SetIp(string ipString)
+        public TrackerTcpClient SetIpOrDomain(string domain)
         {
-            if (!IPAddress.TryParse(ipString, out var ip))
-                ClientErrors |= Status.IpNotCorrect;
+            if (!IPAddress.TryParse(domain, out var ip))
+            {
+                try
+                {
+                    ip = Dns.GetHostEntry(domain).AddressList[0];
+                }
+                catch
+                {
+                    ClientErrors |= Status.IpNotCorrect;
+                    return this;
+                }
+            }
 
             IpAdressDevice = ip;
             return this;

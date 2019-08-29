@@ -7,7 +7,6 @@ namespace TrackerEmulator.Droid.Services
     public partial class AndroidDevice
     {
         #region Fields
-        private string _id = string.Empty;
         private IList<ImeiItem> _imeiList;
         #endregion
 

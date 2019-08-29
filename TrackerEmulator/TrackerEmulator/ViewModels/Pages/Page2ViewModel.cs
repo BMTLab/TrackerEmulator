@@ -5,6 +5,7 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Threading.Tasks;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
@@ -22,8 +23,8 @@ namespace TrackerEmulator.ViewModels.Pages
 
 
         #region Fields
-        private string _ipAdressHost;
-        private string _portAdressHost;
+        private IPAddress _ipAddressHost;
+        private ushort _portAddressHost;
         #endregion
 
 
@@ -32,35 +33,32 @@ namespace TrackerEmulator.ViewModels.Pages
         {
             Title = TitleDefault;
 
-            IpAdressHost = TrackerClient.IpAdressDevice.ToString();
-            PortAdressHost = TrackerClient.PortAdressDevice.ToString();
+            IpAddressHost = TrackerTcpClient.GetIpAddressDefault();
+            PortAddressHost = TrackerTcpClient.PortAddressHostDefault;
         }
         #endregion
 
 
         #region Properties
-        public string IpAdressHost
+        public IPAddress IpAddressHost
         {
-            get => _ipAdressHost;
+            get => _ipAddressHost;
             set
             {
                 if (value == null)
                     return;
 
-                _ipAdressHost = value;
+                _ipAddressHost = value;
                 OnPropertyChanged();
             }
         }
 
-        public string PortAdressHost
+        public ushort PortAddressHost
         {
-            get => _portAdressHost;
+            get => _portAddressHost;
             set
             {
-                if (value == null)
-                    return;
-
-                _portAdressHost = value;
+                _portAddressHost = value;
                 OnPropertyChanged();
             }
         }

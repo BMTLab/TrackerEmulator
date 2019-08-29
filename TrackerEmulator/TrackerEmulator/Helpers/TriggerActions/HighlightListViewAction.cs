@@ -3,7 +3,7 @@ using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using Xamarin.Forms;
 
-namespace TrackerEmulator.Helpers
+namespace TrackerEmulator.Helpers.TriggerActions
 {
     public class HighlightListViewAction : TriggerAction<ListView>
     {

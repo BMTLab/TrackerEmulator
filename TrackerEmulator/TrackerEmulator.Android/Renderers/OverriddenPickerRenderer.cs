@@ -1,10 +1,5 @@
-﻿using System;
-using System.Linq;
-using Android.App;
-using Android.Content;
-using Android.Graphics.Drawables;
+﻿using Android.Content;
 using Android.Views;
-using Android.Widget;
 using TrackerEmulator.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

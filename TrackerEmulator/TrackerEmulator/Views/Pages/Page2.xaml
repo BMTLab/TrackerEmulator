@@ -5,7 +5,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
-    xmlns:helpers="clr-namespace:TrackerEmulator.Helpers;assembly=TrackerEmulator"
+    xmlns:converters="clr-namespace:TrackerEmulator.Helpers.Converters;assembly=TrackerEmulator"
+    xmlns:triggerActions="clr-namespace:TrackerEmulator.Helpers.TriggerActions;assembly=TrackerEmulator"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
 
     <!--  Styling for controls. TODO: Move style settings to separate files  -->
@@ -20,7 +21,7 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Style.Triggers>
                     <EventTrigger Event="Clicked">
-                        <helpers:HighlightButtonAction />
+                        <triggerActions:HighlightButtonAction />
                     </EventTrigger>
                 </Style.Triggers>
             </Style>
@@ -38,6 +39,8 @@
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             </Style>
+            <converters:IpAdressToStringConverter x:Key="IpToString" />
+            <converters:DigitalToStringConverter x:Key="DigToString" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <!--  End of styling  -->
@@ -64,13 +67,14 @@
                             <Entry
                                 Grid.Column="1"
                                 HorizontalTextAlignment="Center"
-                                Text="{Binding IpAdressHost}" />
+                                Text="{Binding IpAddressHost, Converter={StaticResource IpToString}}" />
                             <Label Grid.Column="2" Text=":" />
                             <Entry
                                 Grid.Column="3"
                                 HorizontalOptions="EndAndExpand"
                                 HorizontalTextAlignment="Center"
-                                Text="{Binding PortAdressHost}"
+                                Keyboard="Telephone"
+                                Text="{Binding PortAddressHost, Converter={StaticResource DigToString}}"
                                 WidthRequest="64" />
                         </Grid>
                     </c:SettingFrame.ContentMenu>

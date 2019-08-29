@@ -1,7 +1,7 @@
 ﻿using Android.Content;
 using Android.Telephony;
 using TrackerEmulator.Droid.Services;
-using TrackerEmulator.Models;
+using TrackerEmulator.Services;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(AndroidDevice))]

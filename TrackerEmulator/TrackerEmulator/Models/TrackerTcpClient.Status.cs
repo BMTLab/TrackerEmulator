@@ -6,9 +6,9 @@ namespace TrackerEmulator.Models
     public enum Status : byte
     {
         IpNotCorrect = 1,
-        PortNotCorrect = 2,
-        BufferSizeIsNotValid = 4,
-        CapacityOfConnectionsIsNotValid = 8,
-        ConcurencyLevelOfConnectionsIsNotValid = 16
+        PortNotCorrect = 1 << 1,
+        BufferSizeIsNotValid = 1 << 2,
+        CapacityOfConnectionsIsNotValid = 1 << 3,
+        ConcurencyLevelOfConnectionsIsNotValid = 1 << 4
     }
 }
