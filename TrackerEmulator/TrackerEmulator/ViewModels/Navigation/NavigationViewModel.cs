@@ -180,7 +180,7 @@ namespace TrackerEmulator.ViewModels.Navigation
         {
             App.Pages.CollectionChanged += (_, e) => NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
             NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));
-            return Task.CompletedTask
+            return Task.CompletedTask;
         }
         #endregion
     }

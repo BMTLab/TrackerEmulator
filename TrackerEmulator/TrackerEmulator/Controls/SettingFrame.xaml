@@ -7,10 +7,11 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="TFrame"
+    Padding="22,10,20,10"
     CornerRadius="16"
     HasShadow="False"
     mc:Ignorable="d">
-    <Grid x:Name="SettingGrid" RowSpacing="16">
+    <Grid x:Name="SettingGrid" RowSpacing="10">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="PrimaryRow" Height="Auto" />
             <RowDefinition x:Name="PopupRow" />

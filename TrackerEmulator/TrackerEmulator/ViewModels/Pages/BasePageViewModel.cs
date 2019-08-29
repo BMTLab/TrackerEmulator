@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using TrackerEmulator.Models;
+using TrackerEmulator.Controls;
 using Xamarin.Forms;
 
 namespace TrackerEmulator.ViewModels.Pages

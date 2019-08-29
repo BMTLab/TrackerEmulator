@@ -5,9 +5,9 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.Models;
@@ -19,7 +19,7 @@ namespace TrackerEmulator.ViewModels.Pages
     public class Page1ViewModel : BasePageViewModel
     {
         #region Constants
-        public const string TitleDefault = "Device Settings";
+        public const string TitleDefault = "Connection Settings";
         #endregion
 
 
@@ -183,6 +183,17 @@ namespace TrackerEmulator.ViewModels.Pages
                 OnPropertyChanged();
             }
         }
+
+        #region Commands
+        public ICommand GenerateImeiCommand
+        {
+            get
+            {
+                return new Command(()
+                   => ImeiListDevice.Add(ImeiGenerator.Generate()));
+            }
+        }
+        #endregion
         #endregion
 
 
@@ -222,7 +233,11 @@ namespace TrackerEmulator.ViewModels.Pages
             #region Get UI controls from an attached View
             var entry = PageView.FindByName<Entry>("CustomImeiDeviceEntry");
             var gridRow = PageView.FindByName<RowDefinition>("ImeisSettingGrid");
+            //var imeiList = PageView.FindByName<ListView>()
             #endregion
+
+
+
 
             entry.Completed += (_, e) =>
             {
@@ -232,6 +247,8 @@ namespace TrackerEmulator.ViewModels.Pages
                 entry.Placeholder = "Enter custom";
                 gridRow.Height = new GridLength(gridRow.Height.Value + 40);
             };
+
+            //ImeiListDevice.CollectionChanged += () => 
 
             return Task.CompletedTask;
         }

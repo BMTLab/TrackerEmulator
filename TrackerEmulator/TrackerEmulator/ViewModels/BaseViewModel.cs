@@ -11,7 +11,7 @@ namespace TrackerEmulator.ViewModels
         #endregion
 
 
-        #region Invocator
+        #region Invocators
         protected static void OnStaticPropertyChanged([CallerMemberName] string propertyName = "")
         {
             StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
