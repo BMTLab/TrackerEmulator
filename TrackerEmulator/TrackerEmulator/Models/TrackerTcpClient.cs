@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
 namespace TrackerEmulator.Models
@@ -17,20 +19,20 @@ namespace TrackerEmulator.Models
 
         #region Constants
         public const ushort BufferSizeDefault = 64;
-        public const ushort PortAdressDefault = 58;
+        public const ushort PortAdressDefault = 7;
         #endregion
 
 
         #region Properties
-        public IPAddress IpAdressDevice { get; set; } = GetIpAddressDevice();
+        public IPAddress IpAdressDevice { get; set; } = GetIpAddressDeviceDefault();
         public ushort PortAdressDevice { get; set; } = PortAdressDefault;
         public ushort BufferSizeDevice { get; set; } = BufferSizeDefault;
         #endregion
 
 
         #region Methods
-        public static IPAddress GetIpAddressDevice()
-            => Dns.GetHostAddresses(Dns.GetHostName()).FirstOrDefault();
+        public static IPAddress GetIpAddressDeviceDefault()
+            => IPAddress.Loopback;
 
         #region Methods.Configuration
         public TrackerTcpClient SetIp(string ipString)
@@ -101,6 +103,23 @@ namespace TrackerEmulator.Models
             //    client.Close();
             //}
         }
+
+        /* GetActiveTcpConnections is not implemented exception on Android
+        public int GetAnyFreePort()
+        {
+            var ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
+            TcpConnectionInformation[] tcpConnInfoArray = ipGlobalProperties.GetActiveTcpConnections();
+            IList<int> portList = new List<int>(Enumerable
+                                                .Range(1, ushort.MaxValue)
+                                                .Except(tcpConnInfoArray
+                                                        .Select(element => element.LocalEndPoint.Port)
+                                                        .Distinct()
+                                                        .ToList()));
+
+
+            return portList[0];
+        }
+        */
         #endregion
     }
 }

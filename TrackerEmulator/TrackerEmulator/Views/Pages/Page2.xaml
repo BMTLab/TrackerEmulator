@@ -1,17 +1,90 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage
     x:Class="TrackerEmulator.Views.Pages.Page2"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
+    xmlns:helpers="clr-namespace:TrackerEmulator.Helpers;assembly=TrackerEmulator"
+    BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+    <!--  Styling for controls. TODO: Move style settings to separate files  -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkTextColor}" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Style.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <helpers:HighlightButtonAction />
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="Margin" Value="0,-10,0,-10" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="Margin" Value="0,-10,0,-10" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--  End of styling  -->
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                Margin="0,100,0,0"
-                HorizontalTextAlignment="Center"
-                Text="{Binding Title}"
-                TextColor="Black"
-                VerticalTextAlignment="Center" />
-        </StackLayout>
+        <ScrollView Orientation="Vertical">
+            <StackLayout
+                Margin="8,12,8,8"
+                Spacing="8"
+                VerticalOptions="StartAndExpand">
+
+                <!--  Bug: Be sure to specify the required height for the content of SettingFrame.PopupMenu  -->
+                <!--  First setting for IP and Port device  -->
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="5*" />
+                                <ColumnDefinition Width="5" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="IP:" />
+                            <Entry
+                                Grid.Column="1"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding IpAdressHost}" />
+                            <Label Grid.Column="2" Text=":" />
+                            <Entry
+                                Grid.Column="3"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding PortAdressHost}"
+                                WidthRequest="64" />
+                        </Grid>
+                    </c:SettingFrame.ContentMenu>
+                    <c:SettingFrame.PopupMenu>
+                        <Grid HeightRequest="40">
+                            <Button Grid.Column="0" Text="SET LOCALHOST" />
+                        </Grid>
+                    </c:SettingFrame.PopupMenu>
+                </c:SettingFrame>
+                <!--  End of setting frame  -->
+
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+

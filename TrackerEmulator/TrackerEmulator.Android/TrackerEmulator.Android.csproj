@@ -99,7 +99,10 @@
     <Compile Include="Renderers\OverriddenEntryRenderer.cs" />
     <Compile Include="Renderers\OverriddenPickerRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
-    <Compile Include="Services\UniqueIdAndroid.cs" />
+    <Compile Include="Services\AndroidDevice.cs" />
+    <Compile Include="Services\AndroidDevice.Ip.cs" />
+    <Compile Include="Services\AndroidDevice.Imei.cs" />
+    <Compile Include="Services\AndroidDevice.Ports.cs" />
     <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>

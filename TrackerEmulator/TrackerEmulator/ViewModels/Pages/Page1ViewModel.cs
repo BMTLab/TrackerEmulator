@@ -3,15 +3,13 @@
 //    Created by Nikita Neverov at 19.08.2019 12:19
 #endregion
 
-
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.Models;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using static TrackerEmulator.App;
 
 namespace TrackerEmulator.ViewModels.Pages
@@ -27,7 +25,7 @@ namespace TrackerEmulator.ViewModels.Pages
         private static IList<ushort> _bufferSizes;
         private static ObservableCollection<ImeiItem> _imeiListDevice;
 
-        private ushort _bufferSizeDevice = TrackerClient.BufferSizeDevice;
+        private ushort _bufferSizeDevice ;
         private ImeiItem _selectedImeiDevice;
         private string _customImeiDevice;
         private string _ipAdressDevice;
@@ -46,7 +44,6 @@ namespace TrackerEmulator.ViewModels.Pages
             {
                 _bufferSizes.Add((ushort)(1 << i));
             }
-            //
 
             ImeiItem.ItemSelectedColor = new Color().Primary();
             ImeiItem.ItemNonSelectedColor = Color.Transparent;
@@ -58,9 +55,10 @@ namespace TrackerEmulator.ViewModels.Pages
         public Page1ViewModel(Page page) : base(page)
         {
             Title = TitleDefault;
-            IpAdressDevice = TrackerClient.IpAdressDevice.ToString();
-            PortAdressDevice = TrackerClient.PortAdressDevice.ToString();
 
+            PortAdressDevice = TrackerClient.PortAdressDevice.ToString();
+            BufferSizeDevice = TrackerClient.BufferSizeDevice;
+            IpAdressDevice = DependencyService.Get<IDevice>().GetIpAddressDevice().ToString();
             ImeiListDevice = new ObservableCollection<ImeiItem>(DependencyService.Get<IDevice>().GetImeiList());
             SelectedImeiDevice = ImeiListDevice[0];
 
@@ -69,8 +67,8 @@ namespace TrackerEmulator.ViewModels.Pages
 
             entry.Completed += (_, e) =>
             {
-                SelectedImeiDevice = entry.Text;
-                ImeiListDevice.Add(entry.Text);
+                SelectedImeiDevice = CustomImeiDevice;
+                ImeiListDevice.Add(CustomImeiDevice);
                 entry.Text = string.Empty;
                 entry.Placeholder = "Enter custom";
                 gridRow.Height = new GridLength(gridRow.Height.Value + 40);
@@ -149,13 +147,7 @@ namespace TrackerEmulator.ViewModels.Pages
 
                 _selectedImeiDevice = value;
 
-                foreach (var imeiItems in ImeiListDevice)
-                {
-                    imeiItems.IsActive = false;
-                }
-
-                value.IsActive = true;
-
+                RefreshImeiList();
                 OnPropertyChanged();
             }
         }
@@ -169,13 +161,25 @@ namespace TrackerEmulator.ViewModels.Pages
                     return;
 
                 _customImeiDevice = value;
-                OnPropertyChanged();
 
-                foreach (var imeiItems in ImeiListDevice)
-                {
-                    imeiItems.IsActive = false;
-                }
+                RefreshImeiList();
+                OnPropertyChanged();
             }
+        }
+        #endregion
+
+
+        #region Methods
+        public Task RefreshImeiList()
+        {
+            foreach (var item in ImeiListDevice)
+            {
+                item.IsActive = false;
+            }
+
+            SelectedImeiDevice.IsActive = true;
+
+            return Task.CompletedTask;
         }
         #endregion
     }
