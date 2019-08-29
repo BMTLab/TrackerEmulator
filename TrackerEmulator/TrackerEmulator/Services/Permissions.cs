@@ -6,7 +6,7 @@ using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
 
-namespace TrackerEmulator.Utilities
+namespace TrackerEmulator.Services
 {
     public class Permissions
     {
@@ -33,7 +33,6 @@ namespace TrackerEmulator.Utilities
             }
 
             return permissionStatus;
-
         }
     }
 }

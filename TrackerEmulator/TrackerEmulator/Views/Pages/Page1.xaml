@@ -6,7 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
     xmlns:converters="clr-namespace:TrackerEmulator.Helpers.Converters;assembly=TrackerEmulator"
-    xmlns:triggerActions="clr-namespace:TrackerEmulator.Helpers.TriggerActions;assembly=TrackerEmulator"
+    xmlns:t="clr-namespace:TrackerEmulator.Helpers.TriggerActions;assembly=TrackerEmulator"
     BackgroundColor="{StaticResource DarkBackgroundColor}">
 
     <!--  Styling for controls. TODO: Move style settings to separate files  -->
@@ -21,7 +21,7 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Style.Triggers>
                     <EventTrigger Event="Clicked">
-                        <triggerActions:HighlightButtonAction />
+                        <t:HighlightButtonAction />
                     </EventTrigger>
                 </Style.Triggers>
             </Style>
@@ -39,6 +39,7 @@
                 <Setter Property="FontSize" Value="Large" />
                 <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
             </Style>
+
             <converters:IpAdressToStringConverter x:Key="IpToString" />
             <converters:DigitalToStringConverter x:Key="DigToString" />
         </ResourceDictionary>
@@ -57,20 +58,32 @@
                 <c:SettingFrame>
                     <c:SettingFrame.ContentMenu>
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="32" />
                                 <ColumnDefinition Width="5*" />
                                 <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="IP:" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Text="IP Device:" />
                             <Entry
-                                Grid.Column="1"
+                                Grid.Row="1"
+                                Grid.Column="0"
                                 HorizontalTextAlignment="Center"
                                 Text="{Binding IpAddressDevice, Converter={StaticResource IpToString}}" />
-                            <Label Grid.Column="2" Text=":" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text=":" />
                             <Entry
-                                Grid.Column="3"
+                                Grid.Row="1"
+                                Grid.Column="2"
                                 HorizontalOptions="EndAndExpand"
                                 HorizontalTextAlignment="Center"
                                 Keyboard="Telephone"
@@ -96,20 +109,32 @@
                 <c:SettingFrame>
                     <c:SettingFrame.ContentMenu>
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="32" />
                                 <ColumnDefinition Width="5*" />
                                 <ColumnDefinition Width="5" />
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="IP:" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="3"
+                                Text="IP or domain name host:" />
                             <Entry
-                                Grid.Column="1"
+                                Grid.Row="1"
+                                Grid.Column="0"
                                 HorizontalTextAlignment="Center"
                                 Text="{Binding IpAddressHost, Converter={StaticResource IpToString}}" />
-                            <Label Grid.Column="2" Text=":" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text=":" />
                             <Entry
-                                Grid.Column="3"
+                                Grid.Row="1"
+                                Grid.Column="2"
                                 HorizontalOptions="EndAndExpand"
                                 HorizontalTextAlignment="Center"
                                 Keyboard="Telephone"

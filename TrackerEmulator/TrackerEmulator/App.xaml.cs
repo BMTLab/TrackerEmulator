@@ -4,13 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using TrackerEmulator.Controls;
 using TrackerEmulator.Models;
 using TrackerEmulator.ViewModels.Navigation;
 using TrackerEmulator.ViewModels.Pages;
 using TrackerEmulator.Views.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using BaseThisNavigationPage = Xamarin.Forms.NavigationPage;
+using BaseNavigationPage = Xamarin.Forms.NavigationPage;
 using ThisNavigationPage = TrackerEmulator.Views.Navigation.NavigationPage;
 
 #if NLOG
@@ -62,7 +63,7 @@ namespace TrackerEmulator
             MainPage = new MyMasterDetailPage
             {
                 Master = new NavigationViewModel(new ThisNavigationPage()).CurrentNavigationPage,
-                Detail = new BaseThisNavigationPage(Pages.First().PageView)
+                Detail = new NavigationPage(Pages.First().PageView)
             };
         }
 
@@ -73,12 +74,8 @@ namespace TrackerEmulator
                 goto Finish;
 
             CrossPermissions.Current.OpenAppSettings();
-
             CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Phone);
             CrossPermissions.Current.RequestPermissionAsync<PhonePermission>();
-
-
-            Console.Out.WriteLine("Permission ended");
 
             Finish:
             return Task.CompletedTask;

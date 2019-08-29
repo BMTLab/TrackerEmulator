@@ -5,7 +5,6 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Net;
 using System.Threading.Tasks;
 using TrackerEmulator.Entites;
@@ -19,7 +18,7 @@ namespace TrackerEmulator.ViewModels.Pages
     public class Page1ViewModel : BasePageViewModel
     {
         #region Constants
-        public const string TitleDefault = "Device Settings";
+        public const string TitleDefault = "Connection Settings";
         #endregion
 
 

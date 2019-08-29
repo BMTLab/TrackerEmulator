@@ -71,7 +71,7 @@ namespace TrackerEmulator.Models
 
         public TrackerTcpClient SetBufferSize(ushort bufferSize)
         {
-            if (bufferSize < 4)
+            if (bufferSize < 1)
                 ClientErrors |= Status.BufferSizeIsNotValid;
 
             BufferSizeDevice = bufferSize;

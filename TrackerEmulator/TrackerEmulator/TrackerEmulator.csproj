@@ -86,6 +86,7 @@
 
     <ItemGroup>
         <Folder Include="Helpers\Validators\" />
+        <Folder Include="Styles\" />
     </ItemGroup>
 
 </Project>

@@ -7,12 +7,16 @@ using System;
 using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace TrackerEmulator.Models
+namespace TrackerEmulator.Controls
 {
     public class MyMasterDetailPage : MasterDetailPage
     {
+        #region Fields
         private DateTime _lastTime;
+        #endregion
 
+
+        #region Methods
         protected override bool OnBackButtonPressed()
         {
             try
@@ -42,5 +46,6 @@ namespace TrackerEmulator.Models
                 return base.OnBackButtonPressed();
             }
         }
+        #endregion
     }
 }
