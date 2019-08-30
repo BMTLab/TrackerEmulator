@@ -5,13 +5,16 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq.Expressions;
 using System.Net;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.Models;
 using TrackerEmulator.Services;
+using TrackerEmulator.Views.Pages;
 using Xamarin.Forms;
 
 namespace TrackerEmulator.ViewModels.Pages
@@ -26,6 +29,7 @@ namespace TrackerEmulator.ViewModels.Pages
         #region Fields
         private static IList<ushort> _bufferSizes;
         private static ObservableCollection<ImeiItem> _imeiListDevice;
+        private static byte _connectionId = 0;
 
         private IPAddress _ipAddressDevice;
         private ushort _portAddressDevice;
@@ -79,8 +83,7 @@ namespace TrackerEmulator.ViewModels.Pages
             get => _ipAddressDevice;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _ipAddressDevice = value;
                 OnPropertyChanged();
@@ -102,8 +105,7 @@ namespace TrackerEmulator.ViewModels.Pages
             get => _ipAddressHost;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _ipAddressHost = value;
                 OnPropertyChanged();
@@ -146,8 +148,7 @@ namespace TrackerEmulator.ViewModels.Pages
             get => _imeiListDevice;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _imeiListDevice = value;
                 OnPropertyChanged();
@@ -159,8 +160,7 @@ namespace TrackerEmulator.ViewModels.Pages
             get => _selectedImeiDevice;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _selectedImeiDevice = value;
 
@@ -174,8 +174,7 @@ namespace TrackerEmulator.ViewModels.Pages
             get => _customImeiDevice;
             set
             {
-                if (value == null)
-                    return;
+                if (value == null) return;
 
                 _customImeiDevice = value;
 
@@ -189,8 +188,15 @@ namespace TrackerEmulator.ViewModels.Pages
         {
             get
             {
-                return new Command(()
-                   => ImeiListDevice.Add(ImeiGenerator.Generate()));
+                return new Command(() => ImeiListDevice.Add(ImeiGenerator.Generate()));
+            }
+        }
+
+        public ICommand RunCommand
+        {
+            get
+            {
+                return new Command(async () => await RunTcpClient());
             }
         }
         #endregion
@@ -236,9 +242,6 @@ namespace TrackerEmulator.ViewModels.Pages
             //var imeiList = PageView.FindByName<ListView>()
             #endregion
 
-
-
-
             entry.Completed += (_, e) =>
             {
                 SelectedImeiDevice = CustomImeiDevice;
@@ -248,9 +251,33 @@ namespace TrackerEmulator.ViewModels.Pages
                 gridRow.Height = new GridLength(gridRow.Height.Value + 40);
             };
 
-            //ImeiListDevice.CollectionChanged += () => 
-
             return Task.CompletedTask;
+        }
+
+        private async Task RunTcpClient()
+        {
+            using (var client = new TrackerTcpClient()
+                                .SetIpDevice(IpAddressDevice)
+                                .SetPortDevice(PortAddressDevice)
+                                .SetImeiDevice((string)SelectedImeiDevice)
+                                .SetBufferSize(BufferSizeDevice)
+                                .SetIpHost(IpAddressHost)
+                                .SetPortHost(PortAddressHost)
+                                .Create())
+            {
+                await client.ConnectAsync();
+
+                if (client.Connected)
+                {
+                    App.Pages.Add(new Page2ViewModel(new Page2())
+                    {
+                        Title = $"Connection {++_connectionId}",
+                        TrackerClient = client
+                    });
+
+                    client.SendSelfInfo();
+                }
+            }
         }
         #endregion
     }

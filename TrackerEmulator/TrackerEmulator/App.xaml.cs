@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Plugin.Permissions;
@@ -34,7 +33,7 @@ namespace TrackerEmulator
 
         #region Properties
         public static ObservableCollection<BasePageViewModel> Pages { get; set; }
-        public static TrackerTcpClient TrackerClient { get; }
+        //public static TrackerTcpClient TrackerClient { get; }
         #endregion
 
 
@@ -47,7 +46,7 @@ namespace TrackerEmulator
             Log.Info("OS: {0} \r\n", Environment.OSVersion.ToString());
             #endif
 
-            TrackerClient = new TrackerTcpClient();
+            //TrackerClient = new TrackerTcpClient();
         }
 
         public App()
@@ -57,7 +56,7 @@ namespace TrackerEmulator
 
             Pages = new ObservableCollection<BasePageViewModel>
             {
-                new Page1ViewModel(new Page1()), new Page2ViewModel(new Page2()), new Page3ViewModel(new Page3())
+                new Page1ViewModel(new Page1())
             };
 
             MainPage = new MyMasterDetailPage

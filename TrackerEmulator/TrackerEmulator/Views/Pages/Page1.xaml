@@ -12,7 +12,7 @@
     <!--  Styling for controls. TODO: Move style settings to separate files  -->
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Button">
+            <Style x:Key="But1" TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource DarkTextColor}" />
                 <Setter Property="HeightRequest" Value="40" />
@@ -49,10 +49,28 @@
     <ContentPage.Content>
         <ScrollView Orientation="Vertical">
             <StackLayout
-                Margin="12,12,12,8"
+                Margin="10,12,10,8"
                 HorizontalOptions="Center"
                 Spacing="8"
                 VerticalOptions="StartAndExpand">
+
+
+                <Button
+                    BackgroundColor="{StaticResource Primary}"
+                    BorderColor="White"
+                    Command="{Binding RunCommand}"
+                    CornerRadius="16"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Run"
+                    TextColor="White">
+                    <Button.Triggers>
+                        <EventTrigger Event="Clicked">
+                            <t:HighlightButtonActionInvert />
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
 
                 <!--  Bug: Be sure to specify the required height for the content of SettingFrame.PopupMenu  -->
                 <!--  First setting for IP and Port device  -->
@@ -98,8 +116,14 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Text="SET LOCALHOST" />
-                            <Button Grid.Column="1" Text="SET DEVICE IP" />
+                            <Button
+                                Grid.Column="0"
+                                Style="{StaticResource But1}"
+                                Text="SET LOCALHOST" />
+                            <Button
+                                Grid.Column="1"
+                                Style="{StaticResource But1}"
+                                Text="SET DEVICE IP" />
                         </Grid>
                     </c:SettingFrame.PopupMenu>
                 </c:SettingFrame>
@@ -145,7 +169,10 @@
                     </c:SettingFrame.ContentMenu>
                     <c:SettingFrame.PopupMenu>
                         <Grid HeightRequest="40">
-                            <Button Grid.Column="0" Text="SET LOCALHOST" />
+                            <Button
+                                Grid.Column="0"
+                                Style="{StaticResource But1}"
+                                Text="SET LOCALHOST" />
                         </Grid>
                     </c:SettingFrame.PopupMenu>
                 </c:SettingFrame>
@@ -171,7 +198,10 @@
                         </Grid>
                     </c:SettingFrame.ContentMenu>
                     <c:SettingFrame.PopupMenu>
-                        <Button HeightRequest="40" Text="SET DEFAULT (64)" />
+                        <Button
+                            HeightRequest="40"
+                            Style="{StaticResource But1}"
+                            Text="SET DEFAULT (64)" />
                     </c:SettingFrame.PopupMenu>
                 </c:SettingFrame>
                 <!--  End of setting frame  -->
@@ -183,7 +213,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="2.5*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="IMEI:" />
 
@@ -211,7 +241,7 @@
                                                         HasShadow="False"
                                                         Opacity="0.9">
                                                         <Label
-                                                            FontSize="Large"
+                                                            FontSize="Medium"
                                                             HorizontalTextAlignment="Center"
                                                             Text="{Binding Imei}"
                                                             TextColor="{Binding TextColor}"
@@ -223,6 +253,7 @@
                                         <ListView.Footer>
                                             <Entry
                                                 x:Name="CustomImeiDeviceEntry"
+                                                FontSize="Medium"
                                                 HorizontalOptions="FillAndExpand"
                                                 HorizontalTextAlignment="Center"
                                                 Keyboard="Telephone"
@@ -240,10 +271,13 @@
                         <Button
                             Command="{Binding GenerateImeiCommand}"
                             HeightRequest="40"
+                            Style="{StaticResource But1}"
                             Text="GENERATE IMEI" />
                     </c:SettingFrame.PopupMenu>
                 </c:SettingFrame>
                 <!--  End of setting frame  -->
+
+
 
             </StackLayout>
         </ScrollView>

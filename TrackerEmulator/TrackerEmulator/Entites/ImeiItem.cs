@@ -1,9 +1,7 @@
-﻿//             TrackerEmulator.TrackerEmulator
-//             Created by Nikita Neverov at 28.08.2019 16:53
+﻿//  TrackerEmulator.TrackerEmulator
+//  Created by Nikita Neverov at 28.08.2019 16:53
 
-using System.Threading.Tasks;
 using TrackerEmulator.ViewModels;
-using Xamarin.Forms;
 using Color = System.Drawing.Color;
 
 namespace TrackerEmulator.Entites
@@ -29,7 +27,6 @@ namespace TrackerEmulator.Entites
         #region Constructors
         public ImeiItem()
         {
-
         }
         #endregion
 

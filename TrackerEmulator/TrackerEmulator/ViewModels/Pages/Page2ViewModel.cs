@@ -3,6 +3,7 @@
 //    Created by Nikita Neverov at 19.08.2019 12:19
 #endregion
 
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using TrackerEmulator.Models;
 using Xamarin.Forms;
@@ -19,6 +20,7 @@ namespace TrackerEmulator.ViewModels.Pages
         #region Fields
         private IPAddress _ipAddressHost;
         private ushort _portAddressHost;
+        private TrackerTcpClient _trackerClient;
         #endregion
 
 
@@ -26,14 +28,23 @@ namespace TrackerEmulator.ViewModels.Pages
         public Page2ViewModel(Page page) : base(page)
         {
             Title = TitleDefault;
-
-            IpAddressHost = TrackerTcpClient.GetIpAddressDefault();
-            PortAddressHost = TrackerTcpClient.PortAddressHostDefault;
         }
         #endregion
 
 
         #region Properties
+        [Required]
+        public TrackerTcpClient TrackerClient
+        {
+            get => _trackerClient;
+            set
+            {
+                if (value == null) return;
+                _trackerClient = value;
+                OnPropertyChanged();
+            }
+        }
+
         public IPAddress IpAddressHost
         {
             get => _ipAddressHost;
@@ -56,6 +67,10 @@ namespace TrackerEmulator.ViewModels.Pages
                 OnPropertyChanged();
             }
         }
+        #endregion
+
+
+        #region Methods
         #endregion
     }
 }

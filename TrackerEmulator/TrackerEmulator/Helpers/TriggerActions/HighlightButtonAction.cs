@@ -15,4 +15,14 @@ namespace TrackerEmulator.Helpers.TriggerActions
             button.BackgroundColor = new Color().DarkBackgroundColor();
         }
     }
+
+    public class HighlightButtonActionInvert : TriggerAction<Button>
+    {
+        protected override async void Invoke(Button button)
+        {
+            button.BackgroundColor = Color.Green;
+            await Task.Delay(100);
+            button.BackgroundColor = new Color().Primary();
+        }
+    }
 }

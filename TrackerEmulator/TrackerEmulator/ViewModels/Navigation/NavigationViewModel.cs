@@ -178,8 +178,14 @@ namespace TrackerEmulator.ViewModels.Navigation
 
         private Task InitializeEventHandlers()
         {
-            App.Pages.CollectionChanged += (_, e) => NavigationItems.AddPages((IEnumerable<BasePageViewModel>)e.NewItems);
-            NavigationItems.CollectionChanged += (_, e) => OnPropertyChanged(nameof(NavigationItems));
+            App.Pages.CollectionChanged += (_, e) =>
+            {
+                foreach (var page in e.NewItems)
+                {
+                    NavigationItems.Add(new NavigationItem(page as BasePageViewModel));
+                }
+            };
+
             return Task.CompletedTask;
         }
         #endregion
