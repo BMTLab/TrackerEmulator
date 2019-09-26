@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
+using Plugin.LocalNotification;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using TrackerEmulator.Controls;
@@ -78,6 +80,27 @@ namespace TrackerEmulator
 
             Finish:
             return Task.CompletedTask;
+        }
+        #endregion
+
+
+        #region Methods
+        internal static void SendNotification(string message)
+        {
+            var request = new NotificationRequest
+            {
+                NotificationId = 1,
+                Title = "Tracker Emulator",
+                Description = message,
+                BadgeNumber = 1,
+                Android = new AndroidOptions
+                {
+                    IconName = "icon",
+                    Priority = NotificationPriority.High
+                }
+            };
+
+            NotificationCenter.Current.Show(request);
         }
         #endregion
     }

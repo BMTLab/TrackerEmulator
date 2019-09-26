@@ -3,23 +3,22 @@
 //    Created by Nikita Neverov at 19.08.2019 12:19
 #endregion
 
-using System.ComponentModel.DataAnnotations;
-using System.Net;
+
 using TrackerEmulator.Models;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.ViewModels.Pages
 {
     public class Page2ViewModel : BasePageViewModel
     {
         #region Constants
-        public const string TitleDefault = "Host Settings";
+        public const string TitleDefault = "Connection";
         #endregion
 
 
         #region Fields
-        private IPAddress _ipAddressHost;
-        private ushort _portAddressHost;
         private TrackerTcpClient _trackerClient;
         #endregion
 
@@ -33,37 +32,18 @@ namespace TrackerEmulator.ViewModels.Pages
 
 
         #region Properties
-        [Required]
         public TrackerTcpClient TrackerClient
         {
             get => _trackerClient;
             set
             {
-                if (value == null) return;
-                _trackerClient = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public IPAddress IpAddressHost
-        {
-            get => _ipAddressHost;
-            set
-            {
                 if (value == null)
                     return;
 
-                _ipAddressHost = value;
-                OnPropertyChanged();
-            }
-        }
+                if (_trackerClient == value)
+                    return;
 
-        public ushort PortAddressHost
-        {
-            get => _portAddressHost;
-            set
-            {
-                _portAddressHost = value;
+                _trackerClient = value;
                 OnPropertyChanged();
             }
         }

@@ -5,9 +5,8 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq.Expressions;
 using System.Net;
-using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TrackerEmulator.Entites;
@@ -216,7 +215,8 @@ namespace TrackerEmulator.ViewModels.Pages
             return Task.CompletedTask;
         }
 
-        private Task InitializeFields()
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void InitializeFields()
         {
             #region Initializing Fields with Default Values 
             IpAddressDevice = DependencyService.Get<IDevice>().GetIpAddressDevice();
@@ -230,11 +230,10 @@ namespace TrackerEmulator.ViewModels.Pages
             ImeiListDevice = new ObservableCollection<ImeiItem>(DependencyService.Get<IDevice>().GetImeiList());
             SelectedImeiDevice = ImeiListDevice[0];
             #endregion
-
-            return Task.CompletedTask;
         }
 
-        private Task InitializeEventHandlers()
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private void InitializeEventHandlers()
         {
             #region Get UI controls from an attached View
             var entry = PageView.FindByName<Entry>("CustomImeiDeviceEntry");
@@ -248,10 +247,8 @@ namespace TrackerEmulator.ViewModels.Pages
                 ImeiListDevice.Add(CustomImeiDevice);
                 entry.Text = string.Empty;
                 entry.Placeholder = "Enter custom";
-                gridRow.Height = new GridLength(gridRow.Height.Value + 40);
+                gridRow.Height = new GridLength(gridRow.Height.Value + 64);
             };
-
-            return Task.CompletedTask;
         }
 
         private async Task RunTcpClient()

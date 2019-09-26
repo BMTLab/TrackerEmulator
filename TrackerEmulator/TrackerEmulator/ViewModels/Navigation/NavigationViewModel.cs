@@ -3,15 +3,18 @@
 //    Created by Nikita Neverov at 18.08.2019 13:47
 #endregion
 
-using System.Collections.Generic;
+
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
 using TrackerEmulator.ViewModels.Pages;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.ViewModels.Navigation
 {
@@ -42,6 +45,7 @@ namespace TrackerEmulator.ViewModels.Navigation
             NavigationItem.ItemSelectedTextColor = new Color().LightTextColor();
         }
 
+
         public NavigationViewModel(Page navPage)
         {
             #region Initialize Fields
@@ -51,13 +55,11 @@ namespace TrackerEmulator.ViewModels.Navigation
             CurrentNavigationPage.BindingContext = this;
             NavigationItems = new ObservableCollection<NavigationItem>();
 
-            foreach (var page in App.Pages)
-            {
-                NavigationItems.Add(new NavigationItem(page));
-            }
+            foreach (var page in App.Pages) { NavigationItems.Add(new NavigationItem(page)); }
 
             SelectedNavigationItem = NavigationItems.First();
             #endregion
+
 
             InitializeEventHandlers();
 
@@ -122,14 +124,12 @@ namespace TrackerEmulator.ViewModels.Navigation
             get => _selectedNavigationItem;
             set
             {
-                if (value == null) return;
+                if (value == null)
+                    return;
 
                 _selectedNavigationItem = value;
-
                 RefreshMenu();
-
                 _selectedNavigationItem.Command.Execute(_selectedNavigationItem.CommandParameter);
-
                 OnPropertyChanged();
             }
         }
@@ -143,6 +143,7 @@ namespace TrackerEmulator.ViewModels.Navigation
                 OnPropertyChanged();
             }
         }
+
 
         #region Commands
         public ICommand RefreshCommand
@@ -167,23 +168,19 @@ namespace TrackerEmulator.ViewModels.Navigation
         public Task RefreshMenu()
         {
             foreach (var item in NavigationItems)
-            {
                 item.IsActive = false;
-            }
 
             SelectedNavigationItem.IsActive = true;
 
             return Task.CompletedTask;
         }
 
+
         private Task InitializeEventHandlers()
         {
             App.Pages.CollectionChanged += (_, e) =>
             {
-                foreach (var page in e.NewItems)
-                {
-                    NavigationItems.Add(new NavigationItem(page as BasePageViewModel));
-                }
+                foreach (var page in e.NewItems) { NavigationItems.Add(new NavigationItem(page as BasePageViewModel)); }
             };
 
             return Task.CompletedTask;

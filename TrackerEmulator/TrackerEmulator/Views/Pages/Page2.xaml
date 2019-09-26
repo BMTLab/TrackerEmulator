@@ -50,7 +50,11 @@
             <StackLayout
                 Margin="8,12,8,8"
                 Spacing="8"
-                VerticalOptions="StartAndExpand" />
+                VerticalOptions="StartAndExpand">
+
+
+
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

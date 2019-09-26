@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace TrackerEmulator.Models
         #region Constants
         public const ushort BufferSizeDefault = 64;
         public const ushort PortAddressDeviceDefault = 7;
-        public const ushort PortAddressHostDefault = 4777;
+        public const ushort PortAddressHostDefault = 44355;
         #endregion
 
 
@@ -117,36 +118,64 @@ namespace TrackerEmulator.Models
 
         #endregion
 
-        public async Task ConnectAsync()
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static byte[] FromString(string message)
         {
-            //if (!Active) return;
-            await ConnectAsync(IpAdressHost, PortAdressHost);
+            return Encoding.Unicode.GetBytes(message);
         }
 
-        public void SendSelfInfo()
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string ToString(byte[] buffer, ushort bytes)
         {
-            var message = ImeiDevice;
-            var data = Encoding.Unicode.GetBytes(message);
-            var stream = GetStream();
-            if (stream.CanWrite)
-                stream.Write(data, 0, data.Length);
-            stream.Close();
+            return Encoding.Unicode.GetString(buffer, 0, bytes);
         }
 
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public byte[] CreateBuffer()
         {
             return new byte[BufferSizeDevice];
         }
 
-        public byte[] FromString(string message)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public async Task ConnectAsync()
         {
-            return Encoding.Unicode.GetBytes(message);
+            try
+            {
+                await ConnectAsync(IpAdressHost, PortAdressHost);
+            }
+            catch (Exception ex)
+            {
+                App.SendNotification(ex.Message);
+            }
         }
 
-        public string ToString(byte[] buffer, ushort bytes)
+        public async void SendSelfInfo()
         {
-            return Encoding.Unicode.GetString(buffer, 0, bytes);
+            var message = ImeiDevice;
+            var data = FromString(message);
+
+            NetworkStream stream = null;
+            try
+            {
+                stream = GetStream();
+
+                if (stream.CanWrite)
+                    await stream.WriteAsync(data, 0, data.Length);
+            }
+            catch (Exception ex)
+            {
+                App.SendNotification(ex.Message);
+            }
+            finally
+            {
+                stream?.Close();
+            }
+
         }
+
+
 
         //client.Connect(ipAddr, 4777);
         //try
