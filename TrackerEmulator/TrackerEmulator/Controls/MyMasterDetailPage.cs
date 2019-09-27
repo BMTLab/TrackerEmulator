@@ -3,9 +3,12 @@
 //    Created by Nikita Neverov at 20.08.2019 14:27
 #endregion
 
+
 using System;
 using System.Diagnostics;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.Controls
 {

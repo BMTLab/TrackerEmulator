@@ -5,10 +5,6 @@ namespace TrackerEmulator.Models
 {
     public class TcpConnection
     {
-        #region Fields
-        #endregion
-
-
         #region Constructors
         public TcpConnection(TrackerTcpClient client)
         {
@@ -17,8 +13,11 @@ namespace TrackerEmulator.Models
         #endregion
 
 
-        #region Methods
+        #region Fields
+        #endregion
 
+
+        #region Methods
         #endregion
     }
 }

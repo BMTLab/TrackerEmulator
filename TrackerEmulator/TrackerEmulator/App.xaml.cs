@@ -1,17 +1,19 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Mail;
 using System.Threading.Tasks;
+
 using Plugin.LocalNotification;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+
 using TrackerEmulator.Controls;
-using TrackerEmulator.Models;
 using TrackerEmulator.ViewModels.Navigation;
 using TrackerEmulator.ViewModels.Pages;
 using TrackerEmulator.Views.Pages;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 using BaseNavigationPage = Xamarin.Forms.NavigationPage;
 using ThisNavigationPage = TrackerEmulator.Views.Navigation.NavigationPage;
 
@@ -19,23 +21,27 @@ using ThisNavigationPage = TrackerEmulator.Views.Navigation.NavigationPage;
 using NLog;
 #endif
 
-
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 
 namespace TrackerEmulator
 {
     public partial class App : Application
     {
+        #region Constants
+        public const string IpAddressHostDefault = "10.242.44.160";
+        #endregion
+
+
         #region Fields
-        #if NLOG
+#if NLOG
         public static readonly Logger Log;
-        #endif
+#endif
         #endregion
 
 
         #region Properties
         public static ObservableCollection<BasePageViewModel> Pages { get; set; }
-        //public static TrackerTcpClient TrackerClient { get; }
         #endregion
 
 
@@ -47,9 +53,8 @@ namespace TrackerEmulator
             Log.Info("Version: {0}", Environment.Version.ToString());
             Log.Info("OS: {0} \r\n", Environment.OSVersion.ToString());
             #endif
-
-            //TrackerClient = new TrackerTcpClient();
         }
+
 
         public App()
         {
@@ -58,7 +63,7 @@ namespace TrackerEmulator
 
             Pages = new ObservableCollection<BasePageViewModel>
             {
-                new Page1ViewModel(new Page1())
+                new SettingsViewModel(new SettingView())
             };
 
             MainPage = new MyMasterDetailPage
@@ -68,9 +73,11 @@ namespace TrackerEmulator
             };
         }
 
+
         protected static Task RequestPermissions()
         {
             var status = CrossPermissions.Current.CheckPermissionStatusAsync<PhonePermission>().Result;
+
             if (status == PermissionStatus.Granted)
                 goto Finish;
 
@@ -79,6 +86,7 @@ namespace TrackerEmulator
             CrossPermissions.Current.RequestPermissionAsync<PhonePermission>();
 
             Finish:
+
             return Task.CompletedTask;
         }
         #endregion

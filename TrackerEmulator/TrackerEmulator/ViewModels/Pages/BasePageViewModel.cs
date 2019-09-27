@@ -1,6 +1,10 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
+
 using TrackerEmulator.Controls;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.ViewModels.Pages
 {
@@ -10,19 +14,21 @@ namespace TrackerEmulator.ViewModels.Pages
         private string _title;
         #endregion
 
+
         #region Constructors
         protected BasePageViewModel(Page page)
         {
             PageView = page;
             PageView.BindingContext = this;
 
-            PropertyChanged += (s, e) =>
+            PropertyChanged += (_, e) =>
             {
-                if (s.Equals(this) && e.PropertyName == nameof(Title))
+                if (e.PropertyName == nameof(Title))
                     PageView.Title = Title;
             };
         }
         #endregion
+
 
         #region Properties
         public string Title
@@ -41,11 +47,13 @@ namespace TrackerEmulator.ViewModels.Pages
         {
             get
             {
-                return new Command(async value =>
+                return new Command(async () =>
                 {
-                    if (!(Application.Current.MainPage is MyMasterDetailPage mdp)) return;
+                    if (!(Application.Current.MainPage is MyMasterDetailPage mdp))
+                        return;
 
-                    if (!(mdp.Detail is NavigationPage navPage)) return;
+                    if (!(mdp.Detail is NavigationPage navPage))
+                        return;
 
                     mdp.IsPresented = false;
 
@@ -54,6 +62,16 @@ namespace TrackerEmulator.ViewModels.Pages
                 });
             }
         }
+        #endregion
+
+
+        #region Methods
+        public async void PushPage()
+        {
+            PageNavigationCommand.Execute(null);
+            await Task.CompletedTask;
+        }
+
         #endregion
     }
 }

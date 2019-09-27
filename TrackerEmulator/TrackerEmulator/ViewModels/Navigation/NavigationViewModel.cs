@@ -6,6 +6,7 @@
 
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -55,7 +56,10 @@ namespace TrackerEmulator.ViewModels.Navigation
             CurrentNavigationPage.BindingContext = this;
             NavigationItems = new ObservableCollection<NavigationItem>();
 
-            foreach (var page in App.Pages) { NavigationItems.Add(new NavigationItem(page)); }
+            foreach (var page in App.Pages)
+            {
+                NavigationItems.Add(new NavigationItem(page));
+            }
 
             SelectedNavigationItem = NavigationItems.First();
             #endregion
@@ -128,8 +132,8 @@ namespace TrackerEmulator.ViewModels.Navigation
                     return;
 
                 _selectedNavigationItem = value;
+                _selectedNavigationItem.ContentPageViewModel.PushPage();
                 RefreshMenu();
-                _selectedNavigationItem.Command.Execute(_selectedNavigationItem.CommandParameter);
                 OnPropertyChanged();
             }
         }
@@ -146,25 +150,22 @@ namespace TrackerEmulator.ViewModels.Navigation
 
 
         #region Commands
-        public ICommand RefreshCommand
+        public ICommand RefreshCommand => new Command(async () =>
         {
-            get
-            {
-                return new Command(async () =>
-                {
-                    IsRefreshing = true;
+            IsRefreshing = true;
 
-                    await RefreshMenu();
+            await RefreshMenu();
 
-                    IsRefreshing = false;
-                });
-            }
-        }
+            IsRefreshing = false;
+        });
+            
+        
         #endregion
         #endregion
 
 
         #region Methods
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Task RefreshMenu()
         {
             foreach (var item in NavigationItems)
@@ -176,14 +177,18 @@ namespace TrackerEmulator.ViewModels.Navigation
         }
 
 
-        private Task InitializeEventHandlers()
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private async void InitializeEventHandlers()
         {
             App.Pages.CollectionChanged += (_, e) =>
             {
-                foreach (var page in e.NewItems) { NavigationItems.Add(new NavigationItem(page as BasePageViewModel)); }
+                foreach (var page in e.NewItems)
+                {
+                    NavigationItems.Add(new NavigationItem(page as BasePageViewModel));
+                }
             };
 
-            return Task.CompletedTask;
+            await Task.CompletedTask;
         }
         #endregion
     }

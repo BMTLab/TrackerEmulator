@@ -1,6 +1,9 @@
 ﻿using System.Threading.Tasks;
+
 using TrackerEmulator.Helpers.Extension;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.Helpers.TriggerActions
 {
@@ -15,6 +18,7 @@ namespace TrackerEmulator.Helpers.TriggerActions
             button.BackgroundColor = new Color().DarkBackgroundColor();
         }
     }
+
 
     public class HighlightButtonActionInvert : TriggerAction<Button>
     {

@@ -1,5 +1,5 @@
 root=true
-# Дополнительные сведения о файле EDITORCONFIG: https://aka.ms/editorconfigdocs
+# пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ EDITORCONFIG: https://aka.ms/editorconfigdocs
 ############################### 
 # Core EditorConfig Options   # 
 ############################### 
@@ -9,6 +9,7 @@ indent_style=space
 
 # Microsoft .NET properties
 csharp_preferred_modifier_order=public, private, protected, internal, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, volatile, async:suggestion
+csharp_preserve_single_line_blocks=true
 csharp_space_after_cast=false
 
 # ReSharper properties
@@ -37,7 +38,7 @@ resharper_int_align_switch_expressions=true
 resharper_int_align_switch_sections=true
 resharper_keep_existing_declaration_block_arrangement=true
 resharper_keep_existing_embedded_arrangement=false
-resharper_keep_existing_embedded_block_arrangement=true
+resharper_keep_existing_embedded_block_arrangement=false
 resharper_keep_existing_enum_arrangement=true
 resharper_keep_existing_initializer_arrangement=false
 resharper_max_blank_lines_between_tags=2

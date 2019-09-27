@@ -1,73 +1,16 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace TrackerEmulator.Controls
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingFrame : Frame
     {
-        #region Fields
-        #region Fields.BindableProperties
-        public static readonly BindableProperty PopupMenuProperty =
-            BindableProperty.Create(
-                nameof(PopupMenu),
-                typeof(VisualElement),
-                typeof(SettingFrame),
-                propertyChanging: (bindable, _, newValue) =>
-                {
-                    var ctrl = (SettingFrame)bindable;
-                    ctrl.PopupMenu = (VisualElement)newValue;
-                }
-            );
-
-        public static readonly BindableProperty ContentMenuProperty =
-            BindableProperty.Create(
-                nameof(ContentMenu),
-                typeof(VisualElement),
-                typeof(SettingFrame),
-                propertyChanging: (bindable, _, newValue) =>
-                {
-                    var ctrl = (SettingFrame)bindable;
-                    ctrl.ContentMenu = (VisualElement)newValue;
-                }
-            );
-        #endregion
-
-        private VisualElement _popupMenu;
-        private VisualElement _contentMenu;
-        #endregion
-
-
         #region Constructors
         public SettingFrame()
         {
             InitializeComponent();
-        }
-        #endregion
-
-
-        #region Properties
-        public VisualElement PopupMenu
-        {
-            get => _popupMenu;
-            set
-            {
-                if (value == null) return;
-                _popupMenu = value;
-                AddPopupHandler();
-                OnPropertyChanged();
-            }
-        }
-
-        public VisualElement ContentMenu
-        {
-            get => _contentMenu;
-            set
-            {
-                if (value == null) return;
-                _contentMenu = value;
-                OnPropertyChanged();
-            }
         }
         #endregion
 
@@ -82,6 +25,7 @@ namespace TrackerEmulator.Controls
             popup.ScaleY = 0;
 
             var tapGestureRecognizer = new TapGestureRecognizer();
+
             tapGestureRecognizer.Tapped += (_, e) =>
             {
                 if (isPrimary)
@@ -100,6 +44,69 @@ namespace TrackerEmulator.Controls
             };
 
             GestureRecognizers.Add(tapGestureRecognizer);
+        }
+        #endregion
+
+
+        #region Fields
+        #region Fields.BindableProperties
+        public static readonly BindableProperty PopupMenuProperty =
+            BindableProperty.Create(
+                nameof(PopupMenu),
+                typeof(VisualElement),
+                typeof(SettingFrame),
+                propertyChanging: (bindable, _, newValue) =>
+                {
+                    var ctrl = (SettingFrame) bindable;
+                    ctrl.PopupMenu = (VisualElement) newValue;
+                }
+            );
+
+        public static readonly BindableProperty ContentMenuProperty =
+            BindableProperty.Create(
+                nameof(ContentMenu),
+                typeof(VisualElement),
+                typeof(SettingFrame),
+                propertyChanging: (bindable, _, newValue) =>
+                {
+                    var ctrl = (SettingFrame) bindable;
+                    ctrl.ContentMenu = (VisualElement) newValue;
+                }
+            );
+        #endregion
+
+
+        private VisualElement _popupMenu;
+        private VisualElement _contentMenu;
+        #endregion
+
+
+        #region Properties
+        public VisualElement PopupMenu
+        {
+            get => _popupMenu;
+            set
+            {
+                if (value == null)
+                    return;
+
+                _popupMenu = value;
+                AddPopupHandler();
+                OnPropertyChanged();
+            }
+        }
+
+        public VisualElement ContentMenu
+        {
+            get => _contentMenu;
+            set
+            {
+                if (value == null)
+                    return;
+
+                _contentMenu = value;
+                OnPropertyChanged();
+            }
         }
         #endregion
     }

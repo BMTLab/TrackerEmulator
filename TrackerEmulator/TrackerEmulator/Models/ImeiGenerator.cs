@@ -4,6 +4,7 @@
 using System;
 using System.Text;
 
+
 namespace TrackerEmulator.Models
 {
     public static class ImeiGenerator
@@ -11,7 +12,7 @@ namespace TrackerEmulator.Models
         public static string Generate()
         {
             var random = new Random();
-            var sb     = new StringBuilder(15);
+            var sb = new StringBuilder(15);
 
             string[] rbi =
             {
@@ -27,11 +28,13 @@ namespace TrackerEmulator.Models
 
             const int offset = 16 % 2;
             var sum = 0;
+
             for (var i = 0; i < 14; i++)
             {
                 if ((i + offset) % 2 != 0)
                 {
                     var t = sb[i] * 2;
+
                     if (t > 9)
                     {
                         t -= 9;
@@ -46,6 +49,7 @@ namespace TrackerEmulator.Models
             }
 
             sb.Append((10 - sum % 10) % 10);
+
             return sb.ToString();
         }
     }

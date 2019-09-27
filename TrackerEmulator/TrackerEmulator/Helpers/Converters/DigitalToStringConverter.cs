@@ -3,7 +3,9 @@
 
 using System;
 using System.Globalization;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.Helpers.Converters
 {
@@ -28,9 +30,11 @@ namespace TrackerEmulator.Helpers.Converters
                 : string.Empty;
         }
 
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             object result = 0;
+
             try
             {
                 result = System.Convert.ChangeType(value, targetType);
@@ -39,6 +43,7 @@ namespace TrackerEmulator.Helpers.Converters
             {
                 ;
             }
+
             return result;
         }
     }

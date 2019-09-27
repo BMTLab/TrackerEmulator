@@ -1,7 +1,10 @@
 ﻿using System.Threading.Tasks;
+
 using TrackerEmulator.Entites;
 using TrackerEmulator.Helpers.Extension;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.Helpers.TriggerActions
 {

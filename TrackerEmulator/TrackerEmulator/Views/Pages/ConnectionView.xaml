@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="TrackerEmulator.Views.Pages.ConnectionView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:TrackerEmulator.Controls;assembly=TrackerEmulator"
+    xmlns:converters="clr-namespace:TrackerEmulator.Helpers.Converters;assembly=TrackerEmulator"
+    xmlns:triggerActions="clr-namespace:TrackerEmulator.Helpers.TriggerActions;assembly=TrackerEmulator"
+    BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+    <!--  Styling for controls. TODO: Move style settings to separate files  -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="But1" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource DarkTextColor}" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Style.Triggers>
+                    <EventTrigger Event="Clicked">
+                        <triggerActions:HighlightButtonAction />
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="Margin" Value="0,-10,0,-10" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            </Style>
+            <Style TargetType="Picker">
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="Margin" Value="0,-10,0,-10" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+            </Style>
+
+            <converters:IpAddressToStringConverter x:Key="IpToString" />
+            <converters:DigitalToStringConverter x:Key="DigToString" />
+            <converters:BoolToStringConverter x:Key="BoolToString" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--  End of styling  -->
+
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <StackLayout
+                Margin="8,12,8,8"
+                Spacing="8"
+                VerticalOptions="StartAndExpand">
+
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                                <RowDefinition Height="40" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <!--  Ip  -->
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Text="IP host:" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding HostIpInfo, Converter={StaticResource IpToString}}" />
+
+                            <!--  Port  -->
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Text="Port host:" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding HostPortInfo, Converter={StaticResource DigToString}}" />
+
+                            <!--  Is connected  -->
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Text="Is Connected:" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding IsConnected, Converter={StaticResource BoolToString}}" />
+
+                            <!--  Available data count  -->
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Text="Available Data:" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding AvailableDataCount, Converter={StaticResource DigToString}}" />
+
+                        </Grid>
+                    </c:SettingFrame.ContentMenu>
+                    <c:SettingFrame.PopupMenu>
+                        <Button
+                            Command="{Binding RefreshInfoCommand}"
+                            HeightRequest="40"
+                            Style="{StaticResource But1}"
+                            Text="REFRESH" />
+                    </c:SettingFrame.PopupMenu>
+                </c:SettingFrame>
+
+
+                <!--  Console  -->
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="160" />
+                            </Grid.RowDefinitions>
+
+                            <Label HeightRequest="160" Text="{Binding Text}" />
+
+                        </Grid>
+                    </c:SettingFrame.ContentMenu>
+                </c:SettingFrame>
+
+
+                <!--  Disconnect  -->
+                <c:SettingFrame>
+                    <c:SettingFrame.ContentMenu>
+                        <Grid>
+
+                            <Button
+                                HeightRequest="40"
+                                Style="{StaticResource But1}"
+                                Text="DISCONNECT" />
+
+                        </Grid>
+                    </c:SettingFrame.ContentMenu>
+                </c:SettingFrame>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

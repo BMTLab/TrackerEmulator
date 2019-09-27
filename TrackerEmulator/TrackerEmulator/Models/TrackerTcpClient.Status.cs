@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace TrackerEmulator.Models
 {
     [Flags]

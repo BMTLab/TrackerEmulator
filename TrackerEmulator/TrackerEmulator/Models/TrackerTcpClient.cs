@@ -1,32 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace TrackerEmulator.Models
 {
-    public class TrackerTcpClient : TcpClient, IValidatableObject
+    public class TrackerTcpClient : TcpClient
     {
-        #region Constants
-        public const ushort BufferSizeDefault = 64;
-        public const ushort PortAddressDeviceDefault = 7;
-        public const ushort PortAddressHostDefault = 44355;
-        #endregion
-
-
         #region Fields
         protected internal Status ClientErrors = 0;
         #endregion
 
 
         #region Constructors
-        public TrackerTcpClient(): base(AddressFamily.InterNetwork)
+        public TrackerTcpClient() : base(AddressFamily.InterNetwork)
         {
         }
+        #endregion
+
+
+        #region Constants
+        public const ushort BufferSizeDefault = 64;
+        public const ushort PortAddressDeviceDefault = 7;
+        public const ushort PortAddressHostDefault = 44355;
         #endregion
 
 
@@ -45,7 +44,8 @@ namespace TrackerEmulator.Models
 
         #region Methods
         public static IPAddress GetIpAddressDefault()
-            => IPAddress.Parse("10.242.44.160");
+            => IPAddress.Parse(App.IpAddressHostDefault);
+
 
         #region Methods.Configuration
         public TrackerTcpClient SetIpOrDomainHost(string domain)
@@ -59,37 +59,48 @@ namespace TrackerEmulator.Models
                 catch
                 {
                     ClientErrors |= Status.IpNotCorrect;
+
                     return this;
                 }
             }
 
             IpAdressHost = ip;
+
             return this;
         }
+
 
         public TrackerTcpClient SetIpHost(IPAddress ip)
         {
             IpAdressHost = ip;
+
             return this;
         }
+
 
         public TrackerTcpClient SetIpDevice(IPAddress ip)
         {
             IpAdressDevice = ip;
+
             return this;
         }
+
 
         public TrackerTcpClient SetPortHost(ushort port)
         {
             PortAdressHost = port;
+
             return this;
         }
+
 
         public TrackerTcpClient SetPortDevice(ushort port)
         {
             PortAdressDevice = port;
+
             return this;
         }
+
 
         public TrackerTcpClient SetBufferSize(ushort bufferSize)
         {
@@ -97,25 +108,29 @@ namespace TrackerEmulator.Models
                 ClientErrors |= Status.BufferSizeIsNotValid;
 
             BufferSizeDevice = bufferSize;
+
             return this;
         }
+
 
         public TrackerTcpClient SetImeiDevice(string imei)
         {
             ImeiDevice = imei;
+
             return this;
         }
+
 
         public TrackerTcpClient Create()
         {
-            if (!IsEverythingGood())
+            if (!Validate())
                 return this;
 
             SendBufferSize = ReceiveBufferSize = BufferSizeDevice;
-            //Active = true;
+            Active = true;
+
             return this;
         }
-
         #endregion
 
 
@@ -124,6 +139,7 @@ namespace TrackerEmulator.Models
         {
             return Encoding.Unicode.GetBytes(message);
         }
+
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static string ToString(byte[] buffer, ushort bytes)
@@ -138,6 +154,7 @@ namespace TrackerEmulator.Models
             return new byte[BufferSizeDevice];
         }
 
+
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public async Task ConnectAsync()
         {
@@ -151,10 +168,11 @@ namespace TrackerEmulator.Models
             }
         }
 
-        public async void SendSelfInfo()
+
+        public async Task SendSelfInfoAsync()
         {
-            var message = ImeiDevice;
-            var data = FromString(message);
+            var sData = ImeiDevice;
+            var bData = Encoding.Unicode.GetBytes(sData);
 
             NetworkStream stream = null;
             try
@@ -162,117 +180,35 @@ namespace TrackerEmulator.Models
                 stream = GetStream();
 
                 if (stream.CanWrite)
-                    await stream.WriteAsync(data, 0, data.Length);
+                    await stream.WriteAsync(bData, 0, bData.Length);
             }
             catch (Exception ex)
             {
+                stream?.Close();
                 App.SendNotification(ex.Message);
             }
-            finally
-            {
-                stream?.Close();
-            }
-
         }
+        
 
-
-
-        //client.Connect(ipAddr, 4777);
-        //try
-        //{
-        //    var stream = client.GetStream();
-
-        //    while (true)
-        //    {
-        //        //Console.Write("\r\nInput your message: ");
-        //        //var message = Console.ReadLine();
-
-        //        //var data = Encoding.Unicode.GetBytes(message);
-        //        //stream.Write(data, 0, data.Length);
-
-        //        var data = new byte[BufferSize];
-        //        var builder = new StringBuilder();
-        //        do
-        //        {
-        //            var bytes = stream.Read(data, 0, data.Length);
-        //            builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-        //        } while (stream.DataAvailable);
-
-        //        var message = builder.ToString();
-        //        Console.WriteLine("Server: {0}", message);
-        //    }
-        //}
-        //catch (Exception ex)
-        //{
-        //    Console.WriteLine(ex.Message);
-        //}
-        //finally
-        //{
-        //    client.Close();
-        //}
-        // }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        private bool Validate()
         {
-            var errors = new List<ValidationResult>(2);
-
-            if (IsEverythingGood())
-                return errors;
-
             if ((ClientErrors & Status.IpNotCorrect) != 0)
-            {
-                errors.Add(new ValidationResult("Ip not correct"));
-                Console.Out.Write("Ip not correct");
-            }
+                App.SendNotification("Ip not correct");
+
+            if ((ClientErrors & Status.PortNotCorrect) != 0)
+                App.SendNotification("Port not correct");
 
             if ((ClientErrors & Status.BufferSizeIsNotValid) != 0)
-            {
-                errors.Add(new ValidationResult("Buffer size is not valid"));
-                Console.Out.Write("Buffer size is not valid");
-            }
+                App.SendNotification("Buffer size is not valid");
 
-            return errors;
+            if ((ClientErrors & Status.CapacityOfConnectionsIsNotValid) != 0)
+                App.SendNotification("Capacity of connections is not valid");
+
+            if ((ClientErrors & Status.ConcurencyLevelOfConnectionsIsNotValid) != 0)
+                App.SendNotification("Capacity of connections is not valid");
+
+            return (byte) ClientErrors == 0;
         }
-
-
-        /* GetActiveTcpConnections is not implemented exception on Android
-        public int GetAnyFreePort()
-        {
-            var ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
-            TcpConnectionInformation[] tcpConnInfoArray = ipGlobalProperties.GetActiveTcpConnections();
-            IList<int> portList = new List<int>(Enumerable
-                                                .Range(1, ushort.MaxValue)
-                                                .Except(tcpConnInfoArray
-                                                        .Select(element => element.LocalEndPoint.Port)
-                                                        .Distinct()
-                                                        .ToList()));
-
-
-            return portList[0];
-        }
-        */
-
-        private bool IsEverythingGood()
-        {
-            return (byte)ClientErrors == 0;
-
-            //if ((ClientErrors & Status.IpNotCorrect) != 0)
-            //    Console.Out.Write("Ip not correct");
-
-            //if ((ClientErrors & Status.PortNotCorrect) != 0)
-            //    Console.Out.Write("Port not correct");
-
-            //if ((ClientErrors & Status.BufferSizeIsNotValid) != 0)
-            //    Console.Out.Write("Buffer size is not valid");
-
-            //if ((ClientErrors & Status.CapacityOfConnectionsIsNotValid) != 0)
-            //    Console.Out.Write("Capacity of connections is not valid");
-
-            //if ((ClientErrors & Status.ConcurencyLevelOfConnectionsIsNotValid) != 0)
-            //    Console.Out.Write("Capacity of connections is not valid");
-        }
-
         #endregion
-
     }
 }

@@ -1,11 +1,13 @@
-﻿using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
 
 namespace TrackerEmulator.Views.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page3
+    public partial class ConnectionView : ContentPage
     {
-        public Page3()
+        public ConnectionView()
         {
             InitializeComponent();
         }

@@ -1,23 +1,24 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
+
 namespace TrackerEmulator.ViewModels
 {
     public abstract class BaseViewModel : INotifyPropertyChanged
     {
         #region Events
-        public static event PropertyChangedEventHandler StaticPropertyChanged;
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
 
         #region Invocators
-        protected static void OnStaticPropertyChanged([CallerMemberName] string propertyName = "")
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            StaticPropertyChanged?.Invoke(null, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
+
+        protected virtual void OnAnotherPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

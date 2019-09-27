@@ -1,14 +1,27 @@
 ﻿#define BACKGROUND_COLOR
 
 using System.Windows.Input;
+
 using TrackerEmulator.ViewModels;
 using TrackerEmulator.ViewModels.Pages;
+
 using Xamarin.Forms;
+
 
 namespace TrackerEmulator.Entites
 {
     public class NavigationItem : BaseViewModel
     {
+        #region Constructors
+        public NavigationItem(BasePageViewModel pageViewModel)
+        {
+            Title = pageViewModel.Title;
+            Command = pageViewModel.PageNavigationCommand;
+            ContentPageViewModel = pageViewModel;
+        }
+        #endregion
+
+
         #region Fields
         public static Color ItemSelectedColor = Color.Blue;
 
@@ -39,16 +52,6 @@ namespace TrackerEmulator.Entites
         private bool _isActive;
 
         private BasePageViewModel _contentPageViewModel;
-        #endregion
-
-
-        #region Constructors
-        public NavigationItem(BasePageViewModel pageViewModel)
-        {
-            Title = pageViewModel.Title;
-            Command = pageViewModel.PageNavigationCommand;
-            ContentPageViewModel = pageViewModel;
-        }
         #endregion
 
 
@@ -130,7 +133,8 @@ namespace TrackerEmulator.Entites
             get => _contentPageViewModel;
             set
             {
-                if (value == null) return;
+                if (value == null)
+                    return;
 
                 _contentPageViewModel = value;
                 OnPropertyChanged();
@@ -143,6 +147,7 @@ namespace TrackerEmulator.Entites
             set
             {
                 _isActive = value;
+
                 if (_isActive)
                 {
                     BorderColor = BackgroundColor = ItemSelectedColor;
