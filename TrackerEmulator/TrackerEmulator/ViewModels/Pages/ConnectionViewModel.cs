@@ -146,16 +146,17 @@ namespace TrackerEmulator.ViewModels.Pages
             }
         }
 
-        public Command RefreshInfoCommand => new Command(RefreshInfo);
+        public Command RefreshInfoCommand => new Command(async () => await RefreshInfo());
+        public Command DisconnectCommand => new Command(() => Disconnect());
         #endregion
 
 
         #region Methods
-        private async void RefreshInfo()
+        private async Task RefreshInfo()
         {
             HostIpInfo = CurrentClient.IpAdressHost;
             HostPortInfo = CurrentClient.PortAdressHost;
-            IsConnected = CurrentClient.Client.Connected;
+            IsConnected = CurrentClient.Connected;
             AvailableDataCount = CurrentClient.Client.Available;
             await Task.CompletedTask;
         }
@@ -200,8 +201,15 @@ namespace TrackerEmulator.ViewModels.Pages
             {
                 stream?.Close();
                 tracker?.Client.Disconnect(true);
-                await Task.CompletedTask;
             }
+        }
+
+
+        private void Disconnect()
+        {
+            //CurrentClient?.Close();
+            //CurrentClient?.Client?.Disconnect(false);
+            Text = string.Empty;
         }
         #endregion
     }
